@@ -46,6 +46,7 @@ final class Plugin {
 			Admin\ListTable::init();
 			Admin\TermFields::init();
 			Admin\SettingsPage::init();
+			Admin\MigrationPage::init();
 			Admin\HelpPage::init();
 			Admin\Notices::init();
 		}

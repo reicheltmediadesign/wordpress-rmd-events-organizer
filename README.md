@@ -10,7 +10,8 @@ A lean WordPress plugin for events and market dates: enter dates once, show them
 - **Locations** with address, reusable across events. A new location can be typed directly into the event form.
 - **Categories with colours and tags** to filter lists and calendars.
 - **Calendar downloads** (.ics) for upcoming dates and schema.org structured data for search engines.
-- **Only what a site needs.** Locations, market dates and the calendar are components that can be switched off.
+- **Import from Events Manager.** Copies events, series, locations, categories and tags, even when that plugin has already been deleted. Nothing is changed in the old data; the import can be repeated and undone.
+- **Only what a site needs.** Locations, market dates, the calendar and the import are components that can be switched off.
 - **Works with page caches and without JavaScript.** Month navigation and the small calendar are plain links that a small script upgrades.
 
 ## Usage
@@ -60,13 +61,25 @@ The page of an event shows its dates, location and details above the description
 
 Days in the small calendar link to the page chosen under **Settings → Events page**, filtered to that day. With JavaScript they open a small list of that day's dates instead.
 
+## Import from Events Manager
+
+Switch on the component **Import** under **Events → Settings**, then open **Events → Import**.
+
+1. The page shows what was found and what the import would create. Every series is checked: the dates it will have afterwards are compared with the dates Events Manager created.
+2. **Import now** copies events, locations, categories (with their colours) and tags. A series becomes one event with a repeating rule. Dates that were deleted from a series are left out, dates with other times or a cancellation keep them, and a date that was given its own title or text becomes an event of its own.
+3. With Events Manager deactivated, **Take over the old address** makes events available under the address they had before. The addresses of the single dates of a series lead to the series.
+
+The data of Events Manager is only read. You can import again at any time (imported events are updated, not duplicated) or undo the import, which deletes everything it created.
+
+Not imported: bookings and tickets, events in the trash, time slots, and the list and page formats of Events Manager. Pages that contain shortcodes of Events Manager have to be changed to the blocks or shortcodes of this plugin by hand.
+
 ## Settings
 
 **Events → Settings** (administrators only).
 
 | Setting | Meaning |
 | --- | --- |
-| Components | Switch locations, market dates and the calendar on or off |
+| Components | Switch locations, market dates, the calendar and the import on or off |
 | Dates per list | Default number of dates in lists |
 | End time | Show the end time of events |
 | Event page | Add dates, location and details to the page of an event automatically |

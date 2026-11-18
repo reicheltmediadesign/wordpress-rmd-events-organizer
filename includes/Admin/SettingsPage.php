@@ -61,6 +61,8 @@ final class SettingsPage {
 		self::field( 'modules.markets', __( 'Market dates', 'rmd-events-organizer' ), 'modules', 'module', [ 'checkbox_label' => __( 'Enter markets where the business has a stall and list them separately', 'rmd-events-organizer' ) ] );
 		self::field( 'modules.calendar', __( 'Calendar', 'rmd-events-organizer' ), 'modules', 'module', [ 'checkbox_label' => __( 'Month calendar and small calendar as block and shortcode', 'rmd-events-organizer' ) ] );
 
+		self::field( 'modules.migration', __( 'Import', 'rmd-events-organizer' ), 'modules', 'module', [ 'checkbox_label' => __( 'Import events from Events Manager (adds the menu item “Import”)', 'rmd-events-organizer' ) ] );
+
 		add_settings_section( 'display', __( 'Display', 'rmd-events-organizer' ), '__return_empty_string', $page );
 		self::field(
 			'display.list_limit',

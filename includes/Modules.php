@@ -21,6 +21,7 @@ final class Modules {
 	public const LOCATIONS = 'locations';
 	public const MARKETS   = 'markets';
 	public const CALENDAR  = 'calendar';
+	public const MIGRATION = 'migration';
 
 	/**
 	 * @return array<string, bool>

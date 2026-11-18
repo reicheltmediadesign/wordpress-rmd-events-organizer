@@ -17,8 +17,8 @@ final class Validator {
 
 	public const SCHEDULE_VERSION = 1;
 
-	public const MAX_ENTRIES    = 50;
-	public const MAX_EXCLUSIONS = 200;
+	public const MAX_ENTRIES    = 300;
+	public const MAX_EXCLUSIONS = 500;
 	public const MAX_OVERRIDES  = 500;
 	public const MAX_INTERVAL   = 99;
 	public const MAX_COUNT      = 500;

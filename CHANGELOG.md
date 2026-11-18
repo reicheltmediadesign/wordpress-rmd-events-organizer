@@ -16,4 +16,5 @@ All notable changes to this plugin are documented here. The format follows
 - Event categories with colours, and event tags.
 - Calendar file download (.ics) for upcoming dates and schema.org `Event` structured data.
 - **Components** (locations, market dates, calendar) can be switched off per site, or fixed in `wp-config.php` with `RMD_EO_MODULES`.
+- **Import from Events Manager** (component “Import”, off by default): copies events, locations, categories with colours and tags, whether that plugin is active, inactive or deleted. A series becomes one event with a rule; deleted dates become exclusions, changed or cancelled dates are kept, dates edited on their own become separate events. A preview compares every series with the dates that exist; the import can be repeated and undone, and the old event address can be taken over so that existing links keep working.
 - Access through the capability `rmd_eo_manage_events`, assignable to roles in the settings.

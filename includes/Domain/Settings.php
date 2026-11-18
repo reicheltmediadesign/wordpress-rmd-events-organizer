@@ -10,7 +10,7 @@ namespace RMD\EventsOrganizer\Domain;
 
 final class Settings {
 
-	public const MODULES = [ 'locations', 'markets', 'calendar' ];
+	public const MODULES = [ 'locations', 'markets', 'calendar', 'migration' ];
 
 	public const MIN_HORIZON = 6;
 	public const MAX_HORIZON = 60;
@@ -22,6 +22,7 @@ final class Settings {
 				'locations' => true,
 				'markets'   => false,
 				'calendar'  => true,
+				'migration' => false,
 			],
 			'roles'               => [],
 			'permalinks'          => [

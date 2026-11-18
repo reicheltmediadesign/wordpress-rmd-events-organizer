@@ -237,6 +237,200 @@ msgstr "Längengrad"
 msgid "Latitude and longitude are optional; search engines use them to place the location on a map."
 msgstr "Breiten- und Längengrad sind optional; Suchmaschinen nutzen sie, um den Ort auf einer Karte zu zeigen."
 
+msgid "Import from Events Manager"
+msgstr "Import aus Events Manager"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "You are not allowed to import events."
+msgstr "Sie dürfen keine Veranstaltungen importieren."
+
+msgid "No data of Events Manager was found in the database of this website."
+msgstr "In der Datenbank dieser Website wurden keine Daten von Events Manager gefunden."
+
+msgid "The import copies events, locations, categories and tags. The data of Events Manager stays as it is, so you can compare, repeat the import or undo it."
+msgstr "Der Import kopiert Veranstaltungen, Orte, Kategorien und Schlagwörter. Die Daten von Events Manager bleiben unverändert; Sie können also vergleichen, den Import wiederholen oder rückgängig machen."
+
+msgid "Found"
+msgstr "Gefunden"
+
+msgid "Events Manager"
+msgstr "Events Manager"
+
+msgid "installed and active"
+msgstr "installiert und aktiv"
+
+msgid "not active (its data is still in the database)"
+msgstr "nicht aktiv (die Daten liegen noch in der Datenbank)"
+
+msgid "Version of the data"
+msgstr "Version der Daten"
+
+msgid "Single events"
+msgstr "Einzelne Veranstaltungen"
+
+msgid "Series"
+msgstr "Serien"
+
+msgid "%1$d with %2$d dates, each becomes one event with all its dates"
+msgstr "%1$d mit %2$d Terminen; jede wird zu einer Veranstaltung mit all ihren Terminen"
+
+msgid "Locations"
+msgstr "Veranstaltungsorte"
+
+msgid "Categories and tags"
+msgstr "Kategorien und Schlagwörter"
+
+msgid "Already imported: %1$d events and %2$d locations. Importing again updates them from Events Manager; dates, texts and locations changed here in the meantime are overwritten."
+msgstr "Bereits importiert: %1$d Veranstaltungen und %2$d Orte. Ein erneuter Import aktualisiert sie aus Events Manager; Termine, Texte und Orte, die hier inzwischen geändert wurden, werden überschrieben."
+
+msgid "Some series could not be reproduced exactly (see “Series” above). You can import anyway and correct those events afterwards."
+msgstr "Einige Serien ließen sich nicht exakt nachbilden (siehe „Serien“ oben). Sie können trotzdem importieren und diese Veranstaltungen danach korrigieren."
+
+msgid "Import again"
+msgstr "Erneut importieren"
+
+msgid "Import now"
+msgstr "Jetzt importieren"
+
+msgid "After the import"
+msgstr "Nach dem Import"
+
+msgid "Undo the import"
+msgstr "Import rückgängig machen"
+
+msgid "Deletes every imported event, location, category and tag, including changes made to them here. Events entered by hand and the data of Events Manager are kept."
+msgstr "Löscht alle importierten Veranstaltungen, Orte, Kategorien und Schlagwörter, einschließlich der hier daran vorgenommenen Änderungen. Von Hand eingetragene Veranstaltungen und die Daten von Events Manager bleiben erhalten."
+
+msgid "Delete everything that was imported?"
+msgstr "Alles Importierte löschen?"
+
+msgid "Import finished: %1$d events created, %2$d updated, %3$d locations, %4$d categories and tags."
+msgstr "Import abgeschlossen: %1$d Veranstaltungen angelegt, %2$d aktualisiert, %3$d Orte, %4$d Kategorien und Schlagwörter."
+
+msgid "Import undone: %1$d events, %2$d locations and %3$d categories and tags deleted."
+msgstr "Import rückgängig gemacht: %1$d Veranstaltungen, %2$d Orte und %3$d Kategorien und Schlagwörter gelöscht."
+
+msgid "The events now use the address Events Manager used."
+msgstr "Die Veranstaltungen nutzen jetzt die Adresse, die Events Manager verwendet hat."
+
+msgid "Deactivate Events Manager first; two plugins cannot answer under the same address."
+msgstr "Deaktivieren Sie zuerst Events Manager; zwei Plugins können nicht unter derselben Adresse antworten."
+
+msgid "%d event in the trash"
+msgid_plural "%d events in the trash"
+msgstr[0] "%d Veranstaltung im Papierkorb"
+msgstr[1] "%d Veranstaltungen im Papierkorb"
+
+msgid "%d time slot (events keep their overall start and end)"
+msgid_plural "%d time slots (events keep their overall start and end)"
+msgstr[0] "%d Zeitfenster (Veranstaltungen behalten Gesamtbeginn und -ende)"
+msgstr[1] "%d Zeitfenster (Veranstaltungen behalten Gesamtbeginn und -ende)"
+
+msgid "“%s” has no usable date"
+msgstr "„%s“ hat kein verwertbares Datum"
+
+msgid "bookings, tickets and booking forms"
+msgstr "Buchungen, Tickets und Buchungsformulare"
+
+msgid "the list and page formats of Events Manager (the display follows this plugin)"
+msgstr "die Listen- und Seitenformate von Events Manager (die Darstellung richtet sich nach diesem Plugin)"
+
+msgid "Not imported"
+msgstr "Nicht importiert"
+
+msgid "Every series is checked: the dates it will have here are compared with the dates Events Manager created."
+msgstr "Jede Serie wird geprüft: Die Termine, die sie hier haben wird, werden mit den Terminen verglichen, die Events Manager angelegt hat."
+
+msgid "Dates"
+msgstr "Termine"
+
+msgid "Becomes"
+msgstr "Wird zu"
+
+msgid "Check"
+msgstr "Prüfung"
+
+msgid "%d rule"
+msgid_plural "%d rules"
+msgstr[0] "%d Regel"
+msgstr[1] "%d Regeln"
+
+msgid "%d single date"
+msgid_plural "%d single dates"
+msgstr[0] "%d Einzeltermin"
+msgstr[1] "%d Einzeltermine"
+
+msgid "%d day left out"
+msgid_plural "%d days left out"
+msgstr[0] "%d ausgelassener Tag"
+msgstr[1] "%d ausgelassene Tage"
+
+msgid "%d changed or cancelled date"
+msgid_plural "%d changed or cancelled dates"
+msgstr[0] "%d geänderter oder abgesagter Termin"
+msgstr[1] "%d geänderte oder abgesagte Termine"
+
+msgid "all dates match"
+msgstr "alle Termine stimmen überein"
+
+msgid "%d difference"
+msgid_plural "%d differences"
+msgstr[0] "%d Abweichung"
+msgstr[1] "%d Abweichungen"
+
+msgid "The post of this event no longer exists; it is imported as a draft."
+msgstr "Der Beitrag dieser Veranstaltung existiert nicht mehr; sie wird als Entwurf importiert."
+
+msgid "Restored from the post; the entry in the events table was missing."
+msgstr "Aus dem Beitrag wiederhergestellt; der Eintrag in der Veranstaltungstabelle fehlte."
+
+msgid "This date of a series has its own title or text and becomes an event of its own."
+msgstr "Dieser Termin einer Serie hat einen eigenen Titel oder Text und wird zu einer eigenen Veranstaltung."
+
+msgid "Was entered in another time zone; the times are taken as they are."
+msgstr "Wurde in einer anderen Zeitzone eingetragen; die Uhrzeiten werden unverändert übernommen."
+
+msgid "The rule of this series is not supported; its dates are imported one by one."
+msgstr "Die Regel dieser Serie wird nicht unterstützt; ihre Termine werden einzeln importiert."
+
+msgid "The rule of this series has no weekdays; its dates are imported one by one."
+msgstr "Die Regel dieser Serie hat keine Wochentage; ihre Termine werden einzeln importiert."
+
+msgid "The rule of this series has no weekday; its dates are imported one by one."
+msgstr "Die Regel dieser Serie hat keinen Wochentag; ihre Termine werden einzeln importiert."
+
+msgid "The series ends after a number of dates; please check its last dates."
+msgstr "Die Serie endet nach einer Anzahl von Terminen; bitte prüfen Sie ihre letzten Termine."
+
+msgid "The series has more entries than an event can hold; the rest was left out."
+msgstr "Die Serie hat mehr Einträge, als eine Veranstaltung fassen kann; der Rest wurde ausgelassen."
+
+msgid "Please note"
+msgstr "Bitte beachten"
+
+msgid "Keep the old addresses"
+msgstr "Alte Adressen beibehalten"
+
+msgid "Events already use the address /%s/ as before."
+msgstr "Die Veranstaltungen nutzen bereits wie zuvor die Adresse /%s/."
+
+msgid "Events Manager showed events under /%1$s/; this plugin uses /%2$s/. Take over the old address so that existing links and search results keep working. The single dates of a series then lead to the series."
+msgstr "Events Manager zeigte Veranstaltungen unter /%1$s/; dieses Plugin nutzt /%2$s/. Übernehmen Sie die alte Adresse, damit bestehende Links und Suchergebnisse weiter funktionieren. Die einzelnen Termine einer Serie führen dann zur Serie."
+
+msgid "Possible once Events Manager is deactivated."
+msgstr "Möglich, sobald Events Manager deaktiviert ist."
+
+msgid "Take over the old address"
+msgstr "Alte Adresse übernehmen"
+
+msgid "Importing …"
+msgstr "Import läuft …"
+
+msgid "Importing … %1$d of %2$d events."
+msgstr "Import läuft … %1$d von %2$d Veranstaltungen."
+
 msgid "Some entries could not be saved as entered:"
 msgstr "Einige Angaben konnten nicht wie eingegeben gespeichert werden:"
 
@@ -272,9 +466,6 @@ msgstr "Es sind höchstens %d Einträge erlaubt; der Rest wurde ausgelassen."
 
 msgid "Invalid value."
 msgstr "Ungültiger Wert."
-
-msgid "Dates"
-msgstr "Termine"
 
 msgid "Exceptions"
 msgstr "Ausnahmen"
@@ -321,9 +512,6 @@ msgstr "Einstellungen"
 msgid "Components"
 msgstr "Komponenten"
 
-msgid "Locations"
-msgstr "Veranstaltungsorte"
-
 msgid "Manage locations with an address and assign them to events"
 msgstr "Orte mit Adresse verwalten und Veranstaltungen zuordnen"
 
@@ -335,6 +523,9 @@ msgstr "Kalender"
 
 msgid "Month calendar and small calendar as block and shortcode"
 msgstr "Monatskalender und kleiner Kalender als Block und Shortcode"
+
+msgid "Import events from Events Manager (adds the menu item “Import”)"
+msgstr "Veranstaltungen aus Events Manager importieren (fügt den Menüpunkt „Import“ hinzu)"
 
 msgid "Display"
 msgstr "Darstellung"
