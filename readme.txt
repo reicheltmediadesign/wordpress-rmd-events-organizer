@@ -1,0 +1,50 @@
+=== RMD Events Organizer ===
+Contributors: reicheltmediadesign
+Tags: events, calendar, market, recurring events, block
+Requires at least: 6.8
+Tested up to: 7.1
+Requires PHP: 8.1
+Stable tag: 0.1.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+Events and market dates with repeating schedules, shown as lists and calendars via blocks and shortcodes.
+
+== Description ==
+
+RMD Events Organizer is a lean events plugin for small business websites:
+
+* Events with any number of dates: single dates, several days, or repeating by rule (daily, weekly on chosen weekdays, monthly like "every first Saturday", yearly), with exceptions and cancelled dates.
+* Market dates: enter the markets where the business has a stall, with daily hours and the position of the stall, and list them separately.
+* Locations with address, reusable across events and created right in the event form.
+* Blocks and shortcodes: a list of dates, a month calendar, a small calendar for sidebars that only marks the days, and the details of a single event.
+* Categories with colours and tags to filter lists and calendars.
+* "Add to calendar" downloads (.ics) and schema.org structured data.
+* Components can be switched off per site; access is controlled by one capability that can be given to roles.
+* Works with page caching and without JavaScript.
+
+== Installation ==
+
+1. Upload the plugin zip under Plugins → Add New → Upload, or copy the folder to `wp-content/plugins/`.
+2. Activate the plugin.
+3. Go to Events → Add event and enter your first date.
+4. Add the blocks to a page or use the shortcodes listed under Events → Help.
+
+== Frequently Asked Questions ==
+
+= Which shortcodes are available? =
+
+`[rmd_events]`, `[rmd_markets]`, `[rmd_events_calendar]`, `[rmd_events_calendar size="mini"]` and `[rmd_event id="123"]`. Events → Help lists all attributes.
+
+= Does it work with caching plugins? =
+
+Yes. Lists carry the end time of each date, and a small script hides dates that have passed since the page was cached. Known page caches are also purged when an event is saved and once a day.
+
+= How do I switch components off for a site? =
+
+Under Events → Settings → Components, or fixed in `wp-config.php`: `define( 'RMD_EO_MODULES', [ 'markets' => false, 'calendar' => true ] );`.
+
+== Changelog ==
+
+= 0.1.0 =
+* First release: events, market dates, locations, repeating schedules, list, month calendar, small calendar, event details, calendar downloads and structured data.
