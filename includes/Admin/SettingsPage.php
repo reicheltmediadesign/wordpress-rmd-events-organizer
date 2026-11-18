@@ -119,6 +119,9 @@ final class SettingsPage {
 			wp_die( esc_html__( 'You are not allowed to change these settings.', 'rmd-events-organizer' ) );
 		}
 		echo '<div class="wrap"><h1>' . esc_html__( 'Events Settings', 'rmd-events-organizer' ) . '</h1>';
+		if ( isset( $_GET['settings-updated'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Set by core after a successful save.
+			add_settings_error( Settings::OPTION, 'rmd_eo_saved', __( 'Settings saved.', 'rmd-events-organizer' ), 'success' );
+		}
 		settings_errors( Settings::OPTION );
 		echo '<form method="post" action="options.php">';
 		settings_fields( Settings::GROUP );

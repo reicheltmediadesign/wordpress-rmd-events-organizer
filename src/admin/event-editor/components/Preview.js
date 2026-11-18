@@ -120,7 +120,6 @@ export default function Preview( { schedule, config, onChange } ) {
 								{ item.label }
 								{ item.cancelled && (
 									<strong>
-										{ ' ' }
 										{ __(
 											'Cancelled',
 											'rmd-events-organizer'

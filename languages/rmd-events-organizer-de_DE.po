@@ -420,6 +420,9 @@ msgstr "Administratoren haben immer Zugriff. Wählen Sie die Rollen, die zusätz
 msgid "You are not allowed to change these settings."
 msgstr "Sie dürfen diese Einstellungen nicht ändern."
 
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
 msgid "— None —"
 msgstr "— Keine —"
 

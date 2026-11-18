@@ -5,6 +5,18 @@ import { Button, TextControl } from '@wordpress/components';
 import { isDate } from '../model';
 
 /**
+ * A date as the visitor's browser writes it ("26.11.2026").
+ *
+ * @param {string} date Date as YYYY-MM-DD.
+ * @return {string} Localised date.
+ */
+function formatDate( date ) {
+	return isDate( date )
+		? new Date( date + 'T00:00:00' ).toLocaleDateString()
+		: date;
+}
+
+/**
  * Days and periods on which repeating dates do not take place.
  *
  * @param {Object}   props
@@ -38,8 +50,10 @@ export default function Exclusions( { schedule, config, onChange } ) {
 					{ schedule.exclusions.map( ( range, index ) => (
 						<li key={ range.from + range.to + index }>
 							{ range.from === range.to
-								? range.from
-								: `${ range.from } – ${ range.to }` }
+								? formatDate( range.from )
+								: `${ formatDate( range.from ) } – ${ formatDate(
+										range.to
+									) }` }
 							<Button
 								size="small"
 								variant="tertiary"
