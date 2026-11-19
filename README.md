@@ -10,6 +10,7 @@ A lean WordPress plugin for events and market dates: enter dates once, show them
 - **Locations** with address, reusable across events. A new location can be typed directly into the event form.
 - **Categories with colours and tags** to filter lists and calendars.
 - **Calendar downloads** (.ics) for upcoming dates and schema.org structured data for search engines.
+- **CSV import.** Creates many events or market dates at once from a table, with a preview before anything is written.
 - **Import from Events Manager.** Copies events, series, locations, categories and tags, even when that plugin has already been deleted, and changes its shortcodes, blocks, widgets and menu items to those of this plugin. Every step can be undone; removing the old data at the end is optional.
 - **Only what a site needs.** Locations, market dates, the calendar and the import are components that can be switched off.
 - **Works with page caches and without JavaScript.** Month navigation and the small calendar are plain links that a small script upgrades.
@@ -64,6 +65,33 @@ Days in the small calendar link to the page chosen under **Settings → Events p
 ## Multilingual sites (Polylang)
 
 With Polylang active, events, categories and tags have a language and can be translated like pages. Lists and calendars show the events in the language of the page they are on; a single event placed with the block **Event Details** is shown in any language. Locations are shared by all languages. Events without a language do not appear in lists, so assign one to existing events when Polylang asks for it.
+
+## CSV import
+
+**Events → CSV import** creates events and market dates from a CSV file, for example a list of the year's markets. Choose the file to get a preview: it lists the events that would be created, and every line that cannot be used with the reason. Nothing is written before you confirm. **Download a template** gives you a file with all column names.
+
+Every line is one date. The first line names the columns; only `title` and `date` are needed, the order does not matter. The German names in brackets work as well.
+
+| Column | Content |
+| --- | --- |
+| `title` (`titel`) | Name of the event. Required. |
+| `date` (`datum`) | Day, or first day: `12.12.2026` or `2026-12-12`. Required. |
+| `end_date` (`enddatum`) | Last day, only for dates over several days. |
+| `start` (`beginn`), `end` (`ende`) | Times such as `10:00`. Without a start the date is all day. |
+| `daily_hours` (`zeiten_taeglich`) | `yes` / `ja`: over several days the times apply to every day. Empty: from the start on the first day to the end on the last. |
+| `key` (`schluessel`) | Any short name of your own. Lines with the same key become one event with several dates, described by the first of these lines. Importing a file again updates events that have a key instead of creating them again. |
+| `kind` (`art`) | `event` / `veranstaltung` (default) or `market` / `markt`. |
+| `description` (`beschreibung`) | Text of the event. |
+| `location` (`ort`) | Name of the location. An existing location of that name is used, otherwise one is created. |
+| `street` (`strasse`), `postcode` (`plz`), `city` (`stadt`), `country` (`land`) | Address of a new location; the country as two letters. |
+| `categories` (`kategorien`), `tags` (`schlagwoerter`) | Names, several separated by commas. Missing ones are created. |
+| `organizer` (`veranstalter`), `organizer_url` (`veranstalter_url`), `info_url`, `price` (`preis`) | Details of the event. Addresses must start with `https://`. |
+| `stall` (`stand`), `stall_note` (`stand_hinweis`) | Market dates: where your stall is, and a note about it. |
+| `status` | `published` / `veroeffentlicht` (default) or `draft` / `entwurf`. |
+| `image` (`bild`) | Id or address of an image that is already in the media library. |
+| `language` (`sprache`) | Code of the language, only with Polylang. |
+
+Columns are separated by semicolons or commas; save the file as “CSV UTF-8”. When a file is imported again, the dates of an event with a key are replaced by those of the file (dates cancelled by hand stay cancelled), and every other value is only changed where the file has one. Repeating dates cannot be imported; enter them in the event itself.
 
 ## Import from Events Manager
 
