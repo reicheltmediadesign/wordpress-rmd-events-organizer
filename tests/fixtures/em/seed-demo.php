@@ -72,6 +72,34 @@ foreach ( [ 'event-categories', 'event-tags' ] as $taxonomy ) {
 	}
 }
 
+// Widgets and conversions of earlier runs.
+$demo_widget = 91;
+$sidebars    = (array) get_option( 'sidebars_widgets', [] );
+$blocks      = (array) get_option( 'widget_block', [] );
+foreach ( $blocks as $number => $block ) {
+	if ( is_array( $block ) && false !== strpos( (string) ( $block['content'] ?? '' ), '[em-demo]' ) ) {
+		unset( $blocks[ $number ] );
+		foreach ( $sidebars as $sidebar => $widgets ) {
+			if ( is_array( $widgets ) ) {
+				$sidebars[ $sidebar ] = array_values( array_diff( $widgets, [ 'block-' . $number ] ) );
+			}
+		}
+	}
+}
+update_option( 'widget_block', $blocks );
+foreach ( $sidebars as $sidebar => $widgets ) {
+	if ( is_array( $widgets ) ) {
+		$sidebars[ $sidebar ] = array_values( array_filter( $widgets, fn( $id ) => ! preg_match( '/-' . $demo_widget . '$/', (string) $id ) ) );
+	}
+}
+update_option( 'sidebars_widgets', $sidebars );
+delete_option( 'rmd_eo_em_widget_backup' );
+foreach ( wp_get_nav_menus() as $menu ) {
+	if ( 0 === strpos( $menu->name, '[em-demo]' ) ) {
+		wp_delete_nav_menu( $menu->term_id );
+	}
+}
+
 /* ---------------------------------------------------------------------- */
 /* Terms                                                                   */
 /* ---------------------------------------------------------------------- */
@@ -441,8 +469,9 @@ wp_insert_post(
 			"\n\n",
 			[
 				'<p>Unsere nächsten Konzerte:</p>',
-				'[events_list scope="future" limit="5" category="' . $cat_concerts . '" pagination="1"]',
+				// The one with a closing tag comes first: WordPress would otherwise read everything up to that closing tag as the content of the first.
 				'[events_list scope="past" limit="3" orderby="event_start_date" order="DESC"]<li>#_EVENTLINK am #_EVENTDATES</li>[/events_list]',
+				'[events_list scope="future" limit="5" category="' . $cat_concerts . '" pagination="1"]',
 				'[events_calendar full="1" long_events="1"]',
 				'[events_calendar]',
 				'[event post_id="' . $jazz_post . '"]#_EVENTNAME – #_EVENTDATES[/event]',
@@ -453,6 +482,81 @@ wp_insert_post(
 		),
 	]
 );
+
+/* ---------------------------------------------------------------------- */
+/* Pages Events Manager fills itself, its blocks, widgets and menu items   */
+/* ---------------------------------------------------------------------- */
+
+$page = fn( string $title, string $content ): int => (int) wp_insert_post(
+	[
+		'post_type'    => 'page',
+		'post_status'  => 'publish',
+		'post_title'   => "[em-demo] $title",
+		'post_content' => $content,
+	]
+);
+$events_page = $page( 'Veranstaltungen', "<p>Alle Termine im Überblick:</p>\n\nCONTENTS" );
+update_option( 'dbem_events_page', $events_page );
+update_option( 'dbem_locations_page', $page( 'Veranstaltungsorte', "<!-- wp:paragraph -->\n<p>CONTENTS</p>\n<!-- /wp:paragraph -->" ) );
+$page(
+	'Seite mit Blöcken',
+	implode(
+		"\n\n",
+		[
+			"<!-- wp:paragraph -->\n<p>Rückblick und Kalender als Blöcke:</p>\n<!-- /wp:paragraph -->",
+			'<!-- wp:events-manager/events {"title":"Rückblick","scope":"past","limit":3,"category":"' . $cat_concerts . '"} /-->',
+			'<!-- wp:events-manager/calendar {"category":"' . $cat_markets . '"} /-->',
+			'<!-- wp:events-manager/locations {"limit":5} /-->',
+		]
+	)
+);
+$count['pages: events page, locations page, page with blocks'] = 3;
+
+$widgets = [
+	'em_widget'           => [ 'title' => '[em-demo] Nächste Termine', 'scope' => 'future', 'order' => 'ASC', 'limit' => 4, 'category' => $cat_concerts, 'format' => '<li>#_EVENTLINK</li>', 'orderby' => 'event_start_date,event_start_time,event_name' ],
+	'em_calendar'         => [ 'title' => '[em-demo] Kalender', 'long_events' => 0, 'category' => 0 ],
+	'em_locations_widget' => [ 'title' => '[em-demo] Orte', 'limit' => 5 ],
+	'text'                => [ 'title' => '[em-demo] Text', 'text' => 'Heute: [events_list scope="today" limit="3"]', 'filter' => true, 'visual' => true ],
+];
+$sidebars = (array) get_option( 'sidebars_widgets', [] );
+foreach ( $widgets as $base => $instance ) {
+	$instances                 = (array) get_option( 'widget_' . $base, [] );
+	$instances[ $demo_widget ] = $instance;
+	$instances['_multiwidget'] = 1;
+	update_option( 'widget_' . $base, $instances );
+	$sidebars['wp_inactive_widgets'][] = $base . '-' . $demo_widget;
+}
+update_option( 'sidebars_widgets', $sidebars );
+$count['widgets (kept under "inactive widgets")'] = count( $widgets );
+
+$menu_id    = (int) wp_create_nav_menu( '[em-demo] Menü' );
+$child_post = (int) $wpdb->get_var( "SELECT post_id FROM {$events_table} WHERE event_name = '[em-demo] Bauernmarkt' AND event_type = 'recurrence' AND post_id > 0 ORDER BY event_id ASC LIMIT 1" );
+$hall_post  = (int) $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM {$locations_table} WHERE location_id = %d", $loc_hall ) );
+$menu_items = [
+	[ 'Jazzabend', 'post_type', 'event', $jazz_post ],
+	[ 'Ein Markttag', 'post_type', 'event', $child_post ],
+	[ 'Stadthalle', 'post_type', 'location', $hall_post ],
+	[ 'Konzerte', 'taxonomy', 'event-categories', $cat_concerts ],
+	[ 'Alle Termine', 'post_type_archive', 'event', 0 ],
+];
+foreach ( $menu_items as [ $title, $type, $object, $object_id ] ) {
+	$item_id = (int) wp_update_nav_menu_item(
+		$menu_id,
+		0,
+		[
+			'menu-item-title'     => "[em-demo] $title",
+			'menu-item-type'      => $type,
+			'menu-item-object'    => $object,
+			'menu-item-object-id' => $object_id,
+			'menu-item-status'    => 'publish',
+		]
+	);
+	// WordPress may refuse or alter targets of types it does not know; the database of a site that had the plugin has them like this.
+	update_post_meta( $item_id, '_menu_item_type', $type );
+	update_post_meta( $item_id, '_menu_item_object', $object );
+	update_post_meta( $item_id, '_menu_item_object_id', (string) $object_id );
+}
+$count['menu items'] = count( $menu_items );
 
 echo "Seeded Events Manager demo data:\n";
 foreach ( $count as $label => $number ) {

@@ -94,9 +94,17 @@ final class Importer {
 	/**
 	 * Deletes everything an import created. The source data is untouched.
 	 *
+	 * Pages, widgets and menus changed afterwards are put back first: they
+	 * refer to the events deleted here, and WordPress would delete menu items
+	 * together with the event they lead to.
+	 *
 	 * @return array{events: int, locations: int, terms: int}
 	 */
 	public static function undo(): array {
+		MenuRewriter::undo_all();
+		ContentRewriter::undo_all();
+		WidgetRewriter::undo_all();
+
 		$counts = [
 			'events'    => 0,
 			'locations' => 0,

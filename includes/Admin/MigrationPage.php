@@ -27,6 +27,10 @@ final class MigrationPage {
 	public const ACTION_UNDO   = 'rmd_eo_em_undo';
 	public const ACTION_SLUG   = 'rmd_eo_em_adopt_slug';
 
+	public const TAB_DATA    = 'events';
+	public const TAB_CONTENT = 'content';
+	public const TAB_CLEANUP = 'cleanup';
+
 	/** Events handled per request, so large sites do not run into time limits. */
 	private const BATCH = 25;
 
@@ -37,6 +41,8 @@ final class MigrationPage {
 		add_action( 'admin_post_' . self::ACTION_IMPORT, [ self::class, 'handle_import' ] );
 		add_action( 'admin_post_' . self::ACTION_UNDO, [ self::class, 'handle_undo' ] );
 		add_action( 'admin_post_' . self::ACTION_SLUG, [ self::class, 'handle_slug' ] );
+		MigrationContentTab::init();
+		MigrationCleanupTab::init();
 	}
 
 	public static function menu(): void {
@@ -65,11 +71,38 @@ final class MigrationPage {
 		if ( ! current_user_can( self::CAP ) ) {
 			wp_die( esc_html__( 'You are not allowed to import events.', 'rmd-events-organizer' ) );
 		}
-		echo '<div class="wrap"><h1>' . esc_html__( 'Import from Events Manager', 'rmd-events-organizer' ) . '</h1>';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only chooses what is shown.
+		$tab  = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+		$tabs = [
+			self::TAB_DATA    => __( '1. Events', 'rmd-events-organizer' ),
+			self::TAB_CONTENT => __( '2. Pages, widgets and menus', 'rmd-events-organizer' ),
+			self::TAB_CLEANUP => __( '3. Clean up', 'rmd-events-organizer' ),
+		];
+		$tab  = isset( $tabs[ $tab ] ) ? $tab : self::TAB_DATA;
+
+		echo '<div class="wrap rmd-eo-import"><h1>' . esc_html__( 'Import from Events Manager', 'rmd-events-organizer' ) . '</h1>';
+		echo '<style>.rmd-eo-import__inline{display:inline-block;margin:0 6px 6px 0}.rmd-eo-import__actions{margin:0 0 8px}.rmd-eo-import__changes code{white-space:normal;word-break:break-word}.rmd-eo-import .nav-tab-wrapper{margin-bottom:12px}</style>';
 		self::result_notice();
 
+		echo '<nav class="nav-tab-wrapper">';
+		foreach ( $tabs as $key => $label ) {
+			echo '<a class="nav-tab' . ( $key === $tab ? ' nav-tab-active' : '' ) . '" href="' . esc_url( self::url( [ 'tab' => $key ] ) ) . '"' . ( $key === $tab ? ' aria-current="page"' : '' ) . '>' . esc_html( $label ) . '</a>';
+		}
+		echo '</nav>';
+
+		if ( self::TAB_CONTENT === $tab ) {
+			MigrationContentTab::render();
+		} elseif ( self::TAB_CLEANUP === $tab ) {
+			MigrationCleanupTab::render();
+		} else {
+			self::render_data();
+		}
+		echo '</div>';
+	}
+
+	private static function render_data(): void {
 		if ( null === EmReader::tables() ) {
-			echo '<p>' . esc_html__( 'No data of Events Manager was found in the database of this website.', 'rmd-events-organizer' ) . '</p></div>';
+			echo '<p>' . esc_html__( 'No data of Events Manager was found in the database of this website.', 'rmd-events-organizer' ) . '</p>';
 			return;
 		}
 
@@ -108,11 +141,9 @@ final class MigrationPage {
 			self::slug_section( $active );
 
 			echo '<h3>' . esc_html__( 'Undo the import', 'rmd-events-organizer' ) . '</h3>';
-			echo '<p>' . esc_html__( 'Deletes every imported event, location, category and tag, including changes made to them here. Events entered by hand and the data of Events Manager are kept.', 'rmd-events-organizer' ) . '</p>';
+			echo '<p>' . esc_html__( 'Deletes every imported event, location, category and tag, including changes made to them here, and puts back the pages, widgets and menus changed in step 2. Events entered by hand and the data of Events Manager are kept.', 'rmd-events-organizer' ) . '</p>';
 			self::button( self::ACTION_UNDO, __( 'Undo the import', 'rmd-events-organizer' ), 'delete', __( 'Delete everything that was imported?', 'rmd-events-organizer' ) );
 		}
-
-		echo '</div>';
 	}
 
 	private static function result_notice(): void {
@@ -145,6 +176,13 @@ final class MigrationPage {
 			);
 		} elseif ( 'slug' === $done ) {
 			$message = __( 'The events now use the address Events Manager used.', 'rmd-events-organizer' );
+		} elseif ( '' !== MigrationContentTab::result_message( $done, $progress ) ) {
+			$message = MigrationContentTab::result_message( $done, $progress );
+		} elseif ( 'cleanup' === $done ) {
+			$message = __( 'The data of Events Manager was removed.', 'rmd-events-organizer' );
+		} elseif ( 'cleanup_confirm' === $done ) {
+			echo '<div class="notice notice-error"><p>' . esc_html__( 'Nothing was removed: the confirmation was not typed correctly.', 'rmd-events-organizer' ) . '</p></div>';
+			return;
 		} elseif ( 'slug_blocked' === $done ) {
 			echo '<div class="notice notice-error"><p>' . esc_html__( 'Deactivate Events Manager first; two plugins cannot answer under the same address.', 'rmd-events-organizer' ) . '</p></div>';
 			return;
@@ -286,12 +324,40 @@ final class MigrationPage {
 		echo '<tr><th scope="row">' . esc_html( $label ) . '</th><td>' . esc_html( $value ) . '</td></tr>';
 	}
 
-	private static function button( string $action, string $label, string $type, string $confirm = '' ): void {
-		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"' . ( '' !== $confirm ? ' onsubmit="return window.confirm(' . esc_attr( (string) wp_json_encode( $confirm ) ) . ');"' : '' ) . '>';
+	/**
+	 * A form with one button that posts to an action of this page.
+	 *
+	 * @param array<string, string> $fields Hidden fields sent along.
+	 * @param bool                  $inline True to place several buttons side by side.
+	 */
+	public static function button( string $action, string $label, string $type, string $confirm = '', array $fields = [], bool $inline = false ): void {
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"' . ( $inline ? ' class="rmd-eo-import__inline"' : '' ) . ( '' !== $confirm ? ' onsubmit="return window.confirm(' . esc_attr( (string) wp_json_encode( $confirm ) ) . ');"' : '' ) . '>';
 		echo '<input type="hidden" name="action" value="' . esc_attr( $action ) . '">';
+		foreach ( $fields as $name => $value ) {
+			echo '<input type="hidden" name="' . esc_attr( $name ) . '" value="' . esc_attr( $value ) . '">';
+		}
 		wp_nonce_field( $action );
-		submit_button( $label, $type, 'submit', true );
+		submit_button( $label, $type, 'submit', ! $inline );
 		echo '</form>';
+	}
+
+	/**
+	 * Remembers numbers for the message shown after the redirect.
+	 *
+	 * @param array<string, int> $numbers
+	 */
+	public static function remember( array $numbers ): void {
+		set_transient( self::PROGRESS . get_current_user_id(), $numbers, HOUR_IN_SECONDS );
+	}
+
+	/**
+	 * Continues a long task in the next request. A page that forwards itself
+	 * instead of a redirect: browsers give up after about twenty redirects in a row.
+	 */
+	public static function forward( string $url, string $message ): void {
+		nocache_headers();
+		echo '<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=' . esc_url( $url ) . '"><title>' . esc_html( $message ) . '</title></head><body><p>' . esc_html( $message ) . '</p></body></html>';
+		exit;
 	}
 
 	/* ------------------------------------------------------------------ */
@@ -329,14 +395,11 @@ final class MigrationPage {
 			exit;
 		}
 
-		// A page that forwards itself instead of a redirect: browsers give up after about twenty redirects in a row.
-		$url = wp_nonce_url( admin_url( 'admin-post.php?action=' . self::ACTION_IMPORT . '&offset=' . $next ), self::ACTION_IMPORT );
-		nocache_headers();
-		echo '<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=' . esc_url( $url ) . '"><title>' . esc_html__( 'Importing …', 'rmd-events-organizer' ) . '</title></head><body><p>';
-		/* translators: 1: number of events done, 2: total number of events */
-		echo esc_html( sprintf( __( 'Importing … %1$d of %2$d events.', 'rmd-events-organizer' ), $next, count( $units ) ) );
-		echo '</p></body></html>';
-		exit;
+		self::forward(
+			wp_nonce_url( admin_url( 'admin-post.php?action=' . self::ACTION_IMPORT . '&offset=' . $next ), self::ACTION_IMPORT ),
+			/* translators: 1: number of events done, 2: total number of events */
+			sprintf( __( 'Importing … %1$d of %2$d events.', 'rmd-events-organizer' ), $next, count( $units ) )
+		);
 	}
 
 	public static function handle_undo(): void {
@@ -361,7 +424,7 @@ final class MigrationPage {
 		exit;
 	}
 
-	private static function guard( string $action ): void {
+	public static function guard( string $action ): void {
 		if ( ! current_user_can( self::CAP ) || ! Modules::is_on( Modules::MIGRATION ) ) {
 			wp_die( esc_html__( 'You are not allowed to import events.', 'rmd-events-organizer' ) );
 		}

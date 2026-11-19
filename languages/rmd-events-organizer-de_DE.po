@@ -237,6 +237,233 @@ msgstr "Längengrad"
 msgid "Latitude and longitude are optional; search engines use them to place the location on a map."
 msgstr "Breiten- und Längengrad sind optional; Suchmaschinen nutzen sie, um den Ort auf einer Karte zu zeigen."
 
+msgid "Events Manager does not remove its data when it is deleted. This step is optional: it deletes what that plugin left in the database. The events imported into this plugin are kept."
+msgstr "Events Manager entfernt seine Daten nicht, wenn es gelöscht wird. Dieser Schritt ist freiwillig: Er löscht, was das Plugin in der Datenbank hinterlassen hat. Die in dieses Plugin importierten Veranstaltungen bleiben erhalten."
+
+msgid "Nothing of Events Manager is left in the database."
+msgstr "In der Datenbank ist nichts mehr von Events Manager."
+
+msgid "What would be removed"
+msgstr "Was entfernt würde"
+
+msgid "Database tables"
+msgstr "Datenbanktabellen"
+
+msgid "Events and locations of Events Manager (posts)"
+msgstr "Veranstaltungen und Orte von Events Manager (Beiträge)"
+
+msgid "Categories and tags of Events Manager"
+msgstr "Kategorien und Schlagwörter von Events Manager"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Widgets"
+msgstr "Widgets"
+
+msgid "Also"
+msgstr "Außerdem"
+
+msgid "its capabilities in the user roles and its scheduled tasks; bookings and tickets are in the tables above"
+msgstr "seine Berechtigungen in den Benutzerrollen und seine geplanten Aufgaben; Buchungen und Tickets liegen in den Tabellen oben"
+
+msgid "Possible once Events Manager is deactivated and deleted."
+msgstr "Möglich, sobald Events Manager deaktiviert und gelöscht ist."
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "No event has been imported yet. Everything entered in Events Manager would be lost."
+msgstr "Es wurde noch keine Veranstaltung importiert. Alles, was in Events Manager eingetragen wurde, ginge verloren."
+
+msgid "%d page still uses shortcodes or blocks of Events Manager that can be changed (step 2). After the cleanup, filters by category or location can no longer be carried over."
+msgid_plural "%d pages still use shortcodes or blocks of Events Manager that can be changed (step 2). After the cleanup, filters by category or location can no longer be carried over."
+msgstr[0] "%d Seite verwendet noch Shortcodes oder Blöcke von Events Manager, die sich umstellen lassen (Schritt 2). Nach dem Aufräumen lassen sich Filter nach Kategorie oder Ort nicht mehr übernehmen."
+msgstr[1] "%d Seiten verwenden noch Shortcodes oder Blöcke von Events Manager, die sich umstellen lassen (Schritt 2). Nach dem Aufräumen lassen sich Filter nach Kategorie oder Ort nicht mehr übernehmen."
+
+msgid "This cannot be undone. Make a backup of the database first."
+msgstr "Das lässt sich nicht rückgängig machen. Sichern Sie vorher die Datenbank."
+
+msgid "Afterwards the import can no longer be repeated, compared or undone, and Events Manager would start empty if it were installed again."
+msgstr "Danach lässt sich der Import nicht mehr wiederholen, vergleichen oder rückgängig machen, und Events Manager wäre nach einer erneuten Installation leer."
+
+msgid "Menu items that still lead to events, locations or categories of Events Manager are removed with them (step 2 changes those that have a counterpart here)."
+msgstr "Menüeinträge, die noch zu Veranstaltungen, Orten oder Kategorien von Events Manager führen, werden mit entfernt (Schritt 2 stellt diejenigen um, die hier eine Entsprechung haben)."
+
+msgid "Images stay in the media library."
+msgstr "Bilder bleiben in der Mediathek."
+
+msgid "To confirm, type %s:"
+msgstr "Geben Sie zur Bestätigung %s ein:"
+
+msgid "Remove the data of Events Manager"
+msgstr "Daten von Events Manager entfernen"
+
+msgid "Removing … %d posts left."
+msgstr "Wird entfernt … noch %d Beiträge."
+
+msgid "Pages, widgets and menus that still use shortcodes, blocks or links of Events Manager are listed here and can be changed to those of this plugin. The original is kept for every change, so each one can be put back."
+msgstr "Hier stehen die Seiten, Widgets und Menüs, die noch Shortcodes, Blöcke oder Links von Events Manager verwenden. Sie lassen sich auf die dieses Plugins umstellen. Zu jeder Änderung wird das Original aufbewahrt, sodass sich jede einzeln zurücksetzen lässt."
+
+msgid "Import the events first (step 1). Filters by category or location and single events can only be carried over once they exist here."
+msgstr "Importieren Sie zuerst die Veranstaltungen (Schritt 1). Filter nach Kategorie oder Ort und einzelne Veranstaltungen lassen sich erst übernehmen, wenn es sie hier gibt."
+
+msgid "%d page or post changed."
+msgid_plural "%d pages or posts changed."
+msgstr[0] "%d Seite oder Beitrag umgestellt."
+msgstr[1] "%d Seiten oder Beiträge umgestellt."
+
+msgid "%d page or post put back."
+msgid_plural "%d pages or posts put back."
+msgstr[0] "%d Seite oder Beitrag zurückgesetzt."
+msgstr[1] "%d Seiten oder Beiträge zurückgesetzt."
+
+msgid "%d widget changed."
+msgid_plural "%d widgets changed."
+msgstr[0] "%d Widget umgestellt."
+msgstr[1] "%d Widgets umgestellt."
+
+msgid "%d widget put back."
+msgid_plural "%d widgets put back."
+msgstr[0] "%d Widget zurückgesetzt."
+msgstr[1] "%d Widgets zurückgesetzt."
+
+msgid "%d menu item changed."
+msgid_plural "%d menu items changed."
+msgstr[0] "%d Menüeintrag umgestellt."
+msgstr[1] "%d Menüeinträge umgestellt."
+
+msgid "%d menu item put back."
+msgid_plural "%d menu items put back."
+msgstr[0] "%d Menüeintrag zurückgesetzt."
+msgstr[1] "%d Menüeinträge zurückgesetzt."
+
+msgid "Pages and posts"
+msgstr "Seiten und Beiträge"
+
+msgid "No page, post or template uses shortcodes or blocks of Events Manager."
+msgstr "Keine Seite, kein Beitrag und keine Vorlage verwendet Shortcodes oder Blöcke von Events Manager."
+
+msgid "Put back the original content of all changed pages? Changes made to them since are lost."
+msgstr "Den ursprünglichen Inhalt aller umgestellten Seiten wiederherstellen? Seither daran vorgenommene Änderungen gehen verloren."
+
+msgid "Page"
+msgstr "Seite"
+
+msgid "Found"
+msgstr "Gefunden"
+
+msgid "Becomes"
+msgstr "Wird zu"
+
+msgid "changed"
+msgstr "umgestellt"
+
+msgid "Nothing of Events Manager is left on this page."
+msgstr "Auf dieser Seite ist nichts mehr von Events Manager."
+
+msgid "Change"
+msgstr "Umstellen"
+
+msgid "Put back"
+msgstr "Zurücksetzen"
+
+msgid "Put back the original content of this page? Changes made to it since are lost."
+msgstr "Den ursprünglichen Inhalt dieser Seite wiederherstellen? Seither daran vorgenommene Änderungen gehen verloren."
+
+msgid "No widget of Events Manager is in use."
+msgstr "Es ist kein Widget von Events Manager in Verwendung."
+
+msgid "Put back the widgets as they were?"
+msgstr "Die Widgets wieder so herstellen, wie sie waren?"
+
+msgid "Widget area"
+msgstr "Widget-Bereich"
+
+msgid "Widget “Events”"
+msgstr "Widget „Events“"
+
+msgid "Widget “Events Calendar”"
+msgstr "Widget „Events Calendar“"
+
+msgid "Widget “Event Locations”"
+msgstr "Widget „Event Locations“"
+
+msgid "Menus"
+msgstr "Menüs"
+
+msgid "No menu item leads to an event of Events Manager."
+msgstr "Kein Menüeintrag führt zu einer Veranstaltung von Events Manager."
+
+msgid "Menu items whose target no longer exists disappear from the menu. Changed items lead to the imported event instead."
+msgstr "Menüeinträge, deren Ziel es nicht mehr gibt, verschwinden aus dem Menü. Umgestellte Einträge führen stattdessen zur importierten Veranstaltung."
+
+msgid "Put back the menu items as they were?"
+msgstr "Die Menüeinträge wieder so herstellen, wie sie waren?"
+
+msgid "Locations have no page of their own here; please remove the menu item or link another page."
+msgstr "Orte haben hier keine eigene Seite; bitte entfernen Sie den Menüeintrag oder verlinken Sie eine andere Seite."
+
+msgid "Categories and tags have no page of their own here; please remove the menu item or link another page."
+msgstr "Kategorien und Schlagwörter haben hier keine eigene Seite; bitte entfernen Sie den Menüeintrag oder verlinken Sie eine andere Seite."
+
+msgid "The page with the list of events was not found; please link the right page by hand."
+msgstr "Die Seite mit der Veranstaltungsliste wurde nicht gefunden; bitte verlinken Sie die richtige Seite von Hand."
+
+msgid "The event it leads to was not imported."
+msgstr "Die Veranstaltung, zu der er führt, wurde nicht importiert."
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Menu item"
+msgstr "Menüeintrag"
+
+msgid "Leads to"
+msgstr "Führt zu"
+
+msgid "Change all"
+msgstr "Alle umstellen"
+
+msgid "Put all back"
+msgstr "Alle zurücksetzen"
+
+msgid "stays as it is"
+msgstr "bleibt unverändert"
+
+msgid "Has no counterpart in this plugin; please remove or replace it by hand."
+msgstr "Hat in diesem Plugin keine Entsprechung; bitte von Hand entfernen oder ersetzen."
+
+msgid "Its own output format is not carried over; the display follows this plugin."
+msgstr "Das eigene Ausgabeformat wird nicht übernommen; die Darstellung richtet sich nach diesem Plugin."
+
+msgid "The period “%s” does not exist here; upcoming dates are shown."
+msgstr "Den Zeitraum „%s“ gibt es hier nicht; es werden die anstehenden Termine gezeigt."
+
+msgid "The filter %s could not be carried over and is left out."
+msgstr "Der Filter %s ließ sich nicht übernehmen und entfällt."
+
+msgid "The attribute %s is not supported and is left out."
+msgstr "Das Attribut %s wird nicht unterstützt und entfällt."
+
+msgid "The event it shows was not imported."
+msgstr "Die gezeigte Veranstaltung wurde nicht importiert."
+
+msgid "Events Manager replaced the whole content of this page with its list; here the list is added below the existing content."
+msgstr "Events Manager hat den gesamten Inhalt dieser Seite durch seine Liste ersetzt; hier wird die Liste unter den vorhandenen Inhalt gesetzt."
+
+msgid "This page showed the list of locations of Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte die Liste der Orte von Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "This page showed the list of categories of Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte die Liste der Kategorien von Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "This page showed the list of tags of Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte die Liste der Schlagwörter von Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "This page showed visitors their bookings in Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte Besuchern ihre Buchungen in Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
 msgid "Import from Events Manager"
 msgstr "Import aus Events Manager"
 
@@ -246,14 +473,20 @@ msgstr "Import"
 msgid "You are not allowed to import events."
 msgstr "Sie dürfen keine Veranstaltungen importieren."
 
+msgid "1. Events"
+msgstr "1. Veranstaltungen"
+
+msgid "2. Pages, widgets and menus"
+msgstr "2. Seiten, Widgets und Menüs"
+
+msgid "3. Clean up"
+msgstr "3. Aufräumen"
+
 msgid "No data of Events Manager was found in the database of this website."
 msgstr "In der Datenbank dieser Website wurden keine Daten von Events Manager gefunden."
 
 msgid "The import copies events, locations, categories and tags. The data of Events Manager stays as it is, so you can compare, repeat the import or undo it."
 msgstr "Der Import kopiert Veranstaltungen, Orte, Kategorien und Schlagwörter. Die Daten von Events Manager bleiben unverändert; Sie können also vergleichen, den Import wiederholen oder rückgängig machen."
-
-msgid "Found"
-msgstr "Gefunden"
 
 msgid "Events Manager"
 msgstr "Events Manager"
@@ -300,8 +533,8 @@ msgstr "Nach dem Import"
 msgid "Undo the import"
 msgstr "Import rückgängig machen"
 
-msgid "Deletes every imported event, location, category and tag, including changes made to them here. Events entered by hand and the data of Events Manager are kept."
-msgstr "Löscht alle importierten Veranstaltungen, Orte, Kategorien und Schlagwörter, einschließlich der hier daran vorgenommenen Änderungen. Von Hand eingetragene Veranstaltungen und die Daten von Events Manager bleiben erhalten."
+msgid "Deletes every imported event, location, category and tag, including changes made to them here, and puts back the pages, widgets and menus changed in step 2. Events entered by hand and the data of Events Manager are kept."
+msgstr "Löscht alle importierten Veranstaltungen, Orte, Kategorien und Schlagwörter, einschließlich der hier daran vorgenommenen Änderungen, und setzt die in Schritt 2 geänderten Seiten, Widgets und Menüs zurück. Von Hand eingetragene Veranstaltungen und die Daten von Events Manager bleiben erhalten."
 
 msgid "Delete everything that was imported?"
 msgstr "Alles Importierte löschen?"
@@ -314,6 +547,12 @@ msgstr "Import rückgängig gemacht: %1$d Veranstaltungen, %2$d Orte und %3$d Ka
 
 msgid "The events now use the address Events Manager used."
 msgstr "Die Veranstaltungen nutzen jetzt die Adresse, die Events Manager verwendet hat."
+
+msgid "The data of Events Manager was removed."
+msgstr "Die Daten von Events Manager wurden entfernt."
+
+msgid "Nothing was removed: the confirmation was not typed correctly."
+msgstr "Es wurde nichts entfernt: Die Bestätigung war nicht richtig eingegeben."
 
 msgid "Deactivate Events Manager first; two plugins cannot answer under the same address."
 msgstr "Deaktivieren Sie zuerst Events Manager; zwei Plugins können nicht unter derselben Adresse antworten."
@@ -345,9 +584,6 @@ msgstr "Jede Serie wird geprüft: Die Termine, die sie hier haben wird, werden m
 
 msgid "Dates"
 msgstr "Termine"
-
-msgid "Becomes"
-msgstr "Wird zu"
 
 msgid "Check"
 msgstr "Prüfung"
@@ -424,9 +660,6 @@ msgstr "Möglich, sobald Events Manager deaktiviert ist."
 
 msgid "Take over the old address"
 msgstr "Alte Adresse übernehmen"
-
-msgid "Importing …"
-msgstr "Import läuft …"
 
 msgid "Importing … %1$d of %2$d events."
 msgstr "Import läuft … %1$d von %2$d Veranstaltungen."
@@ -505,9 +738,6 @@ msgstr "Link für weitere Informationen"
 
 msgid "Events Settings"
 msgstr "Einstellungen für Veranstaltungen"
-
-msgid "Settings"
-msgstr "Einstellungen"
 
 msgid "Components"
 msgstr "Komponenten"
@@ -640,6 +870,9 @@ msgstr "RMD Veranstaltungen: Die gebauten Block-Dateien fehlen. Vermutlich wurde
 
 msgid "Choose a published event in the block settings."
 msgstr "Wählen Sie in den Block-Einstellungen eine veröffentlichte Veranstaltung."
+
+msgid "Inactive widgets"
+msgstr "Inaktive Widgets"
 
 msgid "View event"
 msgstr "Veranstaltung ansehen"
@@ -1017,9 +1250,6 @@ msgstr "Art des Termins"
 
 msgid "One date"
 msgstr "Einzelner Termin"
-
-msgid "Remove"
-msgstr "Entfernen"
 
 msgid "Not on these days"
 msgstr "Nicht an diesen Tagen"

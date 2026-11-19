@@ -10,7 +10,7 @@ A lean WordPress plugin for events and market dates: enter dates once, show them
 - **Locations** with address, reusable across events. A new location can be typed directly into the event form.
 - **Categories with colours and tags** to filter lists and calendars.
 - **Calendar downloads** (.ics) for upcoming dates and schema.org structured data for search engines.
-- **Import from Events Manager.** Copies events, series, locations, categories and tags, even when that plugin has already been deleted. Nothing is changed in the old data; the import can be repeated and undone.
+- **Import from Events Manager.** Copies events, series, locations, categories and tags, even when that plugin has already been deleted, and changes its shortcodes, blocks, widgets and menu items to those of this plugin. Every step can be undone; removing the old data at the end is optional.
 - **Only what a site needs.** Locations, market dates, the calendar and the import are components that can be switched off.
 - **Works with page caches and without JavaScript.** Month navigation and the small calendar are plain links that a small script upgrades.
 
@@ -63,7 +63,9 @@ Days in the small calendar link to the page chosen under **Settings → Events p
 
 ## Import from Events Manager
 
-Switch on the component **Import** under **Events → Settings**, then open **Events → Import**.
+Switch on the component **Import** under **Events → Settings**, then open **Events → Import**. The page has three steps.
+
+### 1. Events
 
 1. The page shows what was found and what the import would create. Every series is checked: the dates it will have afterwards are compared with the dates Events Manager created.
 2. **Import now** copies events, locations, categories (with their colours) and tags. A series becomes one event with a repeating rule. Dates that were deleted from a series are left out, dates with other times or a cancellation keep them, and a date that was given its own title or text becomes an event of its own.
@@ -71,7 +73,27 @@ Switch on the component **Import** under **Events → Settings**, then open **Ev
 
 The data of Events Manager is only read. You can import again at any time (imported events are updated, not duplicated) or undo the import, which deletes everything it created.
 
-Not imported: bookings and tickets, events in the trash, time slots, and the list and page formats of Events Manager. Pages that contain shortcodes of Events Manager have to be changed to the blocks or shortcodes of this plugin by hand.
+Not imported: bookings and tickets, events in the trash, time slots, and the list and page formats of Events Manager.
+
+### 2. Pages, widgets and menus
+
+Lists every page, post, template, widget and menu item that still uses something of Events Manager, and shows what it would become:
+
+| Events Manager | Becomes |
+| --- | --- |
+| `[events_list]`, `[events_list_grouped]`, block “Events List”, widget “Events” | `[rmd_events]` or the block **Events**, with period, number, category, tag, location and paging carried over |
+| `[events_calendar]`, block “Events Calendar”, widget “Events Calendar” | `[rmd_events_calendar]` or the block **Events Calendar** (small calendar unless the old one was the full one) |
+| `[event]` | `[rmd_event]` with the imported event |
+| The events page (content `CONTENTS`) | The list of events with paging |
+| Menu items leading to an event or to the events page | Lead to the imported event or to that page |
+
+Formats written into a shortcode (`#_EVENTNAME` and the like) are not carried over; the display follows this plugin. Shortcodes without a counterpart (lists and maps of locations, lists of categories and tags, search and submission forms, bookings) stay as they are and are listed, so you can remove them by hand. The same goes for menu items leading to locations or categories.
+
+**Change** works per page, **Change all** for everything at once. The original content is kept for every change; **Put back** restores it.
+
+### 3. Clean up
+
+Events Manager leaves its tables, settings, posts, categories and capabilities in the database when it is deleted. This optional step removes them once that plugin is deactivated. It shows what would be removed and asks you to type a confirmation. It cannot be undone, so make a backup first; afterwards the import can no longer be repeated or undone. Imported events and images are kept.
 
 ## Settings
 
