@@ -5,6 +5,18 @@ All notable changes to this plugin are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.3.0] – 2026-11-19
+
+### Added
+
+- **Market dates: “We are not taking part”.** A market that takes place without your stall can be marked as such, as a whole or for single dates. It stays in the lists and is labelled, separate from an event the organiser has cancelled.
+- **Coloured stripes** in the list of events and beside the dates in the editor: grey for dates that are over, green for dates to come, red for dates to come that are cancelled or without you.
+
+### Changed
+
+- The menu is called “Events and markets” while market dates are switched on.
+- Editor: the kind is chosen with two large buttons; day, times and “All day” of a date are in one row; the fields under “Details” are in an even grid.
+
 ## [0.2.0] – 2026-11-19
 
 ### Added

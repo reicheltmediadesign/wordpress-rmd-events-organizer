@@ -29,7 +29,7 @@ final class Validator {
 
 	public const NTH_VALUES = [ -1, 1, 2, 3, 4, 5 ];
 
-	public const EVENT_STATUSES = [ Occurrence::STATUS_SCHEDULED, Occurrence::STATUS_CANCELLED ];
+	public const EVENT_STATUSES = [ Occurrence::STATUS_SCHEDULED, Occurrence::STATUS_CANCELLED, Occurrence::STATUS_WITHDRAWN ];
 
 	public const ADDRESS_FIELDS = [ 'street', 'postcode', 'city', 'region', 'country' ];
 
@@ -316,7 +316,7 @@ final class Validator {
 			$start = (string) ( $item['start_time'] ?? '' );
 			$end   = (string) ( $item['end_time'] ?? '' );
 			$entry = [
-				'status'     => Occurrence::STATUS_CANCELLED === ( $item['status'] ?? '' ) ? Occurrence::STATUS_CANCELLED : Occurrence::STATUS_SCHEDULED,
+				'status'     => in_array( $item['status'] ?? '', self::EVENT_STATUSES, true ) ? (string) $item['status'] : Occurrence::STATUS_SCHEDULED,
 				'start_time' => Dates::is_valid_time( $start ) ? $start : '',
 				'end_time'   => Dates::is_valid_time( $end ) ? $end : '',
 				'note'       => $this->text( $item['note'] ?? '', self::MAX_NOTE ),
@@ -345,6 +345,10 @@ final class Validator {
 
 		if ( in_array( $raw['status'] ?? '', self::EVENT_STATUSES, true ) ) {
 			$data['status'] = (string) $raw['status'];
+		}
+		// Only a market can take place without us.
+		if ( Occurrence::STATUS_WITHDRAWN === $data['status'] && Kinds::MARKET !== Kinds::normalize( $kind ) ) {
+			$data['status'] = Occurrence::STATUS_SCHEDULED;
 		}
 		foreach ( Kinds::fields( $kind ) as $field => $type ) {
 			$data[ $field ] = Kinds::FIELD_URL === $type

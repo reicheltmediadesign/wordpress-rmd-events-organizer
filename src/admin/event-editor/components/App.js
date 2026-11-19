@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
-import { Button, RadioControl } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
-import { hasRule, newSingle, normalizeData } from '../model';
+import { entryState, hasRule, newSingle, normalizeData } from '../model';
 import DetailsPanel from './DetailsPanel';
 import EntryEditor from './EntryEditor';
 import Exclusions from './Exclusions';
@@ -57,27 +57,64 @@ export default function App( { config, initial, onChange } ) {
 		<div className="rmd-eo-editor__app">
 			{ config.modules.markets && (
 				<section className="rmd-eo-editor__section">
-					<RadioControl
+					<div
 						className="rmd-eo-editor__kind"
-						label={ __( 'Kind', 'rmd-events-organizer' ) }
-						selected={ data.kind }
-						options={ [
+						role="group"
+						aria-label={ __( 'Kind', 'rmd-events-organizer' ) }
+					>
+						{ [
 							{
 								value: 'event',
+								icon: 'calendar-alt',
 								label: __( 'Event', 'rmd-events-organizer' ),
-							},
-							{
-								value: 'market',
-								label: __(
-									'Market date (we have a stall there)',
+								hint: __(
+									'A date for visitors',
 									'rmd-events-organizer'
 								),
 							},
-						] }
-						onChange={ ( kind ) =>
-							setData( ( current ) => ( { ...current, kind } ) )
-						}
-					/>
+							{
+								value: 'market',
+								icon: 'store',
+								label: __(
+									'Market date',
+									'rmd-events-organizer'
+								),
+								hint: __(
+									'We have a stall there',
+									'rmd-events-organizer'
+								),
+							},
+						].map( ( option ) => (
+							<button
+								key={ option.value }
+								type="button"
+								className={
+									'rmd-eo-editor__kind-option' +
+									( data.kind === option.value
+										? ' is-selected'
+										: '' )
+								}
+								aria-pressed={ data.kind === option.value }
+								onClick={ () =>
+									setData( ( current ) => ( {
+										...current,
+										kind: option.value,
+									} ) )
+								}
+							>
+								<span
+									className={
+										'dashicons dashicons-' + option.icon
+									}
+									aria-hidden="true"
+								/>
+								<span className="rmd-eo-editor__kind-text">
+									<strong>{ option.label }</strong>
+									<span>{ option.hint }</span>
+								</span>
+							</button>
+						) ) }
+					</div>
 				</section>
 			) }
 
@@ -91,6 +128,13 @@ export default function App( { config, initial, onChange } ) {
 						entry={ entry }
 						config={ config }
 						isMarket={ isMarket }
+						state={ entryState(
+							entry,
+							schedule,
+							data.details,
+							isMarket,
+							config.today
+						) }
 						canRemove={ schedule.entries.length > 1 }
 						onChange={ ( next ) => updateEntry( index, next ) }
 						onRemove={ () => removeEntry( index ) }
@@ -123,6 +167,7 @@ export default function App( { config, initial, onChange } ) {
 
 				<Preview
 					schedule={ schedule }
+					isMarket={ isMarket }
 					config={ config }
 					onChange={ setSchedule }
 				/>

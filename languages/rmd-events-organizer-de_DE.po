@@ -40,8 +40,8 @@ msgstr "Sie dürfen diese Seite nicht ansehen."
 msgid "Entering an event"
 msgstr "Eine Veranstaltung eintragen"
 
-msgid "Choose Events → Add event and enter the name."
-msgstr "Wählen Sie Veranstaltungen → Veranstaltung hinzufügen und geben Sie den Namen ein."
+msgid "Choose %s → Add event and enter the name."
+msgstr "Wählen Sie %s → Veranstaltung hinzufügen und geben Sie den Namen ein."
 
 msgid "Under “When” enter the date. Leave the times empty for an all-day event. Use “Add date” for further dates of the same event."
 msgstr "Tragen Sie unter „Wann“ das Datum ein. Lassen Sie die Uhrzeiten leer, wenn die Veranstaltung ganztägig ist. Mit „Termin hinzufügen“ ergänzen Sie weitere Termine derselben Veranstaltung."
@@ -58,8 +58,8 @@ msgstr "Wählen Sie einen Ort oder geben Sie einen neuen ein, ergänzen Sie bei 
 msgid "Market dates"
 msgstr "Markttermine"
 
-msgid "Use Events → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is."
-msgstr "Für Märkte, auf denen Sie einen Stand haben, nutzen Sie Veranstaltungen → Markttermin hinzufügen. Tragen Sie den ersten und letzten Tag ein und wählen Sie „täglich dieselben Zeiten“ für die täglichen Öffnungszeiten. Sie können außerdem angeben, wo Ihr Stand steht."
+msgid "Use %s → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is."
+msgstr "Für Märkte, auf denen Sie einen Stand haben, nutzen Sie %s → Markttermin hinzufügen. Tragen Sie den ersten und letzten Tag ein und wählen Sie „täglich dieselben Zeiten“ für die täglichen Öffnungszeiten. Sie können außerdem angeben, wo Ihr Stand steht."
 
 msgid "Showing events on the website"
 msgstr "Veranstaltungen auf der Website anzeigen"
@@ -1117,9 +1117,6 @@ msgstr "Keine Schlagwörter gefunden."
 msgid "RMD Events Organizer requires PHP %1$s or newer. This site runs PHP %2$s, so the plugin stays inactive."
 msgstr "RMD Veranstaltungen benötigt PHP %1$s oder neuer. Diese Website läuft mit PHP %2$s, das Plugin bleibt deshalb inaktiv."
 
-msgid "Market date (we have a stall there)"
-msgstr "Markttermin (wir haben dort einen Stand)"
-
 msgid "When"
 msgstr "Wann"
 
@@ -1146,9 +1143,6 @@ msgstr "Freier Text, zum Beispiel „frei“ oder „8 €, ermäßigt 5 €“.
 
 msgid "The whole event is cancelled"
 msgstr "Die gesamte Veranstaltung ist abgesagt"
-
-msgid "It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above."
-msgstr "Sie bleibt sichtbar und wird als abgesagt gekennzeichnet. Einen einzelnen Termin sagen Sie oben in der Liste der nächsten Termine ab."
 
 msgid "first"
 msgstr "ersten"
@@ -1716,8 +1710,8 @@ msgstr "Titel"
 msgid "Two letters, e.g. DE."
 msgstr "Zwei Buchstaben, z. B. DE."
 
-msgid "To create many events at once from a table, use Events → CSV import. The page lists the columns and offers a template."
-msgstr "Um viele Veranstaltungen auf einmal aus einer Tabelle anzulegen, nutzen Sie Veranstaltungen → CSV-Import. Die Seite listet die Spalten auf und bietet eine Vorlage an."
+msgid "To create many events at once from a table, use %s → CSV import. The page lists the columns and offers a template."
+msgstr "Um viele Veranstaltungen auf einmal aus einer Tabelle anzulegen, nutzen Sie %s → CSV-Import. Die Seite listet die Spalten auf und bietet eine Vorlage an."
 
 msgid "Many events at once"
 msgstr "Viele Veranstaltungen auf einmal"
@@ -1736,3 +1730,30 @@ msgid "Import %d event"
 msgid_plural "Import %d events"
 msgstr[0] "%d Veranstaltung importieren"
 msgstr[1] "%d Veranstaltungen importieren"
+
+msgid "The organiser has called it off. It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above."
+msgstr "Der Veranstalter hat abgesagt. Die Veranstaltung bleibt sichtbar und wird als abgesagt gekennzeichnet. Einen einzelnen Termin sagen Sie oben in der Liste der nächsten Termine ab."
+
+msgid "We are not taking part"
+msgstr "Wir nehmen nicht teil"
+
+msgid "We are not taking part in this market."
+msgstr "An diesem Markt nehmen wir nicht teil."
+
+msgid "We take part after all"
+msgstr "Wir nehmen doch teil"
+
+msgid "The market takes place, but without your stall. It stays visible and is marked accordingly. For a single date use the list of next dates above."
+msgstr "Der Markt findet statt, aber ohne Ihren Stand. Er bleibt sichtbar und wird entsprechend gekennzeichnet. Für einen einzelnen Termin nutzen Sie oben die Liste der nächsten Termine."
+
+msgid "Events and markets"
+msgstr "Veranstaltungen und Märkte"
+
+msgid "A date for visitors"
+msgstr "Ein Termin für Besucher"
+
+msgid "We have a stall there"
+msgstr "Wir sind mit einem Stand dabei"
+
+msgid "If you cannot come to a market after all, tick “We are not taking part” in the market date, or choose it for a single date in the list of next dates. The market stays in the lists and is marked. “The whole event is cancelled” is meant for a market the organiser has called off."
+msgstr "Können Sie an einem Markt doch nicht teilnehmen, aktivieren Sie im Markttermin „Wir nehmen nicht teil“ oder wählen Sie das für einen einzelnen Termin in der Liste der nächsten Termine. Der Markt bleibt in den Listen stehen und wird gekennzeichnet. „Die gesamte Veranstaltung ist abgesagt“ ist für einen Markt gedacht, den der Veranstalter abgesagt hat."

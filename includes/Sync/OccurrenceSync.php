@@ -14,6 +14,7 @@ namespace RMD\EventsOrganizer\Sync;
 
 use RMD\EventsOrganizer\Cache;
 use RMD\EventsOrganizer\Clock;
+use RMD\EventsOrganizer\Domain\Kinds;
 use RMD\EventsOrganizer\Domain\Occurrence;
 use RMD\EventsOrganizer\Domain\OccurrenceDiff;
 use RMD\EventsOrganizer\Domain\Schedule;
@@ -51,22 +52,20 @@ final class OccurrenceSync {
 			return;
 		}
 
-		$details   = EventRepository::details( $post_id );
-		$cancelled = Occurrence::STATUS_CANCELLED === $details['status'];
-		$shared    = [
+		$details = EventRepository::details( $post_id );
+		$kind    = EventRepository::kind( $post_id );
+		$shared  = [
 			'event_id'    => $post_id,
-			'kind'        => EventRepository::kind( $post_id ),
+			'kind'        => $kind,
 			'post_status' => (string) $post->post_status,
 			'location_id' => EventRepository::location_id( $post_id ),
 		];
 
 		$desired = [];
 		foreach ( Schedule::expand( EventRepository::schedule( $post_id ), self::horizon(), wp_timezone_string() ) as $occurrence ) {
-			$row = $occurrence->to_row() + $shared;
-			if ( $cancelled ) {
-				$row['status'] = Occurrence::STATUS_CANCELLED;
-			}
-			$desired[] = $row;
+			$row           = $occurrence->to_row() + $shared;
+			$row['status'] = self::status( (string) $row['status'], (string) $details['status'], $kind );
+			$desired[]     = $row;
 		}
 
 		$diff = OccurrenceDiff::compute( $desired, OccurrenceRepository::for_event( $post_id ) );
@@ -100,6 +99,21 @@ final class OccurrenceSync {
 		 * @param array $diff    What changed: insert, update, delete.
 		 */
 		do_action( 'rmd_eo_occurrences_synced', $post_id, $diff );
+	}
+
+	/**
+	 * Status of a date, given its own and that of the whole event. A cancelled
+	 * event cancels every date; not taking part only exists for markets and
+	 * never hides that a date is cancelled.
+	 */
+	private static function status( string $own, string $event, string $kind ): string {
+		if ( Occurrence::STATUS_CANCELLED === $event || Occurrence::STATUS_CANCELLED === $own ) {
+			return Occurrence::STATUS_CANCELLED;
+		}
+		if ( Kinds::MARKET !== $kind ) {
+			return Occurrence::STATUS_SCHEDULED;
+		}
+		return Occurrence::STATUS_WITHDRAWN === $event ? Occurrence::STATUS_WITHDRAWN : $own;
 	}
 
 	public static function on_delete( int $post_id ): void {

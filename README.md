@@ -17,6 +17,8 @@ A lean WordPress plugin for events and market dates: enter dates once, show them
 
 ## Usage
 
+The menu is called **Events**, or **Events and markets** while market dates are switched on.
+
 1. Go to **Events → Add event** and enter the name.
 2. Under **When** enter the date. Leave the times empty for an all-day event; choose **Repeats** for something regular. The list of next dates shows what you entered and lets you cancel or leave out single dates.
 3. Choose a location, add a description and an image, and publish.

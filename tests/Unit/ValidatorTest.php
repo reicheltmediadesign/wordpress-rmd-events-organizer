@@ -10,6 +10,32 @@ use RMD\EventsOrganizer\Domain\Validator;
 
 final class ValidatorTest extends TestCase {
 
+	public function test_only_a_market_can_take_place_without_us(): void {
+		$validator = new Validator();
+
+		self::assertSame( 'withdrawn', $validator->normalize_details( [ 'status' => 'withdrawn' ], 'market' )['data']['status'] );
+		self::assertSame( 'scheduled', $validator->normalize_details( [ 'status' => 'withdrawn' ], 'event' )['data']['status'] );
+		self::assertSame( 'cancelled', $validator->normalize_details( [ 'status' => 'cancelled' ], 'event' )['data']['status'] );
+	}
+
+	public function test_a_single_date_can_be_marked_as_without_us(): void {
+		$schedule = ( new Validator() )->normalize_schedule(
+			[
+				'entries'   => [
+					[
+						'id'         => 'aaaa',
+						'type'       => 'single',
+						'start_date' => '2026-12-12',
+					],
+				],
+				'overrides' => [ 'aaaa' => [ 'status' => 'withdrawn' ] ],
+			]
+		)['data'];
+
+		self::assertSame( 'withdrawn', $schedule['overrides']['aaaa']['status'] );
+		self::assertSame( 'withdrawn', \RMD\EventsOrganizer\Domain\Schedule::expand( $schedule, '2027-12-31', 'Europe/Berlin' )[0]->status );
+	}
+
 	private static function validator(): Validator {
 		$next = 0;
 		return new Validator(

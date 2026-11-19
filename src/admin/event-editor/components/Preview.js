@@ -3,7 +3,7 @@ import { useEffect, useState } from '@wordpress/element';
 import { Button, Notice, Spinner } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 
-import { excludeDate, isDate, setCancelled } from '../model';
+import { excludeDate, isDate, setDateStatus } from '../model';
 
 /**
  * Lists the next dates the schedule produces. The server computes them, so
@@ -11,10 +11,11 @@ import { excludeDate, isDate, setCancelled } from '../model';
  *
  * @param {Object}   props
  * @param {Object}   props.schedule
+ * @param {boolean}  props.isMarket
  * @param {Object}   props.config
  * @param {Function} props.onChange
  */
-export default function Preview( { schedule, config, onChange } ) {
+export default function Preview( { schedule, isMarket, config, onChange } ) {
 	const [ result, setResult ] = useState( null );
 	const [ failed, setFailed ] = useState( false );
 	const [ loading, setLoading ] = useState( false );
@@ -109,66 +110,109 @@ export default function Preview( { schedule, config, onChange } ) {
 			) }
 			{ result && result.items.length > 0 && (
 				<ul className="rmd-eo-editor__dates">
-					{ result.items.map( ( item ) => (
-						<li
-							key={ item.key }
-							className={
-								item.cancelled ? 'is-cancelled' : undefined
-							}
-						>
-							<span className="rmd-eo-editor__date-label">
-								{ item.label }
-								{ item.cancelled && (
-									<strong>
-										{ __(
-											'Cancelled',
-											'rmd-events-organizer'
-										) }
-									</strong>
-								) }
-							</span>
-							<Button
-								size="small"
-								variant="tertiary"
-								onClick={ () =>
-									onChange(
-										setCancelled(
-											schedule,
-											item.key,
-											! item.cancelled
-										)
-									)
+					{ result.items.map( ( item ) => {
+						const withdrawn = isMarket && item.withdrawn;
+						const off = item.cancelled || withdrawn;
+						const set = ( status ) =>
+							onChange(
+								setDateStatus( schedule, item.key, status )
+							);
+						return (
+							<li
+								key={ item.key }
+								className={
+									off ? 'is-cancelled is-off' : 'is-upcoming'
 								}
 							>
-								{ item.cancelled
-									? __(
-											'Takes place after all',
-											'rmd-events-organizer'
-										)
-									: __(
-											'Mark as cancelled',
+								<span className="rmd-eo-editor__date-label">
+									{ item.label }
+									{ item.cancelled && (
+										<strong>
+											{ __(
+												'Cancelled',
+												'rmd-events-organizer'
+											) }
+										</strong>
+									) }
+									{ withdrawn && (
+										<strong>
+											{ __(
+												'We are not taking part',
+												'rmd-events-organizer'
+											) }
+										</strong>
+									) }
+								</span>
+								{ isMarket && ! off && (
+									<Button
+										size="small"
+										variant="tertiary"
+										onClick={ () => set( 'withdrawn' ) }
+									>
+										{ __(
+											'We are not taking part',
 											'rmd-events-organizer'
 										) }
-							</Button>
-							{ item.isRule && (
-								<Button
-									size="small"
-									variant="tertiary"
-									isDestructive
-									onClick={ () =>
-										onChange(
-											excludeDate( schedule, item.key )
-										)
-									}
-								>
-									{ __(
-										'Leave out',
-										'rmd-events-organizer'
-									) }
-								</Button>
-							) }
-						</li>
-					) ) }
+									</Button>
+								) }
+								{ withdrawn && (
+									<Button
+										size="small"
+										variant="tertiary"
+										onClick={ () => set( '' ) }
+									>
+										{ __(
+											'We take part after all',
+											'rmd-events-organizer'
+										) }
+									</Button>
+								) }
+								{ ! withdrawn && (
+									<Button
+										size="small"
+										variant="tertiary"
+										onClick={ () =>
+											set(
+												item.cancelled
+													? ''
+													: 'cancelled'
+											)
+										}
+									>
+										{ item.cancelled
+											? __(
+													'Takes place after all',
+													'rmd-events-organizer'
+												)
+											: __(
+													'Mark as cancelled',
+													'rmd-events-organizer'
+												) }
+									</Button>
+								) }
+								{ item.isRule && (
+									<Button
+										size="small"
+										variant="tertiary"
+										isDestructive
+										onClick={ () =>
+											onChange(
+												excludeDate(
+													schedule,
+													item.key
+												)
+											)
+										}
+									>
+										{ __(
+											'Leave out',
+											'rmd-events-organizer'
+										) }
+									</Button>
+								) }
+							</li>
+						);
+					} ) }
 				</ul>
 			) }
 			{ result && result.upcoming > result.items.length && (

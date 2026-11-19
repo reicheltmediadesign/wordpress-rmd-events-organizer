@@ -57,14 +57,15 @@ final class PostTypes {
 
 	public static function register(): void {
 		$permalinks = (array) Settings::get( 'permalinks', [] );
+		$name       = Modules::is_on( Modules::MARKETS ) ? __( 'Events and markets', 'rmd-events-organizer' ) : __( 'Events', 'rmd-events-organizer' );
 
 		register_post_type(
 			self::EVENT,
 			[
 				'labels'              => [
-					'name'                   => __( 'Events', 'rmd-events-organizer' ),
+					'name'                   => $name,
 					'singular_name'          => __( 'Event', 'rmd-events-organizer' ),
-					'menu_name'              => __( 'Events', 'rmd-events-organizer' ),
+					'menu_name'              => $name,
 					'all_items'              => __( 'All events', 'rmd-events-organizer' ),
 					'add_new'                => __( 'Add event', 'rmd-events-organizer' ),
 					'add_new_item'           => __( 'Add new event', 'rmd-events-organizer' ),

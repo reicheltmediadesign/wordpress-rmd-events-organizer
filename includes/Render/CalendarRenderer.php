@@ -213,7 +213,7 @@ final class CalendarRenderer {
 			$html .= sprintf(
 				'<li class="rmd-eo-day__event rmd-eo-day__event--%s%s"%s><a href="%s">%s%s</a></li>',
 				esc_attr( sanitize_html_class( (string) $occurrence['kind'] ) ),
-				$occurrence['cancelled'] ? ' is-cancelled' : '',
+				$occurrence['cancelled'] ? ' is-cancelled' : ( ! empty( $occurrence['withdrawn'] ) ? ' is-withdrawn' : '' ),
 				'' !== $color ? ' style="--rmd-eo-event-color:' . esc_attr( $color ) . '"' : '',
 				esc_url( (string) get_permalink( (int) $occurrence['event_id'] ) ),
 				'' !== $time ? '<span class="rmd-eo-day__time">' . esc_html( $time ) . '</span> ' : '',

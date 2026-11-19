@@ -35,6 +35,8 @@ final class ListTable {
 		add_filter( 'manage_' . PostTypes::LOCATION . '_posts_columns', [ self::class, 'location_columns' ] );
 		add_action( 'manage_' . PostTypes::LOCATION . '_posts_custom_column', [ self::class, 'location_column' ], 10, 2 );
 		add_filter( 'post_row_actions', [ self::class, 'row_actions' ], 10, 2 );
+		add_filter( 'post_class', [ self::class, 'row_class' ], 10, 3 );
+		add_action( 'admin_head-edit.php', [ self::class, 'styles' ] );
 		add_action( 'restrict_manage_posts', [ self::class, 'kind_filter' ] );
 		add_action( 'pre_get_posts', [ self::class, 'query' ] );
 		add_action( 'admin_post_' . self::DUPLICATE_ACTION, [ self::class, 'duplicate' ] );
@@ -78,6 +80,8 @@ final class ListTable {
 				}
 				if ( $rows['item']['cancelled'] ) {
 					echo '<br><strong>' . esc_html__( 'Cancelled', 'rmd-events-organizer' ) . '</strong>';
+				} elseif ( $rows['item']['withdrawn'] ) {
+					echo '<br><strong>' . esc_html__( 'We are not taking part', 'rmd-events-organizer' ) . '</strong>';
 				}
 				break;
 
@@ -241,6 +245,40 @@ final class ListTable {
 	}
 
 	/**
+	 * Marks the rows of the list: over, still to come, or still to come but
+	 * cancelled or without us.
+	 *
+	 * @param string[] $classes
+	 * @param string[] $extra
+	 * @param int      $post_id
+	 * @return string[]
+	 */
+	public static function row_class( $classes, $extra, $post_id ): array {
+		$classes = (array) $classes;
+		if ( ! is_admin() || PostTypes::EVENT !== get_post_type( (int) $post_id ) ) {
+			return $classes;
+		}
+		$rows = self::dates( (int) $post_id );
+		if ( null === $rows ) {
+			return $classes;
+		}
+		if ( $rows['past'] ) {
+			$classes[] = 'rmd-eo-is-past';
+		} else {
+			$classes[] = $rows['item']['cancelled'] || $rows['item']['withdrawn'] ? 'rmd-eo-is-off' : 'rmd-eo-is-upcoming';
+		}
+		return $classes;
+	}
+
+	public static function styles(): void {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( ! $screen || PostTypes::EVENT !== $screen->post_type ) {
+			return;
+		}
+		echo '<style>.wp-list-table tr>:first-child{border-left:4px solid transparent}.wp-list-table tr.rmd-eo-is-past>:first-child{border-left-color:#a7aaad}.wp-list-table tr.rmd-eo-is-upcoming>:first-child{border-left-color:#00a32a}.wp-list-table tr.rmd-eo-is-off>:first-child{border-left-color:#d63638}</style>';
+	}
+
+	/**
 	 * Next upcoming date of an event (any post status), or its last one.
 	 *
 	 * @return array{item: array<string, mixed>, more: int, past: bool}|null
@@ -274,6 +312,7 @@ final class ListTable {
 				'all_day'    => (bool) $row['all_day'],
 				'time_mode'  => (string) $row['time_mode'],
 				'cancelled'  => 'cancelled' === $row['status'],
+				'withdrawn'  => 'withdrawn' === $row['status'],
 			],
 			'more' => $more,
 			'past' => $past,

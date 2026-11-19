@@ -35,27 +35,27 @@ export default function DetailsPanel( {
 
 	return (
 		<>
-			{ isMarket && (
-				<div className="rmd-eo-editor__row">
-					{ text(
-						'stall',
-						__( 'Where our stall is', 'rmd-events-organizer' ),
-						__(
-							'For example “Stall 12, next to the fountain”.',
-							'rmd-events-organizer'
-						)
-					) }
-					{ text(
-						'stall_note',
-						__( 'Note', 'rmd-events-organizer' ),
-						__(
-							'For example what you bring along.',
-							'rmd-events-organizer'
-						)
-					) }
-				</div>
-			) }
-			<div className="rmd-eo-editor__row">
+			<div className="rmd-eo-editor__grid">
+				{ isMarket && (
+					<>
+						{ text(
+							'stall',
+							__( 'Where our stall is', 'rmd-events-organizer' ),
+							__(
+								'For example “Stall 12, next to the fountain”.',
+								'rmd-events-organizer'
+							)
+						) }
+						{ text(
+							'stall_note',
+							__( 'Note', 'rmd-events-organizer' ),
+							__(
+								'For example what you bring along.',
+								'rmd-events-organizer'
+							)
+						) }
+					</>
+				) }
 				{ text(
 					'organizer_name',
 					__( 'Organiser', 'rmd-events-organizer' )
@@ -64,8 +64,6 @@ export default function DetailsPanel( {
 					'organizer_url',
 					__( 'Organiser website', 'rmd-events-organizer' )
 				) }
-			</div>
-			<div className="rmd-eo-editor__row">
 				{ text(
 					'price_text',
 					__( 'Admission', 'rmd-events-organizer' ),
@@ -79,13 +77,30 @@ export default function DetailsPanel( {
 					__( 'Link for more information', 'rmd-events-organizer' )
 				) }
 			</div>
+			{ isMarket && (
+				<CheckboxControl
+					label={ __(
+						'We are not taking part',
+						'rmd-events-organizer'
+					) }
+					help={ __(
+						'The market takes place, but without your stall. It stays visible and is marked accordingly. For a single date use the list of next dates above.',
+						'rmd-events-organizer'
+					) }
+					checked={ details.status === 'withdrawn' }
+					onChange={ ( on ) =>
+						set( { status: on ? 'withdrawn' : 'scheduled' } )
+					}
+					__nextHasNoMarginBottom
+				/>
+			) }
 			<CheckboxControl
 				label={ __(
 					'The whole event is cancelled',
 					'rmd-events-organizer'
 				) }
 				help={ __(
-					'It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above.',
+					'The organiser has called it off. It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above.',
 					'rmd-events-organizer'
 				) }
 				checked={ details.status === 'cancelled' }

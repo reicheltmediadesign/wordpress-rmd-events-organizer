@@ -43,6 +43,8 @@ final class EventRenderer {
 		}
 		if ( Occurrence::STATUS_CANCELLED === $details['status'] ) {
 			$html .= '<p class="rmd-eo-event__status">' . esc_html__( 'This event has been cancelled.', 'rmd-events-organizer' ) . '</p>';
+		} elseif ( Occurrence::STATUS_WITHDRAWN === $details['status'] && Kinds::MARKET === $kind ) {
+			$html .= '<p class="rmd-eo-event__status">' . esc_html__( 'We are not taking part in this market.', 'rmd-events-organizer' ) . '</p>';
 		}
 
 		$html .= self::dates( $event_id );
@@ -89,15 +91,17 @@ final class EventRenderer {
 		$html    .= '<h2 class="rmd-eo-event__heading">' . esc_html__( 'Dates', 'rmd-events-organizer' ) . '</h2>';
 		$html    .= '<ul class="rmd-eo-event__date-list"' . ( $ended ? '' : ' data-rmd-eo-upcoming' ) . '>';
 		foreach ( $items as $occurrence ) {
-			$html .= sprintf( '<li class="rmd-eo-event__date%s" data-end="%d">', $occurrence['cancelled'] ? ' is-cancelled' : '', (int) $occurrence['end_ts'] );
+			$html .= sprintf( '<li class="rmd-eo-event__date%s" data-end="%d">', $occurrence['cancelled'] ? ' is-cancelled' : ( $occurrence['withdrawn'] ? ' is-withdrawn' : '' ), (int) $occurrence['end_ts'] );
 			$html .= '<span class="rmd-eo-event__when">' . esc_html( Formatter::when( $occurrence ) ) . '</span>';
 			if ( $occurrence['cancelled'] ) {
 				$html .= ' <span class="rmd-eo-event__cancelled">' . esc_html__( 'Cancelled', 'rmd-events-organizer' ) . '</span>';
+			} elseif ( $occurrence['withdrawn'] ) {
+				$html .= ' <span class="rmd-eo-event__cancelled">' . esc_html__( 'We are not taking part', 'rmd-events-organizer' ) . '</span>';
 			}
 			if ( '' !== $occurrence['note'] ) {
 				$html .= ' <span class="rmd-eo-event__note">' . esc_html( (string) $occurrence['note'] ) . '</span>';
 			}
-			if ( $with_ics && ! $occurrence['cancelled'] ) {
+			if ( $with_ics && ! $occurrence['cancelled'] && ! $occurrence['withdrawn'] ) {
 				$html .= sprintf(
 					' <a class="rmd-eo-event__ics" rel="nofollow" href="%s">%s</a>',
 					esc_url( Ics::url( (int) $occurrence['id'] ) ),

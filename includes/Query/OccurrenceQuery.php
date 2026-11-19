@@ -233,6 +233,7 @@ final class OccurrenceQuery {
 			'start_ts'    => (int) strtotime( $row['start_utc'] . ' UTC' ),
 			'end_ts'      => (int) strtotime( $row['end_utc'] . ' UTC' ),
 			'cancelled'   => Occurrence::STATUS_CANCELLED === $row['status'],
+			'withdrawn'   => Occurrence::STATUS_WITHDRAWN === $row['status'],
 			'location_id' => (int) $row['location_id'],
 			'note'        => (string) $row['note'],
 		];
