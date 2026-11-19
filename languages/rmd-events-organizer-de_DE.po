@@ -1,0 +1,1501 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RMD Events Organizer 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/reicheltmediadesign/wordpress-rmd-events-organizer/issues\n"
+"Last-Translator: Philipp Reichelt <info@reicheltmedia.design>\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-18 10:00+0000\n"
+"PO-Revision-Date: 2026-11-18 12:00+0100\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: rmd-events-organizer\n"
+
+msgid "Add market date"
+msgstr "Markttermin hinzufügen"
+
+msgid "Name of the market, e.g. “Christmas market Freiberg”"
+msgstr "Name des Marktes, z. B. „Weihnachtsmarkt Freiberg“"
+
+msgid "Name of the event"
+msgstr "Name der Veranstaltung"
+
+msgid "The event editor needs JavaScript."
+msgstr "Der Veranstaltungs-Editor benötigt JavaScript."
+
+msgid "Loading editor …"
+msgstr "Editor wird geladen …"
+
+msgid "Events Help"
+msgstr "Hilfe zu Veranstaltungen"
+
+msgid "Help"
+msgstr "Hilfe"
+
+msgid "You are not allowed to view this page."
+msgstr "Sie dürfen diese Seite nicht ansehen."
+
+msgid "Entering an event"
+msgstr "Eine Veranstaltung eintragen"
+
+msgid "Choose Events → Add event and enter the name."
+msgstr "Wählen Sie Veranstaltungen → Veranstaltung hinzufügen und geben Sie den Namen ein."
+
+msgid "Under “When” enter the date. Leave the times empty for an all-day event. Use “Add date” for further dates of the same event."
+msgstr "Tragen Sie unter „Wann“ das Datum ein. Lassen Sie die Uhrzeiten leer, wenn die Veranstaltung ganztägig ist. Mit „Termin hinzufügen“ ergänzen Sie weitere Termine derselben Veranstaltung."
+
+msgid "For something that takes place regularly choose “Repeats” and set the rhythm, for example every week on Tuesday or every first Saturday of the month."
+msgstr "Für etwas, das regelmäßig stattfindet, wählen Sie „Wiederholt sich“ und legen den Rhythmus fest, zum Beispiel jede Woche dienstags oder jeden ersten Samstag im Monat."
+
+msgid "The preview lists the next dates. There you can cancel a single date or leave it out without changing the rule."
+msgstr "Die Vorschau zeigt die nächsten Termine. Dort können Sie einen einzelnen Termin absagen oder auslassen, ohne die Regel zu ändern."
+
+msgid "Choose a location or type a new one, add a description and an image if you like, then publish."
+msgstr "Wählen Sie einen Ort oder geben Sie einen neuen ein, ergänzen Sie bei Bedarf Beschreibung und Bild und veröffentlichen Sie die Veranstaltung."
+
+msgid "Market dates"
+msgstr "Markttermine"
+
+msgid "Use Events → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is."
+msgstr "Für Märkte, auf denen Sie einen Stand haben, nutzen Sie Veranstaltungen → Markttermin hinzufügen. Tragen Sie den ersten und letzten Tag ein und wählen Sie „täglich dieselben Zeiten“ für die täglichen Öffnungszeiten. Sie können außerdem angeben, wo Ihr Stand steht."
+
+msgid "Showing events on the website"
+msgstr "Veranstaltungen auf der Website anzeigen"
+
+msgid "In the block editor add one of these blocks. Each block has its options in the sidebar."
+msgstr "Fügen Sie im Block-Editor einen dieser Blöcke ein. Die Optionen jedes Blocks finden Sie in der Seitenleiste."
+
+msgid "Events"
+msgstr "Veranstaltungen"
+
+msgid "a list of dates."
+msgstr "eine Liste von Terminen."
+
+msgid "Market Dates"
+msgstr "Markttermine"
+
+msgid "the markets where visitors can find you."
+msgstr "die Märkte, auf denen Besucher Sie finden."
+
+msgid "Events Calendar"
+msgstr "Veranstaltungskalender"
+
+msgid "a month calendar, or a small one that only marks the days (for sidebars)."
+msgstr "ein Monatskalender oder ein kleiner Kalender, der nur die Tage markiert (für Seitenleisten)."
+
+msgid "Event Details"
+msgstr "Veranstaltungsdetails"
+
+msgid "dates and location of one event."
+msgstr "Termine und Ort einer Veranstaltung."
+
+msgid "Shortcodes"
+msgstr "Shortcodes"
+
+msgid "Shortcode"
+msgstr "Shortcode"
+
+msgid "Shows"
+msgstr "Zeigt"
+
+msgid "The upcoming dates."
+msgstr "Die anstehenden Termine."
+
+msgid "Five dates of one category, with a heading per month."
+msgstr "Fünf Termine einer Kategorie, mit einer Überschrift je Monat."
+
+msgid "Past dates, newest first, with paging."
+msgstr "Vergangene Termine, die neuesten zuerst, zum Blättern."
+
+msgid "Each event once with its next date, plus excerpt and image."
+msgstr "Jede Veranstaltung einmal mit ihrem nächsten Termin, dazu Auszug und Bild."
+
+msgid "The upcoming market dates."
+msgstr "Die anstehenden Markttermine."
+
+msgid "The month calendar."
+msgstr "Der Monatskalender."
+
+msgid "The small calendar."
+msgstr "Der kleine Kalender."
+
+msgid "Dates and location of the event with this id."
+msgstr "Termine und Ort der Veranstaltung mit dieser ID."
+
+msgid "Attributes of [rmd_events]"
+msgstr "Attribute von [rmd_events]"
+
+msgid "upcoming (default), past, all, today, tomorrow, month, next-month"
+msgstr "upcoming (Standard), past, all, today, tomorrow, month, next-month"
+
+msgid "A fixed period, each as YYYY-MM-DD."
+msgstr "Ein fester Zeitraum, jeweils als JJJJ-MM-TT."
+
+msgid "Number of dates."
+msgstr "Anzahl der Termine."
+
+msgid "Slugs, several separated by commas."
+msgstr "Titelformen (Slugs), mehrere durch Komma getrennt."
+
+msgid "Categories to leave out."
+msgstr "Kategorien, die ausgelassen werden."
+
+msgid "Id of a location."
+msgstr "ID eines Ortes."
+
+msgid "event or market."
+msgstr "event oder market."
+
+msgid "yes: each event only once, with its next date."
+msgstr "yes: jede Veranstaltung nur einmal, mit ihrem nächsten Termin."
+
+msgid "month or year: adds headings."
+msgstr "month oder year: fügt Überschriften ein."
+
+msgid "Parts to show: date, time, location, stall, excerpt, image, category."
+msgstr "Angezeigte Teile: date, time, location, stall, excerpt, image, category."
+
+msgid "yes: links to earlier and later dates."
+msgstr "yes: Links zu früheren und späteren Terminen."
+
+msgid "Text shown when there are no dates."
+msgstr "Text, der erscheint, wenn es keine Termine gibt."
+
+msgid "Next date"
+msgstr "Nächster Termin"
+
+msgid "Location"
+msgstr "Veranstaltungsort"
+
+msgid "Kind"
+msgstr "Art"
+
+msgid "No date entered"
+msgstr "Kein Termin eingetragen"
+
+msgid "over"
+msgstr "vorbei"
+
+msgid "+ %d more date"
+msgid_plural "+ %d more dates"
+msgstr[0] "+ %d weiterer Termin"
+msgstr[1] "+ %d weitere Termine"
+
+msgid "Cancelled"
+msgstr "Abgesagt"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Duplicate"
+msgstr "Duplizieren"
+
+msgid "Filter by kind"
+msgstr "Nach Art filtern"
+
+msgid "Events and market dates"
+msgstr "Veranstaltungen und Markttermine"
+
+msgid "You are not allowed to duplicate this event."
+msgstr "Sie dürfen diese Veranstaltung nicht duplizieren."
+
+msgid "%s (copy)"
+msgstr "%s (Kopie)"
+
+msgid "Event"
+msgstr "Veranstaltung"
+
+msgid "Market date"
+msgstr "Markttermin"
+
+msgid "Street and number"
+msgstr "Straße und Hausnummer"
+
+msgid "Postcode"
+msgstr "PLZ"
+
+msgid "Town"
+msgstr "Ort"
+
+msgid "Region or state"
+msgstr "Region oder Bundesland"
+
+msgid "Country code (e.g. DE)"
+msgstr "Länderkürzel (z. B. DE)"
+
+msgid "Website"
+msgstr "Website"
+
+msgid "Latitude"
+msgstr "Breitengrad"
+
+msgid "Longitude"
+msgstr "Längengrad"
+
+msgid "Latitude and longitude are optional; search engines use them to place the location on a map."
+msgstr "Breiten- und Längengrad sind optional; Suchmaschinen nutzen sie, um den Ort auf einer Karte zu zeigen."
+
+msgid "Events Manager does not remove its data when it is deleted. This step is optional: it deletes what that plugin left in the database. The events imported into this plugin are kept."
+msgstr "Events Manager entfernt seine Daten nicht, wenn es gelöscht wird. Dieser Schritt ist freiwillig: Er löscht, was das Plugin in der Datenbank hinterlassen hat. Die in dieses Plugin importierten Veranstaltungen bleiben erhalten."
+
+msgid "Nothing of Events Manager is left in the database."
+msgstr "In der Datenbank ist nichts mehr von Events Manager."
+
+msgid "What would be removed"
+msgstr "Was entfernt würde"
+
+msgid "Database tables"
+msgstr "Datenbanktabellen"
+
+msgid "Events and locations of Events Manager (posts)"
+msgstr "Veranstaltungen und Orte von Events Manager (Beiträge)"
+
+msgid "Categories and tags of Events Manager"
+msgstr "Kategorien und Schlagwörter von Events Manager"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Widgets"
+msgstr "Widgets"
+
+msgid "Also"
+msgstr "Außerdem"
+
+msgid "its capabilities in the user roles and its scheduled tasks; bookings and tickets are in the tables above"
+msgstr "seine Berechtigungen in den Benutzerrollen und seine geplanten Aufgaben; Buchungen und Tickets liegen in den Tabellen oben"
+
+msgid "Possible once Events Manager is deactivated and deleted."
+msgstr "Möglich, sobald Events Manager deaktiviert und gelöscht ist."
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "No event has been imported yet. Everything entered in Events Manager would be lost."
+msgstr "Es wurde noch keine Veranstaltung importiert. Alles, was in Events Manager eingetragen wurde, ginge verloren."
+
+msgid "%d page still uses shortcodes or blocks of Events Manager that can be changed (step 2). After the cleanup, filters by category or location can no longer be carried over."
+msgid_plural "%d pages still use shortcodes or blocks of Events Manager that can be changed (step 2). After the cleanup, filters by category or location can no longer be carried over."
+msgstr[0] "%d Seite verwendet noch Shortcodes oder Blöcke von Events Manager, die sich umstellen lassen (Schritt 2). Nach dem Aufräumen lassen sich Filter nach Kategorie oder Ort nicht mehr übernehmen."
+msgstr[1] "%d Seiten verwenden noch Shortcodes oder Blöcke von Events Manager, die sich umstellen lassen (Schritt 2). Nach dem Aufräumen lassen sich Filter nach Kategorie oder Ort nicht mehr übernehmen."
+
+msgid "This cannot be undone. Make a backup of the database first."
+msgstr "Das lässt sich nicht rückgängig machen. Sichern Sie vorher die Datenbank."
+
+msgid "Afterwards the import can no longer be repeated, compared or undone, and Events Manager would start empty if it were installed again."
+msgstr "Danach lässt sich der Import nicht mehr wiederholen, vergleichen oder rückgängig machen, und Events Manager wäre nach einer erneuten Installation leer."
+
+msgid "Menu items that still lead to events, locations or categories of Events Manager are removed with them (step 2 changes those that have a counterpart here)."
+msgstr "Menüeinträge, die noch zu Veranstaltungen, Orten oder Kategorien von Events Manager führen, werden mit entfernt (Schritt 2 stellt diejenigen um, die hier eine Entsprechung haben)."
+
+msgid "Images stay in the media library."
+msgstr "Bilder bleiben in der Mediathek."
+
+msgid "To confirm, type %s:"
+msgstr "Geben Sie zur Bestätigung %s ein:"
+
+msgid "Remove the data of Events Manager"
+msgstr "Daten von Events Manager entfernen"
+
+msgid "Removing … %d posts left."
+msgstr "Wird entfernt … noch %d Beiträge."
+
+msgid "Pages, widgets and menus that still use shortcodes, blocks or links of Events Manager are listed here and can be changed to those of this plugin. The original is kept for every change, so each one can be put back."
+msgstr "Hier stehen die Seiten, Widgets und Menüs, die noch Shortcodes, Blöcke oder Links von Events Manager verwenden. Sie lassen sich auf die dieses Plugins umstellen. Zu jeder Änderung wird das Original aufbewahrt, sodass sich jede einzeln zurücksetzen lässt."
+
+msgid "Import the events first (step 1). Filters by category or location and single events can only be carried over once they exist here."
+msgstr "Importieren Sie zuerst die Veranstaltungen (Schritt 1). Filter nach Kategorie oder Ort und einzelne Veranstaltungen lassen sich erst übernehmen, wenn es sie hier gibt."
+
+msgid "Events Manager is still active. It keeps filling its own pages and showing its widgets, so changes made here only become visible once it is deactivated."
+msgstr "Events Manager ist noch aktiv. Es füllt seine eigenen Seiten weiter und zeigt seine Widgets, deshalb werden die Änderungen hier erst sichtbar, wenn es deaktiviert ist."
+
+msgid "%d page or post changed."
+msgid_plural "%d pages or posts changed."
+msgstr[0] "%d Seite oder Beitrag umgestellt."
+msgstr[1] "%d Seiten oder Beiträge umgestellt."
+
+msgid "%d page or post put back."
+msgid_plural "%d pages or posts put back."
+msgstr[0] "%d Seite oder Beitrag zurückgesetzt."
+msgstr[1] "%d Seiten oder Beiträge zurückgesetzt."
+
+msgid "%d widget changed."
+msgid_plural "%d widgets changed."
+msgstr[0] "%d Widget umgestellt."
+msgstr[1] "%d Widgets umgestellt."
+
+msgid "%d widget put back."
+msgid_plural "%d widgets put back."
+msgstr[0] "%d Widget zurückgesetzt."
+msgstr[1] "%d Widgets zurückgesetzt."
+
+msgid "%d menu item changed."
+msgid_plural "%d menu items changed."
+msgstr[0] "%d Menüeintrag umgestellt."
+msgstr[1] "%d Menüeinträge umgestellt."
+
+msgid "%d menu item put back."
+msgid_plural "%d menu items put back."
+msgstr[0] "%d Menüeintrag zurückgesetzt."
+msgstr[1] "%d Menüeinträge zurückgesetzt."
+
+msgid "Pages and posts"
+msgstr "Seiten und Beiträge"
+
+msgid "No page, post or template uses shortcodes or blocks of Events Manager."
+msgstr "Keine Seite, kein Beitrag und keine Vorlage verwendet Shortcodes oder Blöcke von Events Manager."
+
+msgid "Put back the original content of all changed pages? Changes made to them since are lost."
+msgstr "Den ursprünglichen Inhalt aller umgestellten Seiten wiederherstellen? Seither daran vorgenommene Änderungen gehen verloren."
+
+msgid "Page"
+msgstr "Seite"
+
+msgid "Found"
+msgstr "Gefunden"
+
+msgid "Becomes"
+msgstr "Wird zu"
+
+msgid "changed"
+msgstr "umgestellt"
+
+msgid "Nothing of Events Manager is left on this page."
+msgstr "Auf dieser Seite ist nichts mehr von Events Manager."
+
+msgid "Change"
+msgstr "Umstellen"
+
+msgid "Put back"
+msgstr "Zurücksetzen"
+
+msgid "Put back the original content of this page? Changes made to it since are lost."
+msgstr "Den ursprünglichen Inhalt dieser Seite wiederherstellen? Seither daran vorgenommene Änderungen gehen verloren."
+
+msgid "No widget of Events Manager is in use."
+msgstr "Es ist kein Widget von Events Manager in Verwendung."
+
+msgid "Put back the widgets as they were?"
+msgstr "Die Widgets wieder so herstellen, wie sie waren?"
+
+msgid "The widgets of Events Manager were changed; none is left."
+msgstr "Die Widgets von Events Manager wurden umgestellt; es ist keines mehr übrig."
+
+msgid "Widget area"
+msgstr "Widget-Bereich"
+
+msgid "Widget “Events”"
+msgstr "Widget „Events“"
+
+msgid "Widget “Events Calendar”"
+msgstr "Widget „Events Calendar“"
+
+msgid "Widget “Event Locations”"
+msgstr "Widget „Event Locations“"
+
+msgid "Menus"
+msgstr "Menüs"
+
+msgid "No menu item leads to an event of Events Manager."
+msgstr "Kein Menüeintrag führt zu einer Veranstaltung von Events Manager."
+
+msgid "Menu items whose target no longer exists disappear from the menu. Changed items lead to the imported event instead."
+msgstr "Menüeinträge, deren Ziel es nicht mehr gibt, verschwinden aus dem Menü. Umgestellte Einträge führen stattdessen zur importierten Veranstaltung."
+
+msgid "Put back the menu items as they were?"
+msgstr "Die Menüeinträge wieder so herstellen, wie sie waren?"
+
+msgid "Locations have no page of their own here; please remove the menu item or link another page."
+msgstr "Orte haben hier keine eigene Seite; bitte entfernen Sie den Menüeintrag oder verlinken Sie eine andere Seite."
+
+msgid "Categories and tags have no page of their own here; please remove the menu item or link another page."
+msgstr "Kategorien und Schlagwörter haben hier keine eigene Seite; bitte entfernen Sie den Menüeintrag oder verlinken Sie eine andere Seite."
+
+msgid "The page with the list of events was not found; please link the right page by hand."
+msgstr "Die Seite mit der Veranstaltungsliste wurde nicht gefunden; bitte verlinken Sie die richtige Seite von Hand."
+
+msgid "The event it leads to was not imported."
+msgstr "Die Veranstaltung, zu der er führt, wurde nicht importiert."
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Menu item"
+msgstr "Menüeintrag"
+
+msgid "Leads to"
+msgstr "Führt zu"
+
+msgid "Change all"
+msgstr "Alle umstellen"
+
+msgid "Put all back"
+msgstr "Alle zurücksetzen"
+
+msgid "stays as it is"
+msgstr "bleibt unverändert"
+
+msgid "Has no counterpart in this plugin; please remove or replace it by hand."
+msgstr "Hat in diesem Plugin keine Entsprechung; bitte von Hand entfernen oder ersetzen."
+
+msgid "Its own output format is not carried over; the display follows this plugin."
+msgstr "Das eigene Ausgabeformat wird nicht übernommen; die Darstellung richtet sich nach diesem Plugin."
+
+msgid "The period “%s” does not exist here; upcoming dates are shown."
+msgstr "Den Zeitraum „%s“ gibt es hier nicht; es werden die anstehenden Termine gezeigt."
+
+msgid "The filter %s could not be carried over and is left out."
+msgstr "Der Filter %s ließ sich nicht übernehmen und entfällt."
+
+msgid "The attribute %s is not supported and is left out."
+msgstr "Das Attribut %s wird nicht unterstützt und entfällt."
+
+msgid "The event it shows was not imported."
+msgstr "Die gezeigte Veranstaltung wurde nicht importiert."
+
+msgid "Events Manager replaced the whole content of this page with its list; here the list is added below the existing content."
+msgstr "Events Manager hat den gesamten Inhalt dieser Seite durch seine Liste ersetzt; hier wird die Liste unter den vorhandenen Inhalt gesetzt."
+
+msgid "This page showed the list of locations of Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte die Liste der Orte von Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "This page showed the list of categories of Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte die Liste der Kategorien von Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "This page showed the list of tags of Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte die Liste der Schlagwörter von Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "This page showed visitors their bookings in Events Manager. There is no replacement; please change or delete the page."
+msgstr "Diese Seite zeigte Besuchern ihre Buchungen in Events Manager. Dafür gibt es keinen Ersatz; bitte ändern oder löschen Sie die Seite."
+
+msgid "Import from Events Manager"
+msgstr "Import aus Events Manager"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "You are not allowed to import events."
+msgstr "Sie dürfen keine Veranstaltungen importieren."
+
+msgid "1. Events"
+msgstr "1. Veranstaltungen"
+
+msgid "2. Pages, widgets and menus"
+msgstr "2. Seiten, Widgets und Menüs"
+
+msgid "3. Clean up"
+msgstr "3. Aufräumen"
+
+msgid "No data of Events Manager was found in the database of this website."
+msgstr "In der Datenbank dieser Website wurden keine Daten von Events Manager gefunden."
+
+msgid "The import copies events, locations, categories and tags. The data of Events Manager stays as it is, so you can compare, repeat the import or undo it."
+msgstr "Der Import kopiert Veranstaltungen, Orte, Kategorien und Schlagwörter. Die Daten von Events Manager bleiben unverändert; Sie können also vergleichen, den Import wiederholen oder rückgängig machen."
+
+msgid "Events Manager"
+msgstr "Events Manager"
+
+msgid "installed and active"
+msgstr "installiert und aktiv"
+
+msgid "not active (its data is still in the database)"
+msgstr "nicht aktiv (die Daten liegen noch in der Datenbank)"
+
+msgid "Version of the data"
+msgstr "Version der Daten"
+
+msgid "Single events"
+msgstr "Einzelne Veranstaltungen"
+
+msgid "Series"
+msgstr "Serien"
+
+msgid "%1$d with %2$d dates, each becomes one event with all its dates"
+msgstr "%1$d mit %2$d Terminen; jede wird zu einer Veranstaltung mit all ihren Terminen"
+
+msgid "Locations"
+msgstr "Veranstaltungsorte"
+
+msgid "Categories and tags"
+msgstr "Kategorien und Schlagwörter"
+
+msgid "Already imported: %1$d events and %2$d locations. Importing again updates them from Events Manager; dates, texts and locations changed here in the meantime are overwritten."
+msgstr "Bereits importiert: %1$d Veranstaltungen und %2$d Orte. Ein erneuter Import aktualisiert sie aus Events Manager; Termine, Texte und Orte, die hier inzwischen geändert wurden, werden überschrieben."
+
+msgid "Some series could not be reproduced exactly (see “Series” above). You can import anyway and correct those events afterwards."
+msgstr "Einige Serien ließen sich nicht exakt nachbilden (siehe „Serien“ oben). Sie können trotzdem importieren und diese Veranstaltungen danach korrigieren."
+
+msgid "Import again"
+msgstr "Erneut importieren"
+
+msgid "Import now"
+msgstr "Jetzt importieren"
+
+msgid "After the import"
+msgstr "Nach dem Import"
+
+msgid "Undo the import"
+msgstr "Import rückgängig machen"
+
+msgid "Deletes every imported event, location, category and tag, including changes made to them here, and puts back the pages, widgets and menus changed in step 2. Events entered by hand and the data of Events Manager are kept."
+msgstr "Löscht alle importierten Veranstaltungen, Orte, Kategorien und Schlagwörter, einschließlich der hier daran vorgenommenen Änderungen, und setzt die in Schritt 2 geänderten Seiten, Widgets und Menüs zurück. Von Hand eingetragene Veranstaltungen und die Daten von Events Manager bleiben erhalten."
+
+msgid "Delete everything that was imported?"
+msgstr "Alles Importierte löschen?"
+
+msgid "Import finished: %1$d events created, %2$d updated, %3$d locations, %4$d categories and tags."
+msgstr "Import abgeschlossen: %1$d Veranstaltungen angelegt, %2$d aktualisiert, %3$d Orte, %4$d Kategorien und Schlagwörter."
+
+msgid "Import undone: %1$d events, %2$d locations and %3$d categories and tags deleted."
+msgstr "Import rückgängig gemacht: %1$d Veranstaltungen, %2$d Orte und %3$d Kategorien und Schlagwörter gelöscht."
+
+msgid "The events now use the address Events Manager used."
+msgstr "Die Veranstaltungen nutzen jetzt die Adresse, die Events Manager verwendet hat."
+
+msgid "The data of Events Manager was removed."
+msgstr "Die Daten von Events Manager wurden entfernt."
+
+msgid "Nothing was removed: the confirmation was not typed correctly."
+msgstr "Es wurde nichts entfernt: Die Bestätigung war nicht richtig eingegeben."
+
+msgid "Deactivate Events Manager first; two plugins cannot answer under the same address."
+msgstr "Deaktivieren Sie zuerst Events Manager; zwei Plugins können nicht unter derselben Adresse antworten."
+
+msgid "%d event in the trash"
+msgid_plural "%d events in the trash"
+msgstr[0] "%d Veranstaltung im Papierkorb"
+msgstr[1] "%d Veranstaltungen im Papierkorb"
+
+msgid "%d event that was deleted for good (Events Manager kept a leftover of it)"
+msgid_plural "%d events that were deleted for good (Events Manager kept leftovers of them)"
+msgstr[0] "%d endgültig gelöschte Veranstaltung (Events Manager hat einen Rest davon behalten)"
+msgstr[1] "%d endgültig gelöschte Veranstaltungen (Events Manager hat Reste davon behalten)"
+
+msgid "%d time slot (events keep their overall start and end)"
+msgid_plural "%d time slots (events keep their overall start and end)"
+msgstr[0] "%d Zeitfenster (Veranstaltungen behalten Gesamtbeginn und -ende)"
+msgstr[1] "%d Zeitfenster (Veranstaltungen behalten Gesamtbeginn und -ende)"
+
+msgid "“%s” has no usable date"
+msgstr "„%s“ hat kein verwertbares Datum"
+
+msgid "bookings, tickets and booking forms"
+msgstr "Buchungen, Tickets und Buchungsformulare"
+
+msgid "the list and page formats of Events Manager (the display follows this plugin)"
+msgstr "die Listen- und Seitenformate von Events Manager (die Darstellung richtet sich nach diesem Plugin)"
+
+msgid "Not imported"
+msgstr "Nicht importiert"
+
+msgid "Every series is checked: the dates it will have here are compared with the dates Events Manager created."
+msgstr "Jede Serie wird geprüft: Die Termine, die sie hier haben wird, werden mit den Terminen verglichen, die Events Manager angelegt hat."
+
+msgid "Dates"
+msgstr "Termine"
+
+msgid "Check"
+msgstr "Prüfung"
+
+msgid "%d rule"
+msgid_plural "%d rules"
+msgstr[0] "%d Regel"
+msgstr[1] "%d Regeln"
+
+msgid "%d single date"
+msgid_plural "%d single dates"
+msgstr[0] "%d Einzeltermin"
+msgstr[1] "%d Einzeltermine"
+
+msgid "%d day left out"
+msgid_plural "%d days left out"
+msgstr[0] "%d ausgelassener Tag"
+msgstr[1] "%d ausgelassene Tage"
+
+msgid "%d changed or cancelled date"
+msgid_plural "%d changed or cancelled dates"
+msgstr[0] "%d geänderter oder abgesagter Termin"
+msgstr[1] "%d geänderte oder abgesagte Termine"
+
+msgid "all dates match"
+msgstr "alle Termine stimmen überein"
+
+msgid "%d difference"
+msgid_plural "%d differences"
+msgstr[0] "%d Abweichung"
+msgstr[1] "%d Abweichungen"
+
+msgid "The post of this event no longer exists; it is imported as a draft."
+msgstr "Der Beitrag dieser Veranstaltung existiert nicht mehr; sie wird als Entwurf importiert."
+
+msgid "Restored from the post; the entry in the events table was missing."
+msgstr "Aus dem Beitrag wiederhergestellt; der Eintrag in der Veranstaltungstabelle fehlte."
+
+msgid "This date of a series has its own title or text and becomes an event of its own."
+msgstr "Dieser Termin einer Serie hat einen eigenen Titel oder Text und wird zu einer eigenen Veranstaltung."
+
+msgid "Was entered in another time zone; the times are taken as they are."
+msgstr "Wurde in einer anderen Zeitzone eingetragen; die Uhrzeiten werden unverändert übernommen."
+
+msgid "The rule of this series is not supported; its dates are imported one by one."
+msgstr "Die Regel dieser Serie wird nicht unterstützt; ihre Termine werden einzeln importiert."
+
+msgid "The rule of this series has no weekdays; its dates are imported one by one."
+msgstr "Die Regel dieser Serie hat keine Wochentage; ihre Termine werden einzeln importiert."
+
+msgid "The rule of this series has no weekday; its dates are imported one by one."
+msgstr "Die Regel dieser Serie hat keinen Wochentag; ihre Termine werden einzeln importiert."
+
+msgid "The series ends after a number of dates; please check its last dates."
+msgstr "Die Serie endet nach einer Anzahl von Terminen; bitte prüfen Sie ihre letzten Termine."
+
+msgid "The series has more entries than an event can hold; the rest was left out."
+msgstr "Die Serie hat mehr Einträge, als eine Veranstaltung fassen kann; der Rest wurde ausgelassen."
+
+msgid "Please note"
+msgstr "Bitte beachten"
+
+msgid "Keep the old addresses"
+msgstr "Alte Adressen beibehalten"
+
+msgid "As long as Events Manager is active it keeps the address /%1$s/, and the events of this plugin are available under /%2$s/. Once Events Manager is deactivated they use /%1$s/ by themselves."
+msgstr "Solange Events Manager aktiv ist, behält es die Adresse /%1$s/, und die Veranstaltungen dieses Plugins sind unter /%2$s/ erreichbar. Sobald Events Manager deaktiviert ist, nutzen sie von selbst /%1$s/."
+
+msgid "Events already use the address /%s/ as before."
+msgstr "Die Veranstaltungen nutzen bereits wie zuvor die Adresse /%s/."
+
+msgid "Events Manager showed events under /%1$s/; this plugin uses /%2$s/. Take over the old address so that existing links and search results keep working. The single dates of a series then lead to the series."
+msgstr "Events Manager zeigte Veranstaltungen unter /%1$s/; dieses Plugin nutzt /%2$s/. Übernehmen Sie die alte Adresse, damit bestehende Links und Suchergebnisse weiter funktionieren. Die einzelnen Termine einer Serie führen dann zur Serie."
+
+msgid "Possible once Events Manager is deactivated."
+msgstr "Möglich, sobald Events Manager deaktiviert ist."
+
+msgid "Take over the old address"
+msgstr "Alte Adresse übernehmen"
+
+msgid "Importing … %1$d of %2$d events."
+msgstr "Import läuft … %1$d von %2$d Veranstaltungen."
+
+msgid "Some entries could not be saved as entered:"
+msgstr "Einige Angaben konnten nicht wie eingegeben gespeichert werden:"
+
+msgid "… and %d more."
+msgstr "… und %d weitere."
+
+msgid "Invalid date; the entry was left out."
+msgstr "Ungültiges Datum; der Eintrag wurde ausgelassen."
+
+msgid "Invalid time. Use the format HH:MM."
+msgstr "Ungültige Uhrzeit. Bitte im Format HH:MM angeben."
+
+msgid "The end is before the start; the end was ignored."
+msgstr "Das Ende liegt vor dem Beginn; das Ende wurde ignoriert."
+
+msgid "“Same hours every day” needs an end time later than the start time."
+msgstr "„Täglich dieselben Zeiten“ braucht ein Ende, das nach dem Beginn liegt."
+
+msgid "Unknown choice; the entry was left out."
+msgstr "Unbekannte Auswahl; der Eintrag wurde ausgelassen."
+
+msgid "Invalid web address (only http and https are allowed)."
+msgstr "Ungültige Webadresse (nur http und https sind erlaubt)."
+
+msgid "The editor data could not be read; nothing was changed. Please reload the page and try again."
+msgstr "Die Daten des Editors konnten nicht gelesen werden; es wurde nichts geändert. Bitte laden Sie die Seite neu und versuchen Sie es erneut."
+
+msgid "The new location could not be created."
+msgstr "Der neue Ort konnte nicht angelegt werden."
+
+msgid "At most %d entries are allowed; the rest was left out."
+msgstr "Es sind höchstens %d Einträge erlaubt; der Rest wurde ausgelassen."
+
+msgid "Invalid value."
+msgstr "Ungültiger Wert."
+
+msgid "Exceptions"
+msgstr "Ausnahmen"
+
+msgid "Changed dates"
+msgstr "Geänderte Termine"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Start date"
+msgstr "Beginn (Datum)"
+
+msgid "End date"
+msgstr "Ende (Datum)"
+
+msgid "Start time"
+msgstr "Beginn (Uhrzeit)"
+
+msgid "End time"
+msgstr "Ende (Uhrzeit)"
+
+msgid "First date"
+msgstr "Erster Termin"
+
+msgid "Last date"
+msgstr "Letzter Termin"
+
+msgid "Repetition"
+msgstr "Wiederholung"
+
+msgid "Organiser website"
+msgstr "Website des Veranstalters"
+
+msgid "Link for more information"
+msgstr "Link für weitere Informationen"
+
+msgid "Events Settings"
+msgstr "Einstellungen für Veranstaltungen"
+
+msgid "Components"
+msgstr "Komponenten"
+
+msgid "Manage locations with an address and assign them to events"
+msgstr "Orte mit Adresse verwalten und Veranstaltungen zuordnen"
+
+msgid "Enter markets where the business has a stall and list them separately"
+msgstr "Märkte eintragen, auf denen das Unternehmen einen Stand hat, und sie getrennt auflisten"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Month calendar and small calendar as block and shortcode"
+msgstr "Monatskalender und kleiner Kalender als Block und Shortcode"
+
+msgid "Import events from Events Manager (adds the menu item “Import”)"
+msgstr "Veranstaltungen aus Events Manager importieren (fügt den Menüpunkt „Import“ hinzu)"
+
+msgid "Display"
+msgstr "Darstellung"
+
+msgid "Dates per list"
+msgstr "Termine je Liste"
+
+msgid "Used when a block or shortcode does not set its own limit."
+msgstr "Gilt, wenn ein Block oder Shortcode keine eigene Anzahl festlegt."
+
+msgid "Show the end time of events"
+msgstr "Ende der Veranstaltungen anzeigen"
+
+msgid "Event page"
+msgstr "Veranstaltungsseite"
+
+msgid "Show dates, location and details above the description automatically"
+msgstr "Termine, Ort und Details automatisch über der Beschreibung anzeigen"
+
+msgid "Calendar file"
+msgstr "Kalenderdatei"
+
+msgid "Offer “Add to calendar” (.ics) for upcoming dates"
+msgstr "„Zum Kalender hinzufügen“ (.ics) für anstehende Termine anbieten"
+
+msgid "Structured data"
+msgstr "Strukturierte Daten"
+
+msgid "Describe events for search engines (schema.org JSON-LD)"
+msgstr "Veranstaltungen für Suchmaschinen beschreiben (schema.org JSON-LD)"
+
+msgid "Repeat ahead (months)"
+msgstr "Wiederholungen voraus (Monate)"
+
+msgid "How far into the future dates of repeating events without an end are created."
+msgstr "Wie weit in die Zukunft Termine von Wiederholungen ohne Ende erzeugt werden."
+
+msgid "Pages and addresses"
+msgstr "Seiten und Adressen"
+
+msgid "Events page"
+msgstr "Veranstaltungsseite (Liste)"
+
+msgid "The page that shows the events list. Days in the small calendar link to it."
+msgstr "Die Seite mit der Veranstaltungsliste. Die Tage im kleinen Kalender verlinken dorthin."
+
+msgid "Address of events"
+msgstr "Adresse der Veranstaltungen"
+
+msgid "Location pages"
+msgstr "Seiten für Orte"
+
+msgid "Locations have their own public page"
+msgstr "Orte haben eine eigene öffentliche Seite"
+
+msgid "Address of locations"
+msgstr "Adresse der Orte"
+
+msgid "Access"
+msgstr "Zugriff"
+
+msgid "Roles that may manage events"
+msgstr "Rollen, die Veranstaltungen verwalten dürfen"
+
+msgid "Uninstall"
+msgstr "Deinstallation"
+
+msgid "Delete data"
+msgstr "Daten löschen"
+
+msgid "Delete all events, locations, categories and settings when the plugin is deleted"
+msgstr "Alle Veranstaltungen, Orte, Kategorien und Einstellungen löschen, wenn das Plugin gelöscht wird"
+
+msgid "Switch off what this website does not need. A component that is off adds no menu items, blocks or pages."
+msgstr "Schalten Sie aus, was diese Website nicht braucht. Eine ausgeschaltete Komponente fügt keine Menüpunkte, Blöcke oder Seiten hinzu."
+
+msgid "Changing an address changes the links of all events. Visitors and search engines that know the old links will no longer find them."
+msgstr "Eine geänderte Adresse ändert die Links aller Veranstaltungen. Besucher und Suchmaschinen, die die alten Links kennen, finden sie dann nicht mehr."
+
+msgid "Administrators always have access. Tick the roles that should also see the Events menu and edit events, locations and categories. These settings stay reserved for administrators."
+msgstr "Administratoren haben immer Zugriff. Wählen Sie die Rollen, die zusätzlich das Menü „Veranstaltungen“ sehen und Veranstaltungen, Orte und Kategorien bearbeiten dürfen. Diese Einstellungen bleiben Administratoren vorbehalten."
+
+msgid "You are not allowed to change these settings."
+msgstr "Sie dürfen diese Einstellungen nicht ändern."
+
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+msgid "— None —"
+msgstr "— Keine —"
+
+msgid "Fixed by your web developer for this website."
+msgstr "Für diese Website von Ihrem Webentwickler festgelegt."
+
+msgid "Enabled"
+msgstr "Aktiviert"
+
+msgid "always"
+msgstr "immer"
+
+msgid "Colour"
+msgstr "Farbe"
+
+msgid "Use a colour"
+msgstr "Farbe verwenden"
+
+msgid "Events of this category are marked with this colour in lists and calendars."
+msgstr "Veranstaltungen dieser Kategorie werden in Listen und Kalendern mit dieser Farbe gekennzeichnet."
+
+msgid "RMD Events Organizer: the built block files are missing. You probably installed the “Source code” download from GitHub. Please install the file rmd-events-organizer.zip from the release page instead (or run “npm install && npm run build” in a development checkout)."
+msgstr "RMD Veranstaltungen: Die gebauten Block-Dateien fehlen. Vermutlich wurde der „Source code“-Download von GitHub installiert. Bitte installieren Sie stattdessen die Datei rmd-events-organizer.zip von der Release-Seite (oder führen Sie in einem Entwicklungs-Checkout „npm install && npm run build“ aus)."
+
+msgid "Choose a published event in the block settings."
+msgstr "Wählen Sie in den Block-Einstellungen eine veröffentlichte Veranstaltung."
+
+msgid "Inactive widgets"
+msgstr "Inaktive Widgets"
+
+msgid "View event"
+msgstr "Veranstaltung ansehen"
+
+msgid "Event updated."
+msgstr "Veranstaltung aktualisiert."
+
+msgid "Event published."
+msgstr "Veranstaltung veröffentlicht."
+
+msgid "Event saved."
+msgstr "Veranstaltung gespeichert."
+
+msgid "Event submitted for review."
+msgstr "Veranstaltung zur Überprüfung eingereicht."
+
+msgid "Event scheduled."
+msgstr "Veranstaltung geplant."
+
+msgid "Event draft updated."
+msgstr "Veranstaltungsentwurf aktualisiert."
+
+msgid "Location updated."
+msgstr "Ort aktualisiert."
+
+msgid "Location saved."
+msgstr "Ort gespeichert."
+
+msgid "All events"
+msgstr "Alle Veranstaltungen"
+
+msgid "Add event"
+msgstr "Veranstaltung hinzufügen"
+
+msgid "Add new event"
+msgstr "Neue Veranstaltung hinzufügen"
+
+msgid "Edit event"
+msgstr "Veranstaltung bearbeiten"
+
+msgid "New event"
+msgstr "Neue Veranstaltung"
+
+msgid "Search events"
+msgstr "Veranstaltungen durchsuchen"
+
+msgid "No events found."
+msgstr "Keine Veranstaltungen gefunden."
+
+msgid "No events in the trash."
+msgstr "Keine Veranstaltungen im Papierkorb."
+
+msgid "Event image"
+msgstr "Veranstaltungsbild"
+
+msgid "Set event image"
+msgstr "Veranstaltungsbild festlegen"
+
+msgid "Remove event image"
+msgstr "Veranstaltungsbild entfernen"
+
+msgid "Use as event image"
+msgstr "Als Veranstaltungsbild verwenden"
+
+msgid "Event moved to the trash."
+msgstr "Veranstaltung in den Papierkorb verschoben."
+
+msgid "Event reverted to draft."
+msgstr "Veranstaltung auf Entwurf zurückgesetzt."
+
+msgid "Events and market dates managed by RMD Events Organizer."
+msgstr "Veranstaltungen und Markttermine, verwaltet mit RMD Veranstaltungen."
+
+msgid "Add location"
+msgstr "Ort hinzufügen"
+
+msgid "Add new location"
+msgstr "Neuen Ort hinzufügen"
+
+msgid "Edit location"
+msgstr "Ort bearbeiten"
+
+msgid "New location"
+msgstr "Neuer Ort"
+
+msgid "View location"
+msgstr "Ort ansehen"
+
+msgid "Search locations"
+msgstr "Orte durchsuchen"
+
+msgid "No locations found."
+msgstr "Keine Orte gefunden."
+
+msgid "No locations in the trash."
+msgstr "Keine Orte im Papierkorb."
+
+msgid "Previous month"
+msgstr "Vorheriger Monat"
+
+msgid "Next month"
+msgstr "Nächster Monat"
+
+msgid "%1$s: %2$d date"
+msgid_plural "%1$s: %2$d dates"
+msgstr[0] "%1$s: %2$d Termin"
+msgstr[1] "%1$s: %2$d Termine"
+
+msgid "This event has been cancelled."
+msgstr "Diese Veranstaltung wurde abgesagt."
+
+msgid "Add to calendar"
+msgstr "Zum Kalender hinzufügen"
+
+msgid "This date is in the past."
+msgstr "Dieser Termin liegt in der Vergangenheit."
+
+msgid "… and %d more date."
+msgid_plural "… and %d more dates."
+msgstr[0] "… und %d weiterer Termin."
+msgstr[1] "… und %d weitere Termine."
+
+msgid "Website of the location"
+msgstr "Website des Ortes"
+
+msgid "Our stall: %s"
+msgstr "Unser Stand: %s"
+
+msgid "Organiser"
+msgstr "Veranstalter"
+
+msgid "Admission"
+msgstr "Eintritt"
+
+msgid "More information"
+msgstr "Weitere Informationen"
+
+msgctxt "date and time"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+msgid "%1$s, daily %2$s"
+msgstr "%1$s, täglich %2$s"
+
+msgctxt "date range"
+msgid "%1$s – %2$s"
+msgstr "%1$s – %2$s"
+
+msgctxt "time range"
+msgid "%1$s – %2$s"
+msgstr "%1$s – %2$s"
+
+msgid "Show all dates"
+msgstr "Alle Termine anzeigen"
+
+msgid "There are no dates at the moment."
+msgstr "Zurzeit gibt es keine Termine."
+
+msgid "Event pages"
+msgstr "Seiten der Terminliste"
+
+msgid "Earlier dates"
+msgstr "Frühere Termine"
+
+msgid "Later dates"
+msgstr "Spätere Termine"
+
+msgid "The calendar is switched off."
+msgstr "Der Kalender ist ausgeschaltet."
+
+msgid "RMD Events Organizer: market dates are switched off in the settings. This message is only visible to editors."
+msgstr "RMD Veranstaltungen: Markttermine sind in den Einstellungen ausgeschaltet. Diese Meldung sehen nur Bearbeiter."
+
+msgid "RMD Events Organizer: the calendar is switched off in the settings. This message is only visible to editors."
+msgstr "RMD Veranstaltungen: Der Kalender ist in den Einstellungen ausgeschaltet. Diese Meldung sehen nur Bearbeiter."
+
+msgid "RMD Events Organizer: no published event with this id. This message is only visible to editors."
+msgstr "RMD Veranstaltungen: Keine veröffentlichte Veranstaltung mit dieser ID. Diese Meldung sehen nur Bearbeiter."
+
+msgid "Event categories"
+msgstr "Veranstaltungskategorien"
+
+msgid "Event category"
+msgstr "Veranstaltungskategorie"
+
+msgid "Categories"
+msgstr "Kategorien"
+
+msgid "All categories"
+msgstr "Alle Kategorien"
+
+msgid "Edit category"
+msgstr "Kategorie bearbeiten"
+
+msgid "Add new category"
+msgstr "Neue Kategorie hinzufügen"
+
+msgid "Search categories"
+msgstr "Kategorien durchsuchen"
+
+msgid "No categories found."
+msgstr "Keine Kategorien gefunden."
+
+msgid "Event tags"
+msgstr "Veranstaltungsschlagwörter"
+
+msgid "Event tag"
+msgstr "Veranstaltungsschlagwort"
+
+msgid "Tags"
+msgstr "Schlagwörter"
+
+msgid "All tags"
+msgstr "Alle Schlagwörter"
+
+msgid "Edit tag"
+msgstr "Schlagwort bearbeiten"
+
+msgid "Add new tag"
+msgstr "Neues Schlagwort hinzufügen"
+
+msgid "Search tags"
+msgstr "Schlagwörter durchsuchen"
+
+msgid "No tags found."
+msgstr "Keine Schlagwörter gefunden."
+
+msgid "RMD Events Organizer requires PHP %1$s or newer. This site runs PHP %2$s, so the plugin stays inactive."
+msgstr "RMD Veranstaltungen benötigt PHP %1$s oder neuer. Diese Website läuft mit PHP %2$s, das Plugin bleibt deshalb inaktiv."
+
+msgid "Market date (we have a stall there)"
+msgstr "Markttermin (wir haben dort einen Stand)"
+
+msgid "When"
+msgstr "Wann"
+
+msgid "Add date"
+msgstr "Termin hinzufügen"
+
+msgid "Where"
+msgstr "Wo"
+
+msgid "Where our stall is"
+msgstr "Wo unser Stand ist"
+
+msgid "For example “Stall 12, next to the fountain”."
+msgstr "Zum Beispiel „Stand 12, neben dem Brunnen“."
+
+msgid "Note"
+msgstr "Hinweis"
+
+msgid "For example what you bring along."
+msgstr "Zum Beispiel, was Sie mitbringen."
+
+msgid "Free text, for example “free” or “8 €, reduced 5 €”."
+msgstr "Freier Text, zum Beispiel „frei“ oder „8 €, ermäßigt 5 €“."
+
+msgid "The whole event is cancelled"
+msgstr "Die gesamte Veranstaltung ist abgesagt"
+
+msgid "It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above."
+msgstr "Sie bleibt sichtbar und wird als abgesagt gekennzeichnet. Einen einzelnen Termin sagen Sie oben in der Liste der nächsten Termine ab."
+
+msgid "first"
+msgstr "ersten"
+
+msgid "second"
+msgstr "zweiten"
+
+msgid "third"
+msgstr "dritten"
+
+msgid "fourth"
+msgstr "vierten"
+
+msgid "fifth"
+msgstr "fünften"
+
+msgid "last"
+msgstr "letzten"
+
+msgid "All day"
+msgstr "Ganztägig"
+
+msgid "Starts at"
+msgstr "Beginn"
+
+msgid "Ends at"
+msgstr "Ende"
+
+msgid "The times apply"
+msgstr "Die Uhrzeiten gelten"
+
+msgid "to every day (same hours every day)"
+msgstr "für jeden Tag (täglich dieselben Zeiten)"
+
+msgid "to the first and last day (runs through)"
+msgstr "für den ersten und letzten Tag (durchgehend)"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Last day (if several days)"
+msgstr "Letzter Tag (bei mehreren Tagen)"
+
+msgctxt "every N days"
+msgid "days"
+msgstr "Tage"
+
+msgctxt "every N weeks"
+msgid "weeks"
+msgstr "Wochen"
+
+msgctxt "every N months"
+msgid "months"
+msgstr "Monate"
+
+msgctxt "every N years"
+msgid "years"
+msgstr "Jahre"
+
+msgid "Repeats"
+msgstr "Wiederholt sich"
+
+msgid "Daily"
+msgstr "Täglich"
+
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+msgid "Monthly"
+msgstr "Monatlich"
+
+msgid "Yearly"
+msgstr "Jährlich"
+
+msgid "Every"
+msgstr "Alle"
+
+msgid "On"
+msgstr "Am"
+
+msgid "the same day of the month as the first date"
+msgstr "selben Tag des Monats wie der erste Termin"
+
+msgid "a weekday, e.g. the first Saturday"
+msgstr "Wochentag, z. B. am ersten Samstag"
+
+msgid "Which one"
+msgstr "Welcher"
+
+msgid "Weekday"
+msgstr "Wochentag"
+
+msgid "Ends"
+msgstr "Endet"
+
+msgid "Never"
+msgstr "Nie"
+
+msgid "On a date"
+msgstr "An einem Datum"
+
+msgid "After a number of dates"
+msgstr "Nach einer Anzahl von Terminen"
+
+msgid "Number of dates"
+msgstr "Anzahl der Termine"
+
+msgid "Each date lasts (days)"
+msgstr "Dauer je Termin (Tage)"
+
+msgid "Type of date"
+msgstr "Art des Termins"
+
+msgid "One date"
+msgstr "Einzelner Termin"
+
+msgid "Not on these days"
+msgstr "Nicht an diesen Tagen"
+
+msgid "Day or first day"
+msgstr "Tag oder erster Tag"
+
+msgid "Last day (optional)"
+msgstr "Letzter Tag (optional)"
+
+msgid "Add exception"
+msgstr "Ausnahme hinzufügen"
+
+msgid "— No location —"
+msgstr "— Kein Ort —"
+
+msgid "+ Enter a new location"
+msgstr "+ Neuen Ort eingeben"
+
+msgid "Name of the location"
+msgstr "Name des Ortes"
+
+msgid "The location is saved with the event and can be chosen for other events afterwards."
+msgstr "Der Ort wird mit der Veranstaltung gespeichert und kann danach auch für andere Veranstaltungen gewählt werden."
+
+msgid "Enter a date to see when the event takes place."
+msgstr "Geben Sie ein Datum ein, um zu sehen, wann die Veranstaltung stattfindet."
+
+msgid "Next dates"
+msgstr "Nächste Termine"
+
+msgid "The preview could not be loaded. You can still save."
+msgstr "Die Vorschau konnte nicht geladen werden. Speichern ist trotzdem möglich."
+
+msgid "All dates are in the past."
+msgstr "Alle Termine liegen in der Vergangenheit."
+
+msgid "These settings produce no dates."
+msgstr "Mit diesen Angaben entstehen keine Termine."
+
+msgid "Takes place after all"
+msgstr "Findet doch statt"
+
+msgid "Mark as cancelled"
+msgstr "Als abgesagt markieren"
+
+msgid "Leave out"
+msgstr "Auslassen"
+
+msgid "Repeating dates without an end are continued automatically."
+msgstr "Wiederholungen ohne Ende werden automatisch fortgeführt."
+
+msgctxt "block title"
+msgid "Event Details"
+msgstr "Veranstaltungsdetails"
+
+msgctxt "block description"
+msgid "Dates, location and details of one event."
+msgstr "Termine, Ort und Details einer Veranstaltung."
+
+msgctxt "block keyword"
+msgid "event"
+msgstr "Veranstaltung"
+
+msgctxt "block keyword"
+msgid "date"
+msgstr "Termin"
+
+msgctxt "block keyword"
+msgid "Veranstaltung"
+msgstr "Event"
+
+msgctxt "block keyword"
+msgid "Termin"
+msgstr "Datum"
+
+msgid "— Choose —"
+msgstr "— Auswählen —"
+
+msgid "Show the name of the event"
+msgstr "Namen der Veranstaltung anzeigen"
+
+msgctxt "block title"
+msgid "Events"
+msgstr "Veranstaltungen"
+
+msgctxt "block description"
+msgid "A list of event dates: upcoming, past or within a period, filtered by category, tag or location."
+msgstr "Eine Liste von Terminen: anstehende, vergangene oder die eines Zeitraums, gefiltert nach Kategorie, Schlagwort oder Ort."
+
+msgctxt "block keyword"
+msgid "events"
+msgstr "Veranstaltungen"
+
+msgctxt "block keyword"
+msgid "dates"
+msgstr "Termine"
+
+msgctxt "block keyword"
+msgid "Veranstaltungen"
+msgstr "Events"
+
+msgctxt "block keyword"
+msgid "Termine"
+msgstr "Daten"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Events only"
+msgstr "Nur Veranstaltungen"
+
+msgid "Market dates only"
+msgstr "Nur Markttermine"
+
+msgctxt "block title"
+msgid "Events Calendar"
+msgstr "Veranstaltungskalender"
+
+msgctxt "block description"
+msgid "A month calendar with all events, or a small calendar that only marks the days with events."
+msgstr "Ein Monatskalender mit allen Veranstaltungen oder ein kleiner Kalender, der nur die Tage mit Terminen markiert."
+
+msgctxt "block keyword"
+msgid "calendar"
+msgstr "Kalender"
+
+msgctxt "block keyword"
+msgid "Kalender"
+msgstr "Monat"
+
+msgid "Size"
+msgstr "Größe"
+
+msgid "The small calendar only marks the days that have dates. It fits into a sidebar."
+msgstr "Der kleine Kalender markiert nur die Tage mit Terminen. Er passt in eine Seitenleiste."
+
+msgid "Month calendar with events"
+msgstr "Monatskalender mit Veranstaltungen"
+
+msgid "Small calendar"
+msgstr "Kleiner Kalender"
+
+msgctxt "block title"
+msgid "Market Dates"
+msgstr "Markttermine"
+
+msgctxt "block description"
+msgid "The markets where the business has a stall, with dates, place and stall position."
+msgstr "Die Märkte, auf denen das Unternehmen einen Stand hat, mit Terminen, Ort und Standplatz."
+
+msgctxt "block keyword"
+msgid "market"
+msgstr "Markt"
+
+msgctxt "block keyword"
+msgid "stall"
+msgstr "Stand"
+
+msgctxt "block keyword"
+msgid "Markt"
+msgstr "Märkte"
+
+msgctxt "block keyword"
+msgid "Stand"
+msgstr "Marktstand"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Tag"
+msgstr "Schlagwort"
+
+msgid "Time"
+msgstr "Uhrzeit"
+
+msgid "Stall position"
+msgstr "Standplatz"
+
+msgid "Excerpt"
+msgstr "Auszug"
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Which dates"
+msgstr "Welche Termine"
+
+msgid "Upcoming"
+msgstr "Anstehende"
+
+msgid "Past"
+msgstr "Vergangene"
+
+msgid "Today"
+msgstr "Heute"
+
+msgid "This month"
+msgstr "Dieser Monat"
+
+msgid "0 uses the number from the settings."
+msgstr "0 verwendet die Anzahl aus den Einstellungen."
+
+msgid "Each event only once, with its next date"
+msgstr "Jede Veranstaltung nur einmal, mit ihrem nächsten Termin"
+
+msgid "Headings"
+msgstr "Überschriften"
+
+msgid "None"
+msgstr "Keine"
+
+msgid "Per month"
+msgstr "Je Monat"
+
+msgid "Per year"
+msgstr "Je Jahr"
+
+msgid "Show"
+msgstr "Anzeigen"
+
+msgid "Links to earlier and later dates"
+msgstr "Links zu früheren und späteren Terminen"
+
+msgid "Text when there are no dates"
+msgstr "Text, wenn es keine Termine gibt"
+
+msgid "RMD Events Organizer"
+msgstr "RMD Veranstaltungen"
+
+msgid "Events and market dates with repeating schedules, shown as lists and calendars via blocks and shortcodes."
+msgstr "Veranstaltungen und Markttermine mit Wiederholungen, als Liste und Kalender per Block oder Shortcode."

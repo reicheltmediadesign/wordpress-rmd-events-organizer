@@ -1,0 +1,92 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rmd/market-dates",
+	"version": "0.1.0",
+	"title": "Market Dates",
+	"category": "widgets",
+	"icon": "store",
+	"description": "The markets where the business has a stall, with dates, place and stall position.",
+	"keywords": [ "market", "stall", "Markt", "Stand", "Termine" ],
+	"textdomain": "rmd-events-organizer",
+	"attributes": {
+		"scope": {
+			"type": "string",
+			"default": "upcoming"
+		},
+		"limit": {
+			"type": "number",
+			"default": 0
+		},
+		"category": {
+			"type": "string",
+			"default": ""
+		},
+		"excludeCategory": {
+			"type": "string",
+			"default": ""
+		},
+		"tag": {
+			"type": "string",
+			"default": ""
+		},
+		"location": {
+			"type": "number",
+			"default": 0
+		},
+		"unique": {
+			"type": "boolean",
+			"default": false
+		},
+		"group": {
+			"type": "string",
+			"default": ""
+		},
+		"show": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": []
+		},
+		"pagination": {
+			"type": "boolean",
+			"default": false
+		},
+		"emptyText": {
+			"type": "string",
+			"default": ""
+		},
+		"isPreview": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"isPreview": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "rmd-eo-front-style",
+	"viewScript": "rmd-eo-front",
+	"render": "file:./render.php"
+}

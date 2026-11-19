@@ -1,0 +1,53 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rmd/event-details",
+	"version": "0.1.0",
+	"title": "Event Details",
+	"category": "widgets",
+	"icon": "info-outline",
+	"description": "Dates, location and details of one event.",
+	"keywords": [ "event", "date", "Veranstaltung", "Termin" ],
+	"textdomain": "rmd-events-organizer",
+	"attributes": {
+		"eventId": {
+			"type": "number",
+			"default": 0
+		},
+		"showTitle": {
+			"type": "boolean",
+			"default": true
+		},
+		"isPreview": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"isPreview": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "rmd-eo-front-style",
+	"viewScript": "rmd-eo-front",
+	"render": "file:./render.php"
+}

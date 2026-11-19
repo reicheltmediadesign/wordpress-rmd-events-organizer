@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "rmd/events-calendar",
+	"version": "0.1.0",
+	"title": "Events Calendar",
+	"category": "widgets",
+	"icon": "calendar",
+	"description": "A month calendar with all events, or a small calendar that only marks the days with events.",
+	"keywords": [ "calendar", "events", "Kalender", "Veranstaltungen" ],
+	"textdomain": "rmd-events-organizer",
+	"attributes": {
+		"size": {
+			"type": "string",
+			"default": "full"
+		},
+		"month": {
+			"type": "string",
+			"default": ""
+		},
+		"kind": {
+			"type": "string",
+			"default": ""
+		},
+		"category": {
+			"type": "string",
+			"default": ""
+		},
+		"tag": {
+			"type": "string",
+			"default": ""
+		},
+		"location": {
+			"type": "number",
+			"default": 0
+		},
+		"isPreview": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide", "full" ],
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"example": {
+		"attributes": {
+			"isPreview": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "rmd-eo-front-style",
+	"viewScript": "rmd-eo-front",
+	"render": "file:./render.php"
+}

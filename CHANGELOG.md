@@ -1,0 +1,23 @@
+# Changelog
+
+All notable changes to this plugin are documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [Unreleased]
+
+## [0.1.0] – Unreleased
+
+### Added
+
+- **Events** with any number of dates: single dates, dates over several days, and repeating dates by rule (daily, weekly on chosen weekdays, monthly on a day or on the nth weekday, yearly), with excluded days and cancelled dates.
+- **Market dates** as a second kind of event, with daily stall hours, stall position and their own list.
+- **Locations** with address, reusable across events and created from the event form.
+- **Blocks and shortcodes**: Events (`[rmd_events]`), Market Dates (`[rmd_markets]`), Events Calendar (`[rmd_events_calendar]`, as month calendar or small calendar) and Event Details (`[rmd_event]`).
+- Event categories with colours, and event tags.
+- Calendar file download (.ics) for upcoming dates and schema.org `Event` structured data.
+- **Components** (locations, market dates, calendar) can be switched off per site, or fixed in `wp-config.php` with `RMD_EO_MODULES`.
+- **Import from Events Manager** (component “Import”, off by default): copies events, locations, categories with colours and tags, whether that plugin is active, inactive or deleted. A series becomes one event with a rule; deleted dates become exclusions, changed or cancelled dates are kept, dates edited on their own become separate events. A preview compares every series with the dates that exist; the import can be repeated and undone, and the old event address can be taken over so that existing links keep working.
+- **Pages, widgets and menus after the import**: shortcodes, blocks and widgets of Events Manager are changed to those of this plugin (lists, calendars, single events, the events page), menu items lead to the imported events. Everything without a counterpart is listed. Each change keeps the original and can be put back.
+- **Polylang**: events, categories and tags have a language; lists and calendars show the events of the language of the page. The import keeps languages and connected translations.
+- **Clean up after Events Manager**: optionally removes the tables, settings, posts, categories, widgets and capabilities that plugin leaves behind when it is deleted.
+- Access through the capability `rmd_eo_manage_events`, assignable to roles in the settings.
