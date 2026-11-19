@@ -5,6 +5,8 @@ All notable changes to this plugin are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.2.0] – 2026-11-19
+
 ### Added
 
 - **CSV import** (Events → CSV import): creates events and market dates from a CSV file, one date per line, with locations, categories, tags and details. A preview lists what would be created and every line that cannot be used; a key column joins several dates into one event and lets a file be imported again without duplicates. Column names in English or German, a template can be downloaded.
