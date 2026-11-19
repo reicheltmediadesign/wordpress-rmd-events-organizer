@@ -4,7 +4,7 @@ Tags: events, calendar, market, recurring events, block
 Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Yes. Lists carry the end time of each date, and a small script hides dates that 
 Under Events → Settings → Components, or fixed in `wp-config.php`: `define( 'RMD_EO_MODULES', [ 'markets' => false, 'calendar' => true ] );`.
 
 == Changelog ==
+
+= 0.2.0 =
+* CSV import: create many events or market dates at once from a table, with a preview. Importing a file again updates the events that have a key.
 
 = 0.1.0 =
 * First release: events, market dates, locations, repeating schedules, list, month calendar, small calendar, event details, calendar downloads and structured data.
