@@ -11,6 +11,7 @@ namespace RMD\EventsOrganizer\Render;
 use RMD\EventsOrganizer\Assets;
 use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Domain\Kinds;
+use RMD\EventsOrganizer\Domain\Place;
 use RMD\EventsOrganizer\Query\OccurrenceQuery;
 use RMD\EventsOrganizer\Repository\EventRepository;
 use RMD\EventsOrganizer\Repository\LocationRepository;
@@ -168,7 +169,7 @@ final class ListRenderer {
 		if ( in_array( 'location', $show, true ) ) {
 			$location = LocationRepository::find( (int) $occurrence['location_id'] );
 			if ( $location ) {
-				$where[] = implode( ', ', array_filter( [ $location['name'], (string) $location['address']['city'] ], 'strlen' ) );
+				$where[] = Place::label( $location['name'], (string) $location['address']['city'] );
 			}
 		}
 		if ( in_array( 'stall', $show, true ) && Kinds::MARKET === $occurrence['kind'] ) {
