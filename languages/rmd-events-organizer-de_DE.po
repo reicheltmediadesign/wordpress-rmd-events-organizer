@@ -1731,9 +1731,6 @@ msgid_plural "Import %d events"
 msgstr[0] "%d Veranstaltung importieren"
 msgstr[1] "%d Veranstaltungen importieren"
 
-msgid "The organiser has called it off. It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above."
-msgstr "Der Veranstalter hat abgesagt. Die Veranstaltung bleibt sichtbar und wird als abgesagt gekennzeichnet. Einen einzelnen Termin sagen Sie oben in der Liste der nächsten Termine ab."
-
 msgid "We are not taking part"
 msgstr "Wir nehmen nicht teil"
 
@@ -1742,9 +1739,6 @@ msgstr "An diesem Markt nehmen wir nicht teil."
 
 msgid "We take part after all"
 msgstr "Wir nehmen doch teil"
-
-msgid "The market takes place, but without your stall. It stays visible and is marked accordingly. For a single date use the list of next dates above."
-msgstr "Der Markt findet statt, aber ohne Ihren Stand. Er bleibt sichtbar und wird entsprechend gekennzeichnet. Für einen einzelnen Termin nutzen Sie oben die Liste der nächsten Termine."
 
 msgid "Events and markets"
 msgstr "Veranstaltungen und Märkte"
@@ -1755,5 +1749,38 @@ msgstr "Ein Termin für Besucher"
 msgid "We have a stall there"
 msgstr "Wir sind mit einem Stand dabei"
 
-msgid "If you cannot come to a market after all, tick “We are not taking part” in the market date, or choose it for a single date in the list of next dates. The market stays in the lists and is marked. “The whole event is cancelled” is meant for a market the organiser has called off."
-msgstr "Können Sie an einem Markt doch nicht teilnehmen, aktivieren Sie im Markttermin „Wir nehmen nicht teil“ oder wählen Sie das für einen einzelnen Termin in der Liste der nächsten Termine. Der Markt bleibt in den Listen stehen und wird gekennzeichnet. „Die gesamte Veranstaltung ist abgesagt“ ist für einen Markt gedacht, den der Veranstalter abgesagt hat."
+msgid "Cancelled or not taking part"
+msgstr "Abgesagt oder ohne Teilnahme"
+
+msgid "Without a date"
+msgstr "Ohne Termin"
+
+msgid "Filter by time"
+msgstr "Nach Zeit filtern"
+
+msgid "All dates"
+msgstr "Alle Termine"
+
+msgid "Filter by category"
+msgstr "Nach Kategorie filtern"
+
+msgid "Filter by location"
+msgstr "Nach Ort filtern"
+
+msgid "All locations"
+msgstr "Alle Orte"
+
+msgid "If you cannot come to a market date after all, choose “We are not taking part” at that date under “When”. It stays in the lists and is marked. Choose “Cancelled” there when the organiser has called off that date; “The whole event is cancelled” under “Details” applies to all dates."
+msgstr "Können Sie an einem Markttermin doch nicht teilnehmen, wählen Sie unter „Wann“ bei diesem Termin „Wir nehmen nicht teil“. Er bleibt in den Listen stehen und wird gekennzeichnet. Wählen Sie dort „Abgesagt“, wenn der Veranstalter diesen Termin abgesagt hat; „Die gesamte Veranstaltung ist abgesagt“ unter „Details“ gilt für alle Termine."
+
+msgid "Takes place"
+msgstr "Findet statt"
+
+msgid "This date"
+msgstr "Dieser Termin"
+
+msgid "Applies to every date of this market. Untick it and choose “We are not taking part” at the dates it applies to."
+msgstr "Gilt für alle Termine dieses Marktes. Entfernen Sie den Haken und wählen Sie „Wir nehmen nicht teil“ bei den Terminen, für die es gilt."
+
+msgid "The organiser has called it off as a whole. It stays visible and is marked as cancelled. For a single date choose its status under “When”."
+msgstr "Der Veranstalter hat sie insgesamt abgesagt. Sie bleibt sichtbar und wird als abgesagt gekennzeichnet. Für einen einzelnen Termin wählen Sie dessen Status unter „Wann“."

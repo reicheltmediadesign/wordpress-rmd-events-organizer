@@ -5,6 +5,16 @@ All notable changes to this plugin are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.3.1] – 2026-11-19
+
+### Added
+
+- **Filters above the list of events**: upcoming, past, cancelled or not taking part, without a date; by category and by location. The filter by the month an event was written in is gone.
+
+### Changed
+
+- **Status per date**: every single date has its own choice “Takes place”, “We are not taking part” (market dates) or “Cancelled” in its box under “When”, also for dates that are over. The checkbox for the whole market under “Details” is gone; where it was set it can still be taken back.
+
 ## [0.3.0] – 2026-11-19
 
 ### Added
