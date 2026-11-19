@@ -40,6 +40,7 @@ final class Planner {
 			'dates'      => 0,
 			'standalone' => 0,
 			'trash'      => 0,
+			'deleted'    => 0,
 			'timeslots'  => 0,
 			'recovered'  => 0,
 			'mismatches' => 0,
@@ -75,6 +76,11 @@ final class Planner {
 			$post = $event['post_id'] > 0 ? get_post( $event['post_id'] ) : null;
 			if ( ( $post && 'trash' === $post->post_status ) || ( ! $post && -1 === $event['status'] ) ) {
 				++$counts['trash'];
+				continue;
+			}
+			if ( ! $post && $event['post_id'] > 0 ) {
+				// The post was deleted for good; Events Manager leaves the row behind and does not show it either.
+				++$counts['deleted'];
 				continue;
 			}
 

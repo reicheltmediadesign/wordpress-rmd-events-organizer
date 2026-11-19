@@ -308,6 +308,9 @@ msgstr "Hier stehen die Seiten, Widgets und Menüs, die noch Shortcodes, Blöcke
 msgid "Import the events first (step 1). Filters by category or location and single events can only be carried over once they exist here."
 msgstr "Importieren Sie zuerst die Veranstaltungen (Schritt 1). Filter nach Kategorie oder Ort und einzelne Veranstaltungen lassen sich erst übernehmen, wenn es sie hier gibt."
 
+msgid "Events Manager is still active. It keeps filling its own pages and showing its widgets, so changes made here only become visible once it is deactivated."
+msgstr "Events Manager ist noch aktiv. Es füllt seine eigenen Seiten weiter und zeigt seine Widgets, deshalb werden die Änderungen hier erst sichtbar, wenn es deaktiviert ist."
+
 msgid "%d page or post changed."
 msgid_plural "%d pages or posts changed."
 msgstr[0] "%d Seite oder Beitrag umgestellt."
@@ -376,6 +379,9 @@ msgstr "Es ist kein Widget von Events Manager in Verwendung."
 
 msgid "Put back the widgets as they were?"
 msgstr "Die Widgets wieder so herstellen, wie sie waren?"
+
+msgid "The widgets of Events Manager were changed; none is left."
+msgstr "Die Widgets von Events Manager wurden umgestellt; es ist keines mehr übrig."
 
 msgid "Widget area"
 msgstr "Widget-Bereich"
@@ -562,6 +568,11 @@ msgid_plural "%d events in the trash"
 msgstr[0] "%d Veranstaltung im Papierkorb"
 msgstr[1] "%d Veranstaltungen im Papierkorb"
 
+msgid "%d event that was deleted for good (Events Manager kept a leftover of it)"
+msgid_plural "%d events that were deleted for good (Events Manager kept leftovers of them)"
+msgstr[0] "%d endgültig gelöschte Veranstaltung (Events Manager hat einen Rest davon behalten)"
+msgstr[1] "%d endgültig gelöschte Veranstaltungen (Events Manager hat Reste davon behalten)"
+
 msgid "%d time slot (events keep their overall start and end)"
 msgid_plural "%d time slots (events keep their overall start and end)"
 msgstr[0] "%d Zeitfenster (Veranstaltungen behalten Gesamtbeginn und -ende)"
@@ -648,6 +659,9 @@ msgstr "Bitte beachten"
 
 msgid "Keep the old addresses"
 msgstr "Alte Adressen beibehalten"
+
+msgid "As long as Events Manager is active it keeps the address /%1$s/, and the events of this plugin are available under /%2$s/. Once Events Manager is deactivated they use /%1$s/ by themselves."
+msgstr "Solange Events Manager aktiv ist, behält es die Adresse /%1$s/, und die Veranstaltungen dieses Plugins sind unter /%2$s/ erreichbar. Sobald Events Manager deaktiviert ist, nutzen sie von selbst /%1$s/."
 
 msgid "Events already use the address /%s/ as before."
 msgstr "Die Veranstaltungen nutzen bereits wie zuvor die Adresse /%s/."

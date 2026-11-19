@@ -11,6 +11,7 @@ namespace RMD\EventsOrganizer\Admin;
 use RMD\EventsOrganizer\Domain\Em\ContentConverter;
 use RMD\EventsOrganizer\Domain\Em\ShortcodeMapper;
 use RMD\EventsOrganizer\Migration\ContentRewriter;
+use RMD\EventsOrganizer\Migration\EmReader;
 use RMD\EventsOrganizer\Migration\Importer;
 use RMD\EventsOrganizer\Migration\MenuRewriter;
 use RMD\EventsOrganizer\Migration\WidgetRewriter;
@@ -33,6 +34,10 @@ final class MigrationContentTab {
 		echo '<p>' . esc_html__( 'Pages, widgets and menus that still use shortcodes, blocks or links of Events Manager are listed here and can be changed to those of this plugin. The original is kept for every change, so each one can be put back.', 'rmd-events-organizer' ) . '</p>';
 		if ( 0 === Importer::imported()['events'] ) {
 			echo '<div class="notice notice-warning inline"><p>' . esc_html__( 'Import the events first (step 1). Filters by category or location and single events can only be carried over once they exist here.', 'rmd-events-organizer' ) . '</p></div>';
+		}
+
+		if ( EmReader::is_plugin_active() ) {
+			echo '<div class="notice notice-info inline"><p>' . esc_html__( 'Events Manager is still active. It keeps filling its own pages and showing its widgets, so changes made here only become visible once it is deactivated.', 'rmd-events-organizer' ) . '</p></div>';
 		}
 
 		self::content_section();
@@ -165,6 +170,7 @@ final class MigrationContentTab {
 			__( 'Put back the widgets as they were?', 'rmd-events-organizer' )
 		);
 		if ( [] === $rows ) {
+			echo '<p><span class="dashicons dashicons-yes-alt" aria-hidden="true"></span> ' . esc_html__( 'The widgets of Events Manager were changed; none is left.', 'rmd-events-organizer' ) . '</p>';
 			return;
 		}
 

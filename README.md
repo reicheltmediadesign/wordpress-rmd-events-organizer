@@ -75,6 +75,8 @@ Switch on the component **Import** under **Events → Settings**, then open **Ev
 2. **Import now** copies events, locations, categories (with their colours) and tags. A series becomes one event with a repeating rule. Dates that were deleted from a series are left out, dates with other times or a cancellation keep them, and a date that was given its own title or text becomes an event of its own.
 3. With Events Manager deactivated, **Take over the old address** makes events available under the address they had before. The addresses of the single dates of a series lead to the series.
 
+Both plugins can run side by side while you compare. If they use the same address (for example `/veranstaltungen/`), Events Manager keeps it as long as it is active and the events of this plugin are available under `/veranstaltungen-2/`; they move to the real address by themselves once Events Manager is deactivated.
+
 The data of Events Manager is only read. You can import again at any time (imported events are updated, not duplicated) or undo the import, which deletes everything it created.
 
 Not imported: bookings and tickets, events in the trash, time slots, and the list and page formats of Events Manager.

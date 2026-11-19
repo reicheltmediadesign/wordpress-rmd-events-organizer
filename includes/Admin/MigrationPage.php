@@ -201,6 +201,10 @@ final class MigrationPage {
 			/* translators: %d: number of events */
 			$lines[] = sprintf( _n( '%d event in the trash', '%d events in the trash', $plan['counts']['trash'], 'rmd-events-organizer' ), $plan['counts']['trash'] );
 		}
+		if ( ( $plan['counts']['deleted'] ?? 0 ) > 0 ) {
+			/* translators: %d: number of events */
+			$lines[] = sprintf( _n( '%d event that was deleted for good (Events Manager kept a leftover of it)', '%d events that were deleted for good (Events Manager kept leftovers of them)', $plan['counts']['deleted'], 'rmd-events-organizer' ), $plan['counts']['deleted'] );
+		}
 		if ( $plan['counts']['timeslots'] > 0 ) {
 			/* translators: %d: number of time slots */
 			$lines[] = sprintf( _n( '%d time slot (events keep their overall start and end)', '%d time slots (events keep their overall start and end)', $plan['counts']['timeslots'], 'rmd-events-organizer' ), $plan['counts']['timeslots'] );
@@ -301,6 +305,17 @@ final class MigrationPage {
 		$current = (string) ( ( (array) Settings::get( 'permalinks', [] ) )['event_slug'] ?? '' );
 
 		echo '<h3>' . esc_html__( 'Keep the old addresses', 'rmd-events-organizer' ) . '</h3>';
+		if ( $old === $current && PostTypes::shares_event_slug() ) {
+			echo '<p>' . esc_html(
+				sprintf(
+					/* translators: 1: URL path of Events Manager, 2: temporary URL path of this plugin */
+					__( 'As long as Events Manager is active it keeps the address /%1$s/, and the events of this plugin are available under /%2$s/. Once Events Manager is deactivated they use /%1$s/ by themselves.', 'rmd-events-organizer' ),
+					$old,
+					PostTypes::event_slug()
+				)
+			) . '</p>';
+			return;
+		}
 		if ( $old === $current ) {
 			echo '<p><span class="dashicons dashicons-yes-alt" aria-hidden="true"></span> ' . esc_html( sprintf( /* translators: %s: URL path */ __( 'Events already use the address /%s/ as before.', 'rmd-events-organizer' ), $old ) ) . '</p>';
 			return;

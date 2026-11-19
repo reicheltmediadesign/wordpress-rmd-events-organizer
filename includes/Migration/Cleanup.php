@@ -33,6 +33,7 @@ final class Cleanup {
 		'em_tickets_bookings_meta',
 		'em_meta',
 		'em_online_sessions',
+		'em_migrate_map',
 		'em_coupons',
 		'em_transactions',
 		'em_email_queue',

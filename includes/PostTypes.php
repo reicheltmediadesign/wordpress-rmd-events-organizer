@@ -16,6 +16,10 @@ final class PostTypes {
 	public const LOCATION = 'rmd_eo_location';
 
 	private const FLUSH_OPTION = 'rmd_eo_flush_rewrite';
+	private const SLUGS_OPTION = 'rmd_eo_rewrite_slugs';
+
+	/** Added to an address that Events Manager still answers under. */
+	public const SHARED_SLUG_SUFFIX = '-2';
 
 	public static function init(): void {
 		add_action( 'init', [ self::class, 'register' ] );
@@ -90,7 +94,7 @@ final class PostTypes {
 				'menu_icon'           => 'dashicons-calendar-alt',
 				'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ],
 				'rewrite'             => [
-					'slug'       => (string) ( $permalinks['event_slug'] ?? 'events' ),
+					'slug'       => self::event_slug(),
 					'with_front' => false,
 					'feeds'      => false,
 				],
@@ -134,7 +138,7 @@ final class PostTypes {
 				'hierarchical'        => false,
 				'supports'            => [ 'title', 'editor', 'thumbnail' ],
 				'rewrite'             => $public ? [
-					'slug'       => (string) ( $permalinks['location_slug'] ?? 'locations' ),
+					'slug'       => self::location_slug(),
 					'with_front' => false,
 					'feeds'      => false,
 				] : false,
@@ -154,11 +158,54 @@ final class PostTypes {
 	}
 
 	public static function maybe_flush(): void {
+		// The addresses also change when Events Manager is switched on or off.
+		$slugs = self::event_slug() . '|' . self::location_slug();
+		if ( get_option( self::SLUGS_OPTION ) !== $slugs ) {
+			update_option( self::SLUGS_OPTION, $slugs, true );
+			self::request_flush();
+		}
+
 		if ( '1' !== get_option( self::FLUSH_OPTION ) ) {
 			return;
 		}
 		delete_option( self::FLUSH_OPTION );
 		flush_rewrite_rules( false );
+	}
+
+	/**
+	 * First part of the address of an event.
+	 */
+	public static function event_slug(): string {
+		$slug = (string) ( ( (array) Settings::get( 'permalinks', [] ) )['event_slug'] ?? 'events' );
+		return self::free_slug( $slug, 'dbem_cp_events_slug', 'events' );
+	}
+
+	/**
+	 * First part of the address of a location.
+	 */
+	public static function location_slug(): string {
+		$slug = (string) ( ( (array) Settings::get( 'permalinks', [] ) )['location_slug'] ?? 'locations' );
+		return self::free_slug( $slug, 'dbem_cp_locations_slug', 'locations' );
+	}
+
+	/**
+	 * True while events answer under another address than the one in the
+	 * settings, because Events Manager is active and uses that one.
+	 */
+	public static function shares_event_slug(): bool {
+		return str_ends_with( self::event_slug(), self::SHARED_SLUG_SUFFIX ) && self::event_slug() !== (string) ( ( (array) Settings::get( 'permalinks', [] ) )['event_slug'] ?? '' );
+	}
+
+	/**
+	 * Two post types cannot answer under one address. While Events Manager
+	 * is active it keeps its own, so that its pages keep working during a
+	 * move; this plugin steps aside until that plugin is switched off.
+	 */
+	private static function free_slug( string $slug, string $foreign_option, string $foreign_default ): string {
+		if ( defined( 'EM_VERSION' ) && trim( (string) get_option( $foreign_option, $foreign_default ), '/' ) === $slug ) {
+			return $slug . self::SHARED_SLUG_SUFFIX;
+		}
+		return $slug;
 	}
 
 	/**
