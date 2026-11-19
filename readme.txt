@@ -20,6 +20,7 @@ RMD Events Organizer is a lean events plugin for small business websites:
 * Blocks and shortcodes: a list of dates, a month calendar, a small calendar for sidebars that only marks the days, and the details of a single event.
 * Categories with colours and tags to filter lists and calendars.
 * "Add to calendar" downloads (.ics) and schema.org structured data.
+* CSV import: many events or market dates at once from a table, with a preview.
 * Import from Events Manager: events, series, locations, categories and tags, with a preview, repeatable and undoable. Shortcodes, blocks, widgets and menu items of that plugin are changed to those of this one, and its leftovers can be removed from the database.
 * Components can be switched off per site; access is controlled by one capability that can be given to roles.
 * Works with page caching and without JavaScript.

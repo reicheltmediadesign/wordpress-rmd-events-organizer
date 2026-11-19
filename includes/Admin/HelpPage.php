@@ -54,6 +54,9 @@ final class HelpPage {
 			echo '<p>' . esc_html__( 'Use Events → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is.', 'rmd-events-organizer' ) . '</p>';
 		}
 
+		echo '<h2>' . esc_html__( 'Many events at once', 'rmd-events-organizer' ) . '</h2>';
+		echo '<p>' . esc_html__( 'To create many events at once from a table, use Events → CSV import. The page lists the columns and offers a template.', 'rmd-events-organizer' ) . '</p>';
+
 		echo '<h2>' . esc_html__( 'Showing events on the website', 'rmd-events-organizer' ) . '</h2>';
 		echo '<p>' . esc_html__( 'In the block editor add one of these blocks. Each block has its options in the sidebar.', 'rmd-events-organizer' ) . '</p><ul class="ul-disc">';
 		echo '<li><strong>' . esc_html__( 'Events', 'rmd-events-organizer' ) . '</strong> – ' . esc_html__( 'a list of dates.', 'rmd-events-organizer' ) . '</li>';

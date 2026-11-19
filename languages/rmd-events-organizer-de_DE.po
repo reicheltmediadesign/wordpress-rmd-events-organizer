@@ -1499,3 +1499,240 @@ msgstr "RMD Veranstaltungen"
 
 msgid "Events and market dates with repeating schedules, shown as lists and calendars via blocks and shortcodes."
 msgstr "Veranstaltungen und Markttermine mit Wiederholungen, als Liste und Kalender per Block oder Shortcode."
+
+msgid "%1$d events with %2$d dates"
+msgstr "%1$d Veranstaltungen mit %2$d Terminen"
+
+msgid "%s (new)"
+msgstr "%s (neu)"
+
+msgid "%s: over several days the times apply to every day (daily from 10:00 to 18:00). Empty: from the start on the first day to the end on the last."
+msgstr "%s: Bei mehreren Tagen gelten die Uhrzeiten für jeden Tag (täglich von 10:00 bis 18:00 Uhr). Leer: vom Beginn am ersten bis zum Ende am letzten Tag."
+
+msgid "%1$s (default) or %2$s."
+msgstr "%1$s (Standard) oder %2$s."
+
+msgid "(every day)"
+msgstr "(täglich)"
+
+msgid "A time is not valid. Write it like 10:00."
+msgstr "Eine Uhrzeit ist ungültig. Schreiben Sie sie wie 10:00."
+
+msgid "Address of a new location."
+msgstr "Adresse eines neuen Ortes."
+
+msgid "Address with further information, starting with https://"
+msgstr "Adresse mit weiteren Informationen, beginnend mit https://"
+
+msgid "An event can have at most %s dates."
+msgstr "Eine Veranstaltung kann höchstens %s Termine haben."
+
+msgid "and %d more"
+msgstr "und %d weitere"
+
+msgid "Any short name of your own. Lines with the same key become one event with several dates, described by the first of these lines. Importing a file again updates the events with a key instead of creating them again."
+msgstr "Ein beliebiges eigenes Kürzel. Zeilen mit gleichem Schlüssel werden zu einer Veranstaltung mit mehreren Terminen; beschrieben wird sie in der ersten dieser Zeilen. Wird eine Datei erneut importiert, werden Veranstaltungen mit Schlüssel aktualisiert statt noch einmal angelegt."
+
+msgid "Choose another file"
+msgstr "Andere Datei wählen"
+
+msgid "Code of the language, e.g. de (only with Polylang)."
+msgstr "Kürzel der Sprache, z. B. de (nur mit Polylang)."
+
+msgid "Column"
+msgstr "Spalte"
+
+msgid "Columns"
+msgstr "Spalten"
+
+msgid "Columns that are not known and are ignored: %s"
+msgstr "Unbekannte Spalten, die nicht beachtet werden: %s"
+
+msgid "Complete address, starting with https://"
+msgstr "Vollständige Adresse, beginnend mit https://"
+
+msgid "Content"
+msgstr "Inhalt"
+
+msgid "could not be saved (%s)."
+msgstr "konnte nicht gespeichert werden (%s)."
+
+msgid "Create many events or market dates at once from a table. Every line of the file is one date. Choose the file to see what would be imported; nothing is created before you confirm."
+msgstr "Legen Sie viele Veranstaltungen oder Markttermine auf einmal aus einer Tabelle an. Jede Zeile der Datei ist ein Termin. Wählen Sie die Datei aus, um zu sehen, was importiert würde; angelegt wird erst etwas, wenn Sie es bestätigen."
+
+msgid "CSV file"
+msgstr "CSV-Datei"
+
+msgid "CSV import"
+msgstr "CSV-Import"
+
+msgid "Day, or first day: 12.12.2026 or 2026-12-12. Required."
+msgstr "Tag bzw. erster Tag: 12.12.2026 oder 2026-12-12. Pflichtangabe."
+
+msgid "Download a template"
+msgstr "Vorlage herunterladen"
+
+msgid "draft"
+msgstr "Entwurf"
+
+msgid "End time."
+msgstr "Uhrzeit des Endes."
+
+msgid "Free text, e.g. “Free admission”."
+msgstr "Freier Text, z. B. „Eintritt frei“."
+
+msgid "Id or address of an image that is already in the media library."
+msgstr "ID oder Adresse eines Bildes, das bereits in der Mediathek liegt."
+
+msgid "Import events from a CSV file"
+msgstr "Veranstaltungen aus einer CSV-Datei importieren"
+
+msgid "Import finished: %1$d events created, %2$d updated, %3$d new locations, %4$d new categories and tags."
+msgstr "Import abgeschlossen: %1$d Veranstaltungen angelegt, %2$d aktualisiert, neue Orte: %3$d, neue Kategorien und Schlagwörter: %4$d."
+
+msgid "is updated"
+msgstr "wird aktualisiert"
+
+msgid "Last day, only for dates over several days."
+msgstr "Letzter Tag, nur bei Terminen über mehrere Tage."
+
+msgid "Line"
+msgstr "Zeile"
+
+msgid "Market dates: a note about the stall."
+msgstr "Markttermine: Hinweis zum Stand."
+
+msgid "Market dates: where your stall is."
+msgstr "Markttermine: wo Ihr Stand ist."
+
+msgid "Name of the event. Required."
+msgstr "Name der Veranstaltung. Pflichtangabe."
+
+msgid "Name of the location. An existing location of that name is used, otherwise one is created with the address columns."
+msgstr "Name des Ortes. Gibt es einen Ort mit diesem Namen, wird er verwendet, sonst wird er mit den Adress-Spalten neu angelegt."
+
+msgid "Name of the organiser."
+msgstr "Name des Veranstalters."
+
+msgid "Names, several separated by commas. Missing ones are created."
+msgstr "Namen, mehrere durch Kommas getrennt. Fehlende werden angelegt."
+
+msgid "new"
+msgstr "neu"
+
+msgid "Please check:"
+msgstr "Bitte prüfen:"
+
+msgid "Preview of “%s”"
+msgstr "Vorschau von „%s“"
+
+msgid "Problem"
+msgstr "Problem"
+
+msgid "Problems in the file"
+msgstr "Probleme in der Datei"
+
+msgid "Read the file"
+msgstr "Datei einlesen"
+
+msgid "Repeating dates (every Tuesday, every first Saturday) cannot be imported; enter them in the event itself."
+msgstr "Wiederkehrende Termine (jeden Dienstag, jeden ersten Samstag) lassen sich nicht importieren; tragen Sie sie in der Veranstaltung selbst ein."
+
+msgid "Show the events"
+msgstr "Veranstaltungen anzeigen"
+
+msgid "Start time, e.g. 10:00. Empty: all day."
+msgstr "Uhrzeit des Beginns, z. B. 10:00. Leer: ganztägig."
+
+msgid "Text of the event."
+msgstr "Beschreibungstext der Veranstaltung."
+
+msgid "The address in the column “%s” is not complete (it must start with https://) and is left out; the line is imported."
+msgstr "Die Adresse in der Spalte „%s“ ist nicht vollständig (sie muss mit https:// beginnen) und wird weggelassen; die Zeile wird importiert."
+
+msgid "The date is missing."
+msgstr "Das Datum fehlt."
+
+msgid "The date is not a valid date. Write it like 12.12.2026 or 2026-12-12."
+msgstr "Das Datum ist ungültig. Schreiben Sie es wie 12.12.2026 oder 2026-12-12."
+
+msgid "The file contains nothing that can be imported."
+msgstr "Die Datei enthält nichts, was importiert werden kann."
+
+msgid "The file could not be uploaded. Please try again."
+msgstr "Die Datei konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut."
+
+msgid "The file is empty."
+msgstr "Die Datei ist leer."
+
+msgid "The file is too large (at most %s)."
+msgstr "Die Datei ist zu groß (höchstens %s)."
+
+msgid "The first %1$d of %2$d are shown."
+msgstr "Angezeigt werden die ersten %1$d von %2$d."
+
+msgid "The first line names the columns. Only title and date are needed; leave out what you do not use, the order does not matter. Separate the columns with semicolons or commas and save the file as “CSV UTF-8”."
+msgstr "Die erste Zeile nennt die Spalten. Nötig sind nur Titel und Datum; lassen Sie weg, was Sie nicht brauchen, die Reihenfolge ist egal. Trennen Sie die Spalten mit Semikolon oder Komma und speichern Sie die Datei als „CSV UTF-8“."
+
+msgid "The first line of the file must name the columns, at least the title and the date (see the columns below)."
+msgstr "Die erste Zeile der Datei muss die Spalten nennen, mindestens Titel und Datum (siehe Spalten unten)."
+
+msgid "the image “%s” was not found in the media library."
+msgstr "das Bild „%s“ wurde in der Mediathek nicht gefunden."
+
+msgid "The kind “%s” is not known."
+msgstr "Die Art „%s“ ist nicht bekannt."
+
+msgid "the language “%s” does not exist; the default language was used."
+msgstr "die Sprache „%s“ gibt es nicht; verwendet wurde die Standardsprache."
+
+msgid "The last day is before the first day."
+msgstr "Der letzte Tag liegt vor dem ersten Tag."
+
+msgid "The last day is not a valid date."
+msgstr "Der letzte Tag ist kein gültiges Datum."
+
+msgid "The preview has expired. Please choose the file again."
+msgstr "Die Vorschau ist abgelaufen. Bitte wählen Sie die Datei erneut aus."
+
+msgid "The status “%s” is not known."
+msgstr "Der Status „%s“ ist nicht bekannt."
+
+msgid "The title is missing."
+msgstr "Der Titel fehlt."
+
+msgid "There is an end time but no start time."
+msgstr "Es gibt ein Ende, aber keinen Beginn."
+
+msgid "This event already has a date on that day at that time."
+msgstr "Diese Veranstaltung hat an diesem Tag zu dieser Uhrzeit bereits einen Termin."
+
+msgid "Times that apply to every day need an end time after the start time."
+msgstr "Uhrzeiten, die für jeden Tag gelten, brauchen ein Ende nach dem Beginn."
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Two letters, e.g. DE."
+msgstr "Zwei Buchstaben, z. B. DE."
+
+msgid "To create many events at once from a table, use Events → CSV import. The page lists the columns and offers a template."
+msgstr "Um viele Veranstaltungen auf einmal aus einer Tabelle anzulegen, nutzen Sie Veranstaltungen → CSV-Import. Die Seite listet die Spalten auf und bietet eine Vorlage an."
+
+msgid "Many events at once"
+msgstr "Viele Veranstaltungen auf einmal"
+
+msgid "%d event has no key: it is created again every time this file is imported."
+msgid_plural "%d events have no key: they are created again every time this file is imported."
+msgstr[0] "%d Veranstaltung hat keinen Schlüssel: Sie wird bei jedem Import dieser Datei erneut angelegt."
+msgstr[1] "%d Veranstaltungen haben keinen Schlüssel: Sie werden bei jedem Import dieser Datei erneut angelegt."
+
+msgid "%d line cannot be imported. Correct the file and read it again, or import the rest."
+msgid_plural "%d lines cannot be imported. Correct the file and read it again, or import the rest."
+msgstr[0] "%d Zeile kann nicht importiert werden. Korrigieren Sie die Datei und lesen Sie sie erneut ein, oder importieren Sie den Rest."
+msgstr[1] "%d Zeilen können nicht importiert werden. Korrigieren Sie die Datei und lesen Sie sie erneut ein, oder importieren Sie den Rest."
+
+msgid "Import %d event"
+msgid_plural "Import %d events"
+msgstr[0] "%d Veranstaltung importieren"
+msgstr[1] "%d Veranstaltungen importieren"
