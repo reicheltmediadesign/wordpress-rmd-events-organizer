@@ -77,14 +77,14 @@ export default function DetailsPanel( {
 					__( 'Link for more information', 'rmd-events-organizer' )
 				) }
 			</div>
-			{ isMarket && (
+			{ isMarket && details.status === 'withdrawn' && (
 				<CheckboxControl
 					label={ __(
 						'We are not taking part',
 						'rmd-events-organizer'
 					) }
 					help={ __(
-						'The market takes place, but without your stall. It stays visible and is marked accordingly. For a single date use the list of next dates above.',
+						'Applies to every date of this market. Untick it and choose “We are not taking part” at the dates it applies to.',
 						'rmd-events-organizer'
 					) }
 					checked={ details.status === 'withdrawn' }
@@ -100,7 +100,7 @@ export default function DetailsPanel( {
 					'rmd-events-organizer'
 				) }
 				help={ __(
-					'The organiser has called it off. It stays visible and is marked as cancelled. To cancel a single date use the list of next dates above.',
+					'The organiser has called it off as a whole. It stays visible and is marked as cancelled. For a single date choose its status under “When”.',
 					'rmd-events-organizer'
 				) }
 				checked={ details.status === 'cancelled' }

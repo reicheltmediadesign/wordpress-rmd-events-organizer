@@ -98,8 +98,26 @@ function TimeMode( { entry, multiDay, onChange } ) {
 	);
 }
 
-function SingleFields( { entry, isMarket, onChange } ) {
+function SingleFields( { entry, isMarket, status, onChange, onStatus } ) {
 	const set = ( patch ) => onChange( { ...entry, ...patch } );
+	const statuses = [
+		{ value: '', label: __( 'Takes place', 'rmd-events-organizer' ) },
+		...( isMarket
+			? [
+					{
+						value: 'withdrawn',
+						label: __(
+							'We are not taking part',
+							'rmd-events-organizer'
+						),
+					},
+				]
+			: [] ),
+		{
+			value: 'cancelled',
+			label: __( 'Cancelled', 'rmd-events-organizer' ),
+		},
+	];
 
 	return (
 		<>
@@ -151,6 +169,19 @@ function SingleFields( { entry, isMarket, onChange } ) {
 					__next40pxDefaultSize
 				/>
 				<TimeFields entry={ entry } onChange={ onChange } />
+				<SelectControl
+					className="rmd-eo-editor__status"
+					label={ __( 'This date', 'rmd-events-organizer' ) }
+					value={
+						statuses.some( ( item ) => item.value === status )
+							? status
+							: ''
+					}
+					options={ statuses }
+					onChange={ onStatus }
+					__nextHasNoMarginBottom
+					__next40pxDefaultSize
+				/>
 			</div>
 			<TimeMode
 				entry={ entry }
@@ -432,8 +463,10 @@ export default function EntryEditor( {
 	config,
 	isMarket,
 	state,
+	status,
 	canRemove,
 	onChange,
+	onStatus,
 	onRemove,
 } ) {
 	return (
@@ -483,7 +516,9 @@ export default function EntryEditor( {
 				<SingleFields
 					entry={ entry }
 					isMarket={ isMarket }
+					status={ status }
 					onChange={ onChange }
+					onStatus={ onStatus }
 				/>
 			) }
 		</div>

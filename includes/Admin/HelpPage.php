@@ -54,7 +54,7 @@ final class HelpPage {
 		if ( $markets ) {
 			echo '<h2>' . esc_html__( 'Market dates', 'rmd-events-organizer' ) . '</h2>';
 			echo '<p>' . esc_html( sprintf( /* translators: %s: name of the menu */ __( 'Use %s → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is.', 'rmd-events-organizer' ), $menu ) ) . '</p>';
-			echo '<p>' . esc_html__( 'If you cannot come to a market after all, tick “We are not taking part” in the market date, or choose it for a single date in the list of next dates. The market stays in the lists and is marked. “The whole event is cancelled” is meant for a market the organiser has called off.', 'rmd-events-organizer' ) . '</p>';
+			echo '<p>' . esc_html__( 'If you cannot come to a market date after all, choose “We are not taking part” at that date under “When”. It stays in the lists and is marked. Choose “Cancelled” there when the organiser has called off that date; “The whole event is cancelled” under “Details” applies to all dates.', 'rmd-events-organizer' ) . '</p>';
 		}
 
 		echo '<h2>' . esc_html__( 'Many events at once', 'rmd-events-organizer' ) . '</h2>';

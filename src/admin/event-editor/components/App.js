@@ -2,7 +2,13 @@ import { __ } from '@wordpress/i18n';
 import { useEffect, useState } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 
-import { entryState, hasRule, newSingle, normalizeData } from '../model';
+import {
+	entryState,
+	hasRule,
+	newSingle,
+	normalizeData,
+	setDateStatus,
+} from '../model';
 import DetailsPanel from './DetailsPanel';
 import EntryEditor from './EntryEditor';
 import Exclusions from './Exclusions';
@@ -135,8 +141,16 @@ export default function App( { config, initial, onChange } ) {
 							isMarket,
 							config.today
 						) }
+						status={
+							schedule.overrides?.[ entry.id ]?.status || ''
+						}
 						canRemove={ schedule.entries.length > 1 }
 						onChange={ ( next ) => updateEntry( index, next ) }
+						onStatus={ ( status ) =>
+							setSchedule(
+								setDateStatus( schedule, entry.id, status )
+							)
+						}
 						onRemove={ () => removeEntry( index ) }
 					/>
 				) ) }
