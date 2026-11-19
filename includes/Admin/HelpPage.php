@@ -38,11 +38,13 @@ final class HelpPage {
 		}
 		$markets  = Modules::is_on( Modules::MARKETS );
 		$calendar = Modules::is_on( Modules::CALENDAR );
+		$type     = get_post_type_object( PostTypes::EVENT );
+		$menu     = $type ? (string) $type->labels->menu_name : __( 'Events', 'rmd-events-organizer' );
 
 		echo '<div class="wrap rmd-eo-help"><h1>' . esc_html__( 'Events Help', 'rmd-events-organizer' ) . '</h1>';
 
 		echo '<h2>' . esc_html__( 'Entering an event', 'rmd-events-organizer' ) . '</h2><ol>';
-		echo '<li>' . esc_html__( 'Choose Events → Add event and enter the name.', 'rmd-events-organizer' ) . '</li>';
+		echo '<li>' . esc_html( sprintf( /* translators: %s: name of the menu */ __( 'Choose %s → Add event and enter the name.', 'rmd-events-organizer' ), $menu ) ) . '</li>';
 		echo '<li>' . esc_html__( 'Under “When” enter the date. Leave the times empty for an all-day event. Use “Add date” for further dates of the same event.', 'rmd-events-organizer' ) . '</li>';
 		echo '<li>' . esc_html__( 'For something that takes place regularly choose “Repeats” and set the rhythm, for example every week on Tuesday or every first Saturday of the month.', 'rmd-events-organizer' ) . '</li>';
 		echo '<li>' . esc_html__( 'The preview lists the next dates. There you can cancel a single date or leave it out without changing the rule.', 'rmd-events-organizer' ) . '</li>';
@@ -51,11 +53,12 @@ final class HelpPage {
 
 		if ( $markets ) {
 			echo '<h2>' . esc_html__( 'Market dates', 'rmd-events-organizer' ) . '</h2>';
-			echo '<p>' . esc_html__( 'Use Events → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is.', 'rmd-events-organizer' ) . '</p>';
+			echo '<p>' . esc_html( sprintf( /* translators: %s: name of the menu */ __( 'Use %s → Add market date for markets where you have a stall. Enter the first and last day and choose “Same hours every day” for the daily opening hours. You can also note where your stall is.', 'rmd-events-organizer' ), $menu ) ) . '</p>';
+			echo '<p>' . esc_html__( 'If you cannot come to a market after all, tick “We are not taking part” in the market date, or choose it for a single date in the list of next dates. The market stays in the lists and is marked. “The whole event is cancelled” is meant for a market the organiser has called off.', 'rmd-events-organizer' ) . '</p>';
 		}
 
 		echo '<h2>' . esc_html__( 'Many events at once', 'rmd-events-organizer' ) . '</h2>';
-		echo '<p>' . esc_html__( 'To create many events at once from a table, use Events → CSV import. The page lists the columns and offers a template.', 'rmd-events-organizer' ) . '</p>';
+		echo '<p>' . esc_html( sprintf( /* translators: %s: name of the menu */ __( 'To create many events at once from a table, use %s → CSV import. The page lists the columns and offers a template.', 'rmd-events-organizer' ), $menu ) ) . '</p>';
 
 		echo '<h2>' . esc_html__( 'Showing events on the website', 'rmd-events-organizer' ) . '</h2>';
 		echo '<p>' . esc_html__( 'In the block editor add one of these blocks. Each block has its options in the sidebar.', 'rmd-events-organizer' ) . '</p><ul class="ul-disc">';

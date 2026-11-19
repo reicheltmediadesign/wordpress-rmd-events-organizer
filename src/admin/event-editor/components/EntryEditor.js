@@ -22,39 +22,54 @@ const NTH_LABELS = () => [
 	{ value: -1, label: __( 'last', 'rmd-events-organizer' ) },
 ];
 
-function Times( { entry, multiDay, onChange } ) {
+/**
+ * Start, end and "all day". The time fields stay in place when the date is
+ * all day, so nothing in the row moves.
+ *
+ * @param {Object}   props
+ * @param {Object}   props.entry
+ * @param {Function} props.onChange
+ */
+function TimeFields( { entry, onChange } ) {
 	const set = ( patch ) => onChange( { ...entry, ...patch } );
 
 	return (
 		<>
-			<div className="rmd-eo-editor__row">
-				<CheckboxControl
-					label={ __( 'All day', 'rmd-events-organizer' ) }
-					checked={ entry.all_day }
-					onChange={ ( all_day ) => set( { all_day } ) }
-					__nextHasNoMarginBottom
-				/>
-				{ ! entry.all_day && (
-					<>
-						<TextControl
-							type="time"
-							label={ __( 'Starts at', 'rmd-events-organizer' ) }
-							value={ entry.start_time }
-							onChange={ ( start_time ) => set( { start_time } ) }
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-						/>
-						<TextControl
-							type="time"
-							label={ __( 'Ends at', 'rmd-events-organizer' ) }
-							value={ entry.end_time }
-							onChange={ ( end_time ) => set( { end_time } ) }
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-						/>
-					</>
-				) }
-			</div>
+			<TextControl
+				className="rmd-eo-editor__time"
+				type="time"
+				label={ __( 'Starts at', 'rmd-events-organizer' ) }
+				value={ entry.all_day ? '' : entry.start_time }
+				disabled={ entry.all_day }
+				onChange={ ( start_time ) => set( { start_time } ) }
+				__nextHasNoMarginBottom
+				__next40pxDefaultSize
+			/>
+			<TextControl
+				className="rmd-eo-editor__time"
+				type="time"
+				label={ __( 'Ends at', 'rmd-events-organizer' ) }
+				value={ entry.all_day ? '' : entry.end_time }
+				disabled={ entry.all_day }
+				onChange={ ( end_time ) => set( { end_time } ) }
+				__nextHasNoMarginBottom
+				__next40pxDefaultSize
+			/>
+			<CheckboxControl
+				label={ __( 'All day', 'rmd-events-organizer' ) }
+				checked={ entry.all_day }
+				onChange={ ( all_day ) => set( { all_day } ) }
+				__nextHasNoMarginBottom
+			/>
+		</>
+	);
+}
+
+function TimeMode( { entry, multiDay, onChange } ) {
+	const set = ( patch ) => onChange( { ...entry, ...patch } );
+
+	return (
+		<>
 			{ multiDay && ! entry.all_day && entry.start_time !== '' && (
 				<RadioControl
 					className="rmd-eo-editor__mode"
@@ -90,6 +105,7 @@ function SingleFields( { entry, isMarket, onChange } ) {
 		<>
 			<div className="rmd-eo-editor__row">
 				<TextControl
+					className="rmd-eo-editor__day"
 					type="date"
 					label={ __( 'Date', 'rmd-events-organizer' ) }
 					value={ entry.start_date }
@@ -108,6 +124,7 @@ function SingleFields( { entry, isMarket, onChange } ) {
 					__next40pxDefaultSize
 				/>
 				<TextControl
+					className="rmd-eo-editor__day"
 					type="date"
 					label={ __(
 						'Last day (if several days)',
@@ -133,8 +150,9 @@ function SingleFields( { entry, isMarket, onChange } ) {
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
 				/>
+				<TimeFields entry={ entry } onChange={ onChange } />
 			</div>
-			<Times
+			<TimeMode
 				entry={ entry }
 				multiDay={ entry.end_date > entry.start_date }
 				onChange={ onChange }
@@ -397,7 +415,10 @@ function RuleFields( { entry, config, onChange } ) {
 				/>
 			</div>
 
-			<Times
+			<div className="rmd-eo-editor__row">
+				<TimeFields entry={ entry } onChange={ onChange } />
+			</div>
+			<TimeMode
 				entry={ entry }
 				multiDay={ entry.duration_days > 1 }
 				onChange={ onChange }
@@ -410,12 +431,17 @@ export default function EntryEditor( {
 	entry,
 	config,
 	isMarket,
+	state,
 	canRemove,
 	onChange,
 	onRemove,
 } ) {
 	return (
-		<div className="rmd-eo-editor__entry">
+		<div
+			className={
+				'rmd-eo-editor__entry' + ( state ? ' is-' + state : '' )
+			}
+		>
 			<div className="rmd-eo-editor__entry-head">
 				<ToggleGroupControl
 					label={ __( 'Type of date', 'rmd-events-organizer' ) }

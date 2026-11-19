@@ -2,10 +2,12 @@ import {
 	addDays,
 	convertEntry,
 	daysBetween,
+	entryState,
 	excludeDate,
 	newSingle,
 	normalizeData,
 	setCancelled,
+	setDateStatus,
 	weekdayOf,
 } from './model';
 
@@ -70,6 +72,78 @@ describe( 'overrides and exclusions', () => {
 			{ from: '2026-06-06', to: '2026-06-06' },
 		] );
 		expect( excludeDate( schedule, 'aaaa' ) ).toBe( schedule );
+	} );
+} );
+
+describe( 'entryState', () => {
+	const single = {
+		id: 'aaaa',
+		type: 'single',
+		start_date: '2026-12-12',
+		end_date: '2026-12-14',
+	};
+	const none = { overrides: {} };
+
+	it( 'tells past, upcoming and undated entries apart', () => {
+		expect( entryState( single, none, {}, true, '2026-12-14' ) ).toBe(
+			'upcoming'
+		);
+		expect( entryState( single, none, {}, true, '2026-12-15' ) ).toBe(
+			'past'
+		);
+		expect(
+			entryState(
+				{ ...single, start_date: '' },
+				none,
+				{},
+				true,
+				'2026-01-01'
+			)
+		).toBe( '' );
+	} );
+
+	it( 'marks upcoming dates that are cancelled or without us', () => {
+		const withdrawn = setDateStatus( none, 'aaaa', 'withdrawn' );
+		expect( entryState( single, withdrawn, {}, true, '2026-11-01' ) ).toBe(
+			'off'
+		);
+		// Only a market can take place without us.
+		expect( entryState( single, withdrawn, {}, false, '2026-11-01' ) ).toBe(
+			'upcoming'
+		);
+		expect(
+			entryState(
+				single,
+				none,
+				{ status: 'cancelled' },
+				false,
+				'2026-11-01'
+			)
+		).toBe( 'off' );
+		expect(
+			setDateStatus( withdrawn, 'aaaa', '' ).overrides.aaaa
+		).toBeUndefined();
+	} );
+
+	it( 'treats a rule as upcoming until its last date has passed', () => {
+		const rule = {
+			id: 'bbbb',
+			type: 'rule',
+			from: '2026-01-06',
+			until: '',
+		};
+		expect( entryState( rule, none, {}, false, '2030-01-01' ) ).toBe(
+			'upcoming'
+		);
+		expect(
+			entryState(
+				{ ...rule, until: '2026-06-30' },
+				none,
+				{},
+				false,
+				'2026-07-01'
+			)
+		).toBe( 'past' );
 	} );
 } );
 

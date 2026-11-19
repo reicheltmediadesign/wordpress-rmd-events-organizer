@@ -135,10 +135,22 @@ export function normalizeData( raw ) {
  * @return {Object} Updated schedule.
  */
 export function setCancelled( schedule, key, cancelled ) {
+	return setDateStatus( schedule, key, cancelled ? 'cancelled' : '' );
+}
+
+/**
+ * Gives one date a status of its own or restores it.
+ *
+ * @param {Object} schedule Schedule.
+ * @param {string} key      Occurrence key.
+ * @param {string} next     'cancelled', 'withdrawn' (a market takes place without us) or '' to restore.
+ * @return {Object} Updated schedule.
+ */
+export function setDateStatus( schedule, key, next ) {
 	const overrides = { ...schedule.overrides };
 	const current = overrides[ key ] || {};
-	if ( cancelled ) {
-		overrides[ key ] = { ...current, status: 'cancelled' };
+	if ( next ) {
+		overrides[ key ] = { ...current, status: next };
 	} else {
 		const { status, ...rest } = current;
 		if ( Object.values( rest ).some( ( value ) => value ) ) {
@@ -148,6 +160,39 @@ export function setCancelled( schedule, key, cancelled ) {
 		}
 	}
 	return { ...schedule, overrides };
+}
+
+/**
+ * Where an entry stands, for the coloured stripe beside it: 'past' (over),
+ * 'off' (still to come, but cancelled or without us), 'upcoming' (still to
+ * come and taking place) or '' while it has no date.
+ *
+ * @param {Object}  entry    Entry of the schedule.
+ * @param {Object}  schedule Schedule, for the changes to single dates.
+ * @param {Object}  details  Details, for the status of the whole event.
+ * @param {boolean} isMarket Only a market can take place without us.
+ * @param {string}  today    "YYYY-MM-DD".
+ * @return {string} State.
+ */
+export function entryState( entry, schedule, details, isMarket, today ) {
+	const isRule = entry.type === 'rule';
+	const first = isRule ? entry.from : entry.start_date;
+	if ( ! isDate( first ) ) {
+		return '';
+	}
+	const last = isRule ? entry.until : entry.end_date || entry.start_date;
+	if ( isDate( last ) && last < today ) {
+		return 'past';
+	}
+	const off = ( status ) =>
+		status === 'cancelled' || ( isMarket && status === 'withdrawn' );
+	if (
+		off( details?.status ) ||
+		( ! isRule && off( schedule.overrides?.[ entry.id ]?.status ) )
+	) {
+		return 'off';
+	}
+	return 'upcoming';
 }
 
 /**

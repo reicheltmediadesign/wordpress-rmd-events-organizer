@@ -14,6 +14,8 @@ final class Occurrence {
 
 	public const STATUS_SCHEDULED = 'scheduled';
 	public const STATUS_CANCELLED = 'cancelled';
+	/** A market takes place, but without us. */
+	public const STATUS_WITHDRAWN = 'withdrawn';
 	public const STATUS_REMOVED   = 'removed';
 
 	public const MODE_CONTINUOUS = 'continuous';
@@ -86,7 +88,7 @@ final class Occurrence {
 			$end_time,
 			$all_day,
 			$time_mode,
-			self::STATUS_CANCELLED === $status ? self::STATUS_CANCELLED : self::STATUS_SCHEDULED,
+			in_array( $status, [ self::STATUS_CANCELLED, self::STATUS_WITHDRAWN ], true ) ? $status : self::STATUS_SCHEDULED,
 			(string) ( $override['note'] ?? '' ),
 			$start_utc,
 			$end_utc,

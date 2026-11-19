@@ -70,6 +70,7 @@ final class PreviewController {
 				),
 				'isRule'    => false !== strpos( $occurrence->key, ':' ),
 				'cancelled' => Occurrence::STATUS_CANCELLED === $occurrence->status,
+				'withdrawn' => Occurrence::STATUS_WITHDRAWN === $occurrence->status,
 			];
 		}
 

@@ -9,7 +9,7 @@
  *   --rmd-eo-accent-text   Text of marked days (default: inherited).
  *   --rmd-eo-border        Lines between items and calendar cells.
  *   --rmd-eo-muted         Secondary text.
- *   --rmd-eo-cancelled     Colour of the "cancelled" label.
+ *   --rmd-eo-cancelled     Colour of the "cancelled" and "we are not taking part" labels.
  *   --rmd-eo-gap           Space between list items.
  *   --rmd-eo-radius        Corner radius of badges, cells and popovers.
  *   --rmd-eo-event-color   Set per event from its category colour.
@@ -134,7 +134,10 @@
 
 .rmd-eo-item.is-cancelled .rmd-eo-item__title,
 .rmd-eo-item.is-cancelled .rmd-eo-item__when,
-.rmd-eo-event__date.is-cancelled .rmd-eo-event__when {
+.rmd-eo-event__date.is-cancelled .rmd-eo-event__when,
+.rmd-eo-item.is-withdrawn .rmd-eo-item__title,
+.rmd-eo-item.is-withdrawn .rmd-eo-item__when,
+.rmd-eo-event__date.is-withdrawn .rmd-eo-event__when {
 	text-decoration: line-through;
 }
 
@@ -304,7 +307,8 @@
 	text-decoration: none;
 }
 
-.rmd-eo-day__event.is-cancelled a {
+.rmd-eo-day__event.is-cancelled a,
+.rmd-eo-day__event.is-withdrawn a {
 	text-decoration: line-through;
 }
 

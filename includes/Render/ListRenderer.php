@@ -113,6 +113,8 @@ final class ListRenderer {
 		$classes  = [ 'rmd-eo-item', 'rmd-eo-item--' . sanitize_html_class( (string) $occurrence['kind'] ) ];
 		if ( $occurrence['cancelled'] ) {
 			$classes[] = 'is-cancelled';
+		} elseif ( ! empty( $occurrence['withdrawn'] ) ) {
+			$classes[] = 'is-withdrawn';
 		}
 
 		$color = '';
@@ -150,6 +152,8 @@ final class ListRenderer {
 
 		if ( $occurrence['cancelled'] ) {
 			$html .= '<p class="rmd-eo-item__status">' . esc_html__( 'Cancelled', 'rmd-events-organizer' ) . '</p>';
+		} elseif ( ! empty( $occurrence['withdrawn'] ) ) {
+			$html .= '<p class="rmd-eo-item__status">' . esc_html__( 'We are not taking part', 'rmd-events-organizer' ) . '</p>';
 		}
 
 		$when = in_array( 'time', $show, true ) ? Formatter::when( $occurrence ) : Formatter::dates( $occurrence );

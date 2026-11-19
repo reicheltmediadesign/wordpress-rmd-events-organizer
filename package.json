@@ -1,6 +1,6 @@
 {
   "name": "rmd-events-organizer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "WordPress plugin for events, market dates and calendars with blocks and shortcodes.",
   "author": "Philipp Reichelt <info@reicheltmedia.design> (https://reicheltmedia.design)",
   "license": "GPL-2.0-or-later",
