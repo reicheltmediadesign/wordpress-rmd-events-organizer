@@ -61,6 +61,10 @@ The page of an event shows its dates, location and details above the description
 
 Days in the small calendar link to the page chosen under **Settings → Events page**, filtered to that day. With JavaScript they open a small list of that day's dates instead.
 
+## Multilingual sites (Polylang)
+
+With Polylang active, events, categories and tags have a language and can be translated like pages. Lists and calendars show the events in the language of the page they are on; a single event placed with the block **Event Details** is shown in any language. Locations are shared by all languages. Events without a language do not appear in lists, so assign one to existing events when Polylang asks for it.
+
 ## Import from Events Manager
 
 Switch on the component **Import** under **Events → Settings**, then open **Events → Import**. The page has three steps.
@@ -90,6 +94,8 @@ Lists every page, post, template, widget and menu item that still uses something
 Formats written into a shortcode (`#_EVENTNAME` and the like) are not carried over; the display follows this plugin. Shortcodes without a counterpart (lists and maps of locations, lists of categories and tags, search and submission forms, bookings) stay as they are and are listed, so you can remove them by hand. The same goes for menu items leading to locations or categories.
 
 **Change** works per page, **Change all** for everything at once. The original content is kept for every change; **Put back** restores it.
+
+On a site with Polylang the imported events, categories and tags keep their language, and translations stay connected.
 
 ### 3. Clean up
 

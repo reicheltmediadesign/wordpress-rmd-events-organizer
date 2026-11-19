@@ -88,6 +88,7 @@ final class Targets {
 					'taxonomy'   => $taxonomy,
 					'hide_empty' => false,
 					'number'     => 1,
+					'lang'       => '',
 					'meta_key'   => Importer::SOURCE_TERM, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- One lookup per converted filter.
 					'meta_value' => (string) $source_id, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 				]

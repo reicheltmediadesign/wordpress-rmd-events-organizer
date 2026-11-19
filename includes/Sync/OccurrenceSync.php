@@ -120,6 +120,8 @@ final class OccurrenceSync {
 					'orderby'        => 'ID',
 					'order'          => 'ASC',
 					'fields'         => 'ids',
+					// Polylang would otherwise limit this to one language.
+					'lang'           => '',
 				]
 			);
 			foreach ( $ids as $id ) {

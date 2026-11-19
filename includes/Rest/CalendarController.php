@@ -15,6 +15,7 @@ namespace RMD\EventsOrganizer\Rest;
 use RMD\EventsOrganizer\Capabilities;
 use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Modules;
+use RMD\EventsOrganizer\Polylang;
 use RMD\EventsOrganizer\PostTypes;
 use RMD\EventsOrganizer\Render\CalendarRenderer;
 use RMD\EventsOrganizer\Repository\LocationRepository;
@@ -61,6 +62,7 @@ final class CalendarController {
 					'kind'     => $text,
 					'category' => $text,
 					'tag'      => $text,
+					'lang'     => $text,
 					'location' => [
 						'type'              => 'integer',
 						'default'           => 0,
@@ -86,10 +88,15 @@ final class CalendarController {
 			return new WP_Error( 'rmd_eo_calendar_off', __( 'The calendar is switched off.', 'rmd-events-organizer' ), [ 'status' => 404 ] );
 		}
 
+		// Month and weekday names in the language of the page the calendar is on.
+		$locale   = Polylang::locale( sanitize_key( (string) $request['lang'] ) );
+		$switched = '' !== $locale && switch_to_locale( $locale );
+
 		$response = new WP_REST_Response(
 			[
 				'html' => CalendarRenderer::render(
 					[
+						'lang'     => sanitize_key( (string) $request['lang'] ),
 						'month'    => (string) $request['month'],
 						'size'     => (string) $request['size'],
 						'kind'     => sanitize_key( (string) $request['kind'] ),
@@ -100,6 +107,9 @@ final class CalendarController {
 				),
 			]
 		);
+		if ( $switched ) {
+			restore_previous_locale();
+		}
 		$response->header( 'Cache-Control', 'public, max-age=300' );
 		return $response;
 	}

@@ -26,6 +26,7 @@ function rmd_eo_uninstall_site(): void {
 			'post_status'    => 'any',
 			'posts_per_page' => -1,
 			'fields'         => 'ids',
+			'lang'           => '', // Polylang: every language.
 		]
 	);
 	foreach ( $post_ids as $post_id ) {
@@ -38,6 +39,7 @@ function rmd_eo_uninstall_site(): void {
 			'post_status'    => 'trash',
 			'posts_per_page' => -1,
 			'fields'         => 'ids',
+			'lang'           => '', // Polylang: every language.
 		]
 	);
 	foreach ( $trashed as $post_id ) {
@@ -54,6 +56,7 @@ function rmd_eo_uninstall_site(): void {
 				'taxonomy'   => $taxonomy,
 				'hide_empty' => false,
 				'fields'     => 'ids',
+				'lang'       => '',
 			]
 		);
 		if ( is_array( $term_ids ) ) {

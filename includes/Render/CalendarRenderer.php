@@ -17,6 +17,7 @@ use RMD\EventsOrganizer\Clock;
 use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Domain\MonthGrid;
 use RMD\EventsOrganizer\Modules;
+use RMD\EventsOrganizer\Polylang;
 use RMD\EventsOrganizer\Query\OccurrenceQuery;
 use RMD\EventsOrganizer\Rest\CalendarController;
 use RMD\EventsOrganizer\Settings;
@@ -33,7 +34,7 @@ final class CalendarRenderer {
 	public const FILTERS = [ 'kind', 'category', 'tag', 'location' ];
 
 	/**
-	 * @param array $args size, month ("YYYY-MM"), kind, category, tag, location, class.
+	 * @param array $args size, month ("YYYY-MM"), kind, category, tag, location, lang, class.
 	 */
 	public static function render( array $args ): string {
 		if ( ! Modules::is_on( Modules::CALENDAR ) ) {
@@ -47,6 +48,12 @@ final class CalendarRenderer {
 			if ( ! empty( $args[ $filter ] ) ) {
 				$filters[ $filter ] = is_array( $args[ $filter ] ) ? implode( ',', $args[ $filter ] ) : (string) $args[ $filter ];
 			}
+		}
+
+		// The language travels with the request for another month, which has no page to take it from.
+		$language = Polylang::language( (string) ( $args['lang'] ?? '' ) );
+		if ( '' !== $language ) {
+			$filters['lang'] = $language;
 		}
 
 		$bounds = OccurrenceQuery::month_bounds( (string) ( $filters['kind'] ?? '' ) );

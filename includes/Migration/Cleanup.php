@@ -148,6 +148,7 @@ final class Cleanup {
 					'taxonomy'   => $taxonomy,
 					'hide_empty' => false,
 					'fields'     => 'ids',
+					'lang'       => '',
 				]
 			);
 			foreach ( is_array( $terms ) ? $terms : [] as $term_id ) {

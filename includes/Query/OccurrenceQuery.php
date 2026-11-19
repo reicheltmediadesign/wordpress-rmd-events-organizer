@@ -12,6 +12,7 @@ use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Domain\Kinds;
 use RMD\EventsOrganizer\Domain\Occurrence;
 use RMD\EventsOrganizer\Modules;
+use RMD\EventsOrganizer\Polylang;
 use RMD\EventsOrganizer\Schema;
 use RMD\EventsOrganizer\Taxonomies;
 
@@ -37,6 +38,8 @@ final class OccurrenceQuery {
 	 *     @type string|array $category         Category slugs or ids; children included.
 	 *     @type string|array $exclude_category Category slugs or ids to leave out.
 	 *     @type string|array $tag              Tag slugs or ids.
+	 *     @type string       $lang             With Polylang: language code; default is the language of the page.
+	 *                                         Not applied when one event is asked for.
 	 *     @type bool         $unique           Only the first matching date of each event.
 	 *     @type string       $order            "asc" or "desc"; default depends on the scope.
 	 *     @type int          $limit            Maximum number of rows (0 = hard limit).
@@ -104,6 +107,12 @@ final class OccurrenceQuery {
 		}
 		if ( ! empty( $args['location'] ) ) {
 			$where[] = $wpdb->prepare( 'o.location_id = %d', (int) $args['location'] );
+		}
+
+		// On a multilingual site a list shows the events of its language. A single event is shown wherever it is placed.
+		$language = empty( $args['event_id'] ) ? Polylang::term_taxonomy_id( Polylang::language( (string) ( $args['lang'] ?? '' ) ) ) : 0;
+		if ( $language > 0 ) {
+			$where[] = $wpdb->prepare( "o.event_id IN ( SELECT tr.object_id FROM {$wpdb->term_relationships} tr WHERE tr.term_taxonomy_id = %d )", $language );
 		}
 
 		foreach (

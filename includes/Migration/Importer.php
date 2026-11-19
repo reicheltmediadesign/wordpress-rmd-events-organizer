@@ -15,6 +15,7 @@ use RMD\EventsOrganizer\Domain\Occurrence;
 use RMD\EventsOrganizer\Domain\Validator;
 use RMD\EventsOrganizer\Meta;
 use RMD\EventsOrganizer\Modules;
+use RMD\EventsOrganizer\Polylang;
 use RMD\EventsOrganizer\PostTypes;
 use RMD\EventsOrganizer\Repository\EventRepository;
 use RMD\EventsOrganizer\Sync\OccurrenceSync;
@@ -161,6 +162,8 @@ final class Importer {
 				$map[ $term['id'] ] = $term_id;
 			}
 
+			Polylang::copy_term_language( $term['id'], $term_id, static fn( int $source_id ): int => (int) ( $map[ $source_id ] ?? 0 ) );
+
 			$color = (string) sanitize_hex_color( $colors[ $term['id'] ] ?? '' );
 			if ( Taxonomies::CATEGORY === $target && '' !== $color ) {
 				update_term_meta( $term_id, Taxonomies::COLOR, $color );
@@ -279,6 +282,9 @@ final class Importer {
 		if ( $unit['source_post'] > 0 ) {
 			update_post_meta( $post_id, self::SOURCE_POST, (int) $unit['source_post'] );
 
+			// Before the categories: Polylang only accepts terms in the language of the post.
+			Polylang::copy_post_language( (int) $unit['source_post'], $post_id, [ Targets::class, 'event_by_post' ] );
+
 			foreach ( self::TAXONOMIES as $source => $target ) {
 				$map   = self::term_map( $target );
 				$terms = [];
@@ -342,6 +348,8 @@ final class Importer {
 				'meta_value'     => (string) $source_id, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 				'orderby'        => 'ID',
 				'order'          => 'ASC',
+				// Polylang: in every language, whatever the language filter of the admin is set to.
+				'lang'           => '',
 			]
 		);
 		return $found ? (int) $found[0] : 0;
@@ -370,6 +378,7 @@ final class Importer {
 				// Children before parents, so deleting does not re-parent on the way.
 				'orderby'    => 'term_id',
 				'order'      => 'DESC',
+				'lang'       => '',
 			]
 		);
 		return is_array( $terms ) ? array_values( $terms ) : [];

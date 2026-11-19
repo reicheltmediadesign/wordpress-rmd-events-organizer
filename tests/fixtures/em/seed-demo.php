@@ -558,6 +558,33 @@ foreach ( $menu_items as [ $title, $type, $object, $object_id ] ) {
 }
 $count['menu items'] = count( $menu_items );
 
+/* ---------------------------------------------------------------------- */
+/* Languages (only on a site with Polylang and the languages de and en)    */
+/* ---------------------------------------------------------------------- */
+
+if ( function_exists( 'pll_set_post_language' ) && [] === array_diff( [ 'de', 'en' ], pll_languages_list() ) ) {
+	$cat_concerts_en = $term( 'Concerts', 'event-categories', 0, '#cc3300' );
+	$event( 'Jazz Night', [ 'start_date' => $day( '+9 days' ), 'start_time' => '19:30:00', 'end_time' => '22:00:00', 'location_id' => $loc_hall, 'terms' => [ 'event-categories' => [ $cat_concerts_en ] ] ] );
+	$event( 'English Workshop', [ 'start_date' => $day( '+12 days' ), 'start_time' => '10:00:00', 'end_time' => '12:00:00', 'location_id' => $loc_studio ] );
+
+	$english = array_map( 'intval', $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'event' AND post_title IN ( '[em-demo] Jazz Night', '[em-demo] English Workshop' )" ) );
+	foreach ( $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_title LIKE '[em-demo]%' AND post_type IN ( 'event', 'event-recurring', 'location', 'page' )" ) as $post_id ) {
+		pll_set_post_language( (int) $post_id, in_array( (int) $post_id, $english, true ) ? 'en' : 'de' );
+	}
+	foreach ( [ $cat_concerts, $cat_courses, $cat_yoga, $cat_markets, $tag_family, $tag_outdoor ] as $term_id ) {
+		pll_set_term_language( $term_id, 'de' );
+	}
+	pll_set_term_language( $cat_concerts_en, 'en' );
+	pll_save_term_translations( [ 'de' => $cat_concerts, 'en' => $cat_concerts_en ] );
+	pll_save_post_translations(
+		[
+			'de' => $jazz_post,
+			'en' => (int) $wpdb->get_var( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'event' AND post_title = '[em-demo] Jazz Night'" ),
+		]
+	);
+	$count['languages: everything German, two English events, one translated category'] = 2;
+}
+
 echo "Seeded Events Manager demo data:\n";
 foreach ( $count as $label => $number ) {
 	echo str_pad( (string) $number, 5, ' ', STR_PAD_LEFT ), "  $label\n";

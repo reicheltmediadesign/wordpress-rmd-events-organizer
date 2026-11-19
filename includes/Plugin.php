@@ -26,6 +26,7 @@ final class Plugin {
 		Settings::init();
 		PostTypes::init();
 		Taxonomies::init();
+		Polylang::init();
 		Meta::init();
 		Sync\OccurrenceSync::init();
 		Assets::init();
