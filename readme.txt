@@ -49,3 +49,5 @@ Under Events → Settings → Components, or fixed in `wp-config.php`: `define( 
 
 = 0.1.0 =
 * First release: events, market dates, locations, repeating schedules, list, month calendar, small calendar, event details, calendar downloads and structured data.
+* Import from Events Manager, including its shortcodes, blocks, widgets and menu items, and an optional cleanup of its leftovers.
+* Works with Polylang on multilingual sites.
