@@ -5,6 +5,12 @@ All notable changes to this plugin are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.3.2] – 2026-11-19
+
+### Fixed
+
+- Lists no longer repeat the city after a location whose name already says it (“Meißen, Meißen”, “Kreuzgang Meißen, Meißen”).
+
 ## [0.3.1] – 2026-11-19
 
 ### Added

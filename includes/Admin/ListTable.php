@@ -11,6 +11,7 @@ namespace RMD\EventsOrganizer\Admin;
 use RMD\EventsOrganizer\Capabilities;
 use RMD\EventsOrganizer\Clock;
 use RMD\EventsOrganizer\Domain\Kinds;
+use RMD\EventsOrganizer\Domain\Place;
 use RMD\EventsOrganizer\Meta;
 use RMD\EventsOrganizer\Modules;
 use RMD\EventsOrganizer\PostTypes;
@@ -97,7 +98,7 @@ final class ListTable {
 
 			case 'rmd_eo_location':
 				$location = LocationRepository::find( EventRepository::location_id( $post_id ) );
-				echo $location ? esc_html( implode( ', ', array_filter( [ $location['name'], (string) $location['address']['city'] ], 'strlen' ) ) ) : '<span aria-hidden="true">—</span>';
+				echo $location ? esc_html( Place::label( $location['name'], (string) $location['address']['city'] ) ) : '<span aria-hidden="true">—</span>';
 				break;
 
 			case 'rmd_eo_kind':
