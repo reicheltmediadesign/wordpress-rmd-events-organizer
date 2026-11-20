@@ -71,6 +71,7 @@ final class HelpPage {
 		}
 		echo '<li><strong>' . esc_html__( 'Event Details', 'rmd-events-organizer' ) . '</strong> – ' . esc_html__( 'dates and location of one event.', 'rmd-events-organizer' ) . '</li>';
 		echo '</ul>';
+		echo '<p>' . esc_html__( 'Each block comes in several looks. Select the block and choose one under “Styles” in the sidebar. “Plain” leaves the look to the theme. The page of a single event takes its look and the accent colour from the settings.', 'rmd-events-organizer' ) . '</p>';
 
 		echo '<h2>' . esc_html__( 'Shortcodes', 'rmd-events-organizer' ) . '</h2>';
 		echo '<table class="widefat striped rmd-eo-help__table"><thead><tr><th>' . esc_html__( 'Shortcode', 'rmd-events-organizer' ) . '</th><th>' . esc_html__( 'Shows', 'rmd-events-organizer' ) . '</th></tr></thead><tbody>';
@@ -102,6 +103,7 @@ final class HelpPage {
 		self::row( 'show', __( 'Parts to show: date, time, location, stall, excerpt, image, category.', 'rmd-events-organizer' ) );
 		self::row( 'pagination', __( 'yes: links to earlier and later dates.', 'rmd-events-organizer' ) );
 		self::row( 'empty', __( 'Text shown when there are no dates.', 'rmd-events-organizer' ) );
+		self::row( 'style', __( 'Look: default, cards or plain. The calendar knows default, tiles and plain, [rmd_event] default, banner and plain.', 'rmd-events-organizer' ) );
 		echo '</tbody></table></div>';
 	}
 

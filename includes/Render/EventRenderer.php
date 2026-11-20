@@ -11,6 +11,7 @@ namespace RMD\EventsOrganizer\Render;
 use RMD\EventsOrganizer\Assets;
 use RMD\EventsOrganizer\Domain\Kinds;
 use RMD\EventsOrganizer\Domain\Occurrence;
+use RMD\EventsOrganizer\Domain\Settings as SettingsData;
 use RMD\EventsOrganizer\Ics;
 use RMD\EventsOrganizer\PostTypes;
 use RMD\EventsOrganizer\Query\OccurrenceQuery;
@@ -25,7 +26,8 @@ final class EventRenderer {
 	public const MAX_DATES = 10;
 
 	/**
-	 * @param array $args class, title (bool): also print the event title as a link.
+	 * @param array $args class, title (bool): also print the event title as a link,
+	 *                    style (one of Domain\Settings::EVENT_STYLES; default: the setting for event pages).
 	 */
 	public static function render( int $event_id, array $args = [] ): string {
 		$post = get_post( $event_id );
@@ -54,9 +56,11 @@ final class EventRenderer {
 		if ( '' === $html ) {
 			return '';
 		}
+		$style = (string) ( $args['style'] ?? '' );
+		$style = SettingsData::style( '' !== $style ? $style : (string) ( ( (array) Settings::get( 'display', [] ) )['single_style'] ?? '' ), SettingsData::EVENT_STYLES );
 		return sprintf(
 			'<div class="%s">%s</div>',
-			esc_attr( trim( 'rmd-eo rmd-eo-event rmd-eo-event--' . $kind . ' ' . ( $args['class'] ?? '' ) ) ),
+			esc_attr( trim( 'rmd-eo rmd-eo-event rmd-eo-event--' . $kind . ' rmd-eo-event--' . $style . ' ' . ( $args['class'] ?? '' ) ) ),
 			$html
 		);
 	}
@@ -92,7 +96,8 @@ final class EventRenderer {
 		$html    .= '<ul class="rmd-eo-event__date-list"' . ( $ended ? '' : ' data-rmd-eo-upcoming' ) . '>';
 		foreach ( $items as $occurrence ) {
 			$html .= sprintf( '<li class="rmd-eo-event__date%s" data-end="%d">', $occurrence['cancelled'] ? ' is-cancelled' : ( $occurrence['withdrawn'] ? ' is-withdrawn' : '' ), (int) $occurrence['end_ts'] );
-			$html .= '<span class="rmd-eo-event__when">' . esc_html( Formatter::when( $occurrence ) ) . '</span>';
+			$html .= '<span class="rmd-eo-event__badge rmd-eo-item__badge" aria-hidden="true">' . ListRenderer::badge( (string) $occurrence['start_date'] ) . '</span>';
+			$html .= '<span class="rmd-eo-event__date-text"><span class="rmd-eo-event__when">' . esc_html( Formatter::when( $occurrence ) ) . '</span>';
 			if ( $occurrence['cancelled'] ) {
 				$html .= ' <span class="rmd-eo-event__cancelled">' . esc_html__( 'Cancelled', 'rmd-events-organizer' ) . '</span>';
 			} elseif ( $occurrence['withdrawn'] ) {
@@ -108,7 +113,7 @@ final class EventRenderer {
 					esc_html__( 'Add to calendar', 'rmd-events-organizer' )
 				);
 			}
-			$html .= '</li>';
+			$html .= '</span></li>';
 		}
 		$html .= '</ul>';
 

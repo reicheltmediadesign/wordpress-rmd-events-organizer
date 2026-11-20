@@ -2,7 +2,7 @@
 /**
  * Public read-only endpoints.
  *
- *   GET /rmd-events-organizer/v1/calendar?month=YYYY-MM&size=full|mini&kind=&category=&tag=&location=
+ *   GET /rmd-events-organizer/v1/calendar?month=YYYY-MM&size=full|mini&style=&kind=&category=&tag=&location=
  *       Rendered calendar for the month navigation of the front-end script.
  *   GET /rmd-events-organizer/v1/choices
  *       Events, locations, categories and tags for the block settings (editors only).
@@ -14,6 +14,7 @@ namespace RMD\EventsOrganizer\Rest;
 
 use RMD\EventsOrganizer\Capabilities;
 use RMD\EventsOrganizer\Domain\Dates;
+use RMD\EventsOrganizer\Domain\Settings as SettingsData;
 use RMD\EventsOrganizer\Modules;
 use RMD\EventsOrganizer\Polylang;
 use RMD\EventsOrganizer\PostTypes;
@@ -59,6 +60,11 @@ final class CalendarController {
 						'default' => 'full',
 						'enum'    => CalendarRenderer::SIZES,
 					],
+					'style'    => [
+						'type'    => 'string',
+						'default' => SettingsData::CALENDAR_STYLES[0],
+						'enum'    => SettingsData::CALENDAR_STYLES,
+					],
 					'kind'     => $text,
 					'category' => $text,
 					'tag'      => $text,
@@ -99,6 +105,7 @@ final class CalendarController {
 						'lang'     => sanitize_key( (string) $request['lang'] ),
 						'month'    => (string) $request['month'],
 						'size'     => (string) $request['size'],
+						'style'    => (string) $request['style'],
 						'kind'     => sanitize_key( (string) $request['kind'] ),
 						'category' => (string) $request['category'],
 						'tag'      => (string) $request['tag'],

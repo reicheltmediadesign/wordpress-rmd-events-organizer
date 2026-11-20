@@ -1,27 +1,62 @@
 /**
  * RMD Events Organizer – front-end styles.
  *
- * Colours and spacing come from custom properties, so a theme can adjust the
- * look without overriding selectors:
+ * Every list, calendar and event box carries the class of its look:
  *
- *   --rmd-eo-accent        Marker colour: ring around days with dates, line beside events.
- *   --rmd-eo-accent-fill   Fill of marked days in the small calendar (default: none).
- *   --rmd-eo-accent-text   Text of marked days (default: inherited).
+ *   .rmd-eo-list--default | --cards | --plain       Lists (blocks "Events", "Market Dates").
+ *   .rmd-eo-calendar--default | --tiles | --plain   Calendars (also --full | --mini).
+ *   .rmd-eo-event--default | --banner | --plain     Dates and place of one event.
+ *
+ * "plain" is only the layout below without decoration, meant as the base of
+ * a theme's own stylesheet. The other looks build on it.
+ *
+ * Colours and spacing come from custom properties, so a theme can adjust the
+ * look without overriding selectors. Set them on .rmd-eo:
+ *
+ *   --rmd-eo-accent        Calendar sheets, marked days, buttons, line beside events.
+ *                          Default: a dark grey, in the plain looks the text colour.
+ *   --rmd-eo-on-accent     Text on the accent colour (default: white).
+ *   --rmd-eo-accent-fill   Fill of marked days in the small calendar (plain look: none).
+ *   --rmd-eo-accent-text   Text of marked days in the small calendar.
+ *   --rmd-eo-surface       Background of cards, calendars and boxes (default: white).
+ *   --rmd-eo-on-surface    Text on that background (default: inherited).
+ *   --rmd-eo-shadow        Shadow of cards, calendars and boxes.
  *   --rmd-eo-border        Lines between items and calendar cells.
  *   --rmd-eo-muted         Secondary text.
  *   --rmd-eo-cancelled     Colour of the "cancelled" and "we are not taking part" labels.
  *   --rmd-eo-gap           Space between list items.
- *   --rmd-eo-radius        Corner radius of badges, cells and popovers.
+ *   --rmd-eo-pad           Inner space of cards and boxes.
+ *   --rmd-eo-radius        Corner radius of badges, cards, cells and popovers.
  *   --rmd-eo-event-color   Set per event from its category colour.
  */
 
-.rmd-eo {
+/* :where() keeps the defaults at zero specificity: any rule of a theme wins. */
+:where(.rmd-eo) {
 	--rmd-eo-accent: currentcolor;
+	--rmd-eo-on-accent: #fff;
+	--rmd-eo-surface: #fff;
+	--rmd-eo-on-surface: inherit;
+	--rmd-eo-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.08);
 	--rmd-eo-border: rgba(128, 128, 128, 0.35);
 	--rmd-eo-muted: rgba(128, 128, 128, 1);
 	--rmd-eo-cancelled: #b32d2e;
 	--rmd-eo-gap: 1.25em;
+	--rmd-eo-pad: 1.25em;
 	--rmd-eo-radius: 4px;
+}
+
+/* The accent carries text in the designed looks, so it cannot follow the text colour there. */
+:where(
+.rmd-eo-list--default,
+.rmd-eo-list--cards,
+.rmd-eo-calendar--default,
+.rmd-eo-calendar--tiles,
+.rmd-eo-event--default,
+.rmd-eo-event--banner
+) {
+	--rmd-eo-accent: #46515f;
+	--rmd-eo-border: rgba(128, 128, 128, 0.28);
+	--rmd-eo-radius: 10px;
 }
 
 .rmd-eo [hidden] {
@@ -157,6 +192,171 @@
 	color: var(--rmd-eo-muted);
 }
 
+/* Calendar sheet: day below a coloured band with the month. Shared by the
+   designed looks of lists and of the dates of one event. */
+
+.rmd-eo-list--default .rmd-eo-item__badge,
+.rmd-eo-list--cards .rmd-eo-item__badge,
+.rmd-eo-event--default .rmd-eo-item__badge {
+	flex: 0 0 3.75em;
+	width: 3.75em;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	border-radius: 0.6em;
+	background: var(--rmd-eo-event-color, var(--rmd-eo-accent));
+	box-shadow: 0 0 0 1px var(--rmd-eo-border), var(--rmd-eo-shadow);
+	line-height: 1.15;
+}
+
+.rmd-eo-list--default .rmd-eo-item__badge-month,
+.rmd-eo-list--cards .rmd-eo-item__badge-month,
+.rmd-eo-event--default .rmd-eo-item__badge-month,
+.rmd-eo-event--banner .rmd-eo-item__badge-month {
+	order: -1;
+	align-self: stretch;
+	padding: 0.4em 0 0.3em;
+	color: var(--rmd-eo-on-accent);
+	font-size: 0.6875em;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+}
+
+.rmd-eo-list--default .rmd-eo-item__badge-day,
+.rmd-eo-list--cards .rmd-eo-item__badge-day,
+.rmd-eo-event--default .rmd-eo-item__badge-day {
+	align-self: stretch;
+	padding: 0.15em 0 0.2em;
+	background: var(--rmd-eo-surface);
+	color: var(--rmd-eo-on-surface);
+	font-size: 1.625em;
+	font-variant-numeric: tabular-nums;
+}
+
+/* Designed lists */
+
+.rmd-eo-list--default .rmd-eo-item,
+.rmd-eo-list--cards .rmd-eo-item {
+	gap: 1.25em;
+	align-items: center;
+}
+
+.rmd-eo-list--default .rmd-eo-item {
+	padding: 1.1em 0.25em;
+}
+
+.rmd-eo-list--default .rmd-eo-item__title,
+.rmd-eo-list--cards .rmd-eo-item__title {
+	margin: 0 0 0.3em;
+	font-size: 1.25em;
+	line-height: 1.3;
+}
+
+.rmd-eo-list--default .rmd-eo-item__title a,
+.rmd-eo-list--cards .rmd-eo-item__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.rmd-eo-list--default .rmd-eo-item__title a:hover,
+.rmd-eo-list--default .rmd-eo-item__title a:focus-visible,
+.rmd-eo-list--cards .rmd-eo-item__title a:hover,
+.rmd-eo-list--cards .rmd-eo-item__title a:focus-visible {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.15em;
+}
+
+.rmd-eo-list--default .rmd-eo-item__body p,
+.rmd-eo-list--cards .rmd-eo-item__body p {
+	line-height: 1.5;
+}
+
+.rmd-eo-list--default .rmd-eo-item__when,
+.rmd-eo-list--cards .rmd-eo-item__when {
+	font-weight: 600;
+}
+
+@supports (mask-image: none) {
+
+	.rmd-eo-list--default .rmd-eo-item__when::before,
+	.rmd-eo-list--cards .rmd-eo-item__when::before,
+	.rmd-eo-list--default .rmd-eo-item__where::before,
+	.rmd-eo-list--cards .rmd-eo-item__where::before {
+		content: "";
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		margin-right: 0.4em;
+		background: currentcolor;
+		opacity: 0.7;
+		vertical-align: -0.125em;
+		mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E") center / contain no-repeat;
+	}
+
+	.rmd-eo-list--default .rmd-eo-item__where::before,
+	.rmd-eo-list--cards .rmd-eo-item__where::before {
+		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3C/svg%3E");
+	}
+}
+
+.rmd-eo-list--default .rmd-eo-item__status,
+.rmd-eo-list--cards .rmd-eo-item__status,
+.rmd-eo-event--default .rmd-eo-event__cancelled {
+	display: inline-block;
+	margin-bottom: 0.25em;
+	padding: 0.1em 0.7em;
+	border-radius: 99em;
+	background: color-mix(in srgb, var(--rmd-eo-cancelled) 12%, transparent);
+	font-size: 0.8125em;
+}
+
+.rmd-eo-list--default .rmd-eo-list__pagination a,
+.rmd-eo-list--cards .rmd-eo-list__pagination a {
+	padding: 0.45em 1.1em;
+	border: 1px solid var(--rmd-eo-border);
+	border-radius: 99em;
+	background: var(--rmd-eo-surface);
+	color: var(--rmd-eo-on-surface);
+	font-size: 0.9375em;
+	text-decoration: none;
+}
+
+.rmd-eo-list--default .rmd-eo-list__pagination a:hover,
+.rmd-eo-list--default .rmd-eo-list__pagination a:focus-visible,
+.rmd-eo-list--cards .rmd-eo-list__pagination a:hover,
+.rmd-eo-list--cards .rmd-eo-list__pagination a:focus-visible {
+	border-color: var(--rmd-eo-accent);
+	background: var(--rmd-eo-accent);
+	color: var(--rmd-eo-on-accent);
+}
+
+/* Cards */
+
+.rmd-eo-list--cards .rmd-eo-list__items {
+	display: grid;
+	gap: calc(var(--rmd-eo-gap) * 0.7);
+}
+
+.rmd-eo-list--cards .rmd-eo-item {
+	box-sizing: border-box;
+	padding: var(--rmd-eo-pad);
+	border: 1px solid var(--rmd-eo-border);
+	border-left: 5px solid var(--rmd-eo-event-color, var(--rmd-eo-accent));
+	border-radius: var(--rmd-eo-radius);
+	background: var(--rmd-eo-surface);
+	box-shadow: var(--rmd-eo-shadow);
+	color: var(--rmd-eo-on-surface);
+}
+
+.rmd-eo-list--cards .rmd-eo-item:last-child {
+	border-bottom: 1px solid var(--rmd-eo-border);
+}
+
+.rmd-eo-list--cards .rmd-eo-item__badge {
+	box-shadow: 0 0 0 1px var(--rmd-eo-border);
+}
+
 /* Single event ----------------------------------------------------------- */
 
 .rmd-eo-event {
@@ -183,6 +383,10 @@
 .rmd-eo-event__date {
 	margin: 0;
 	padding: 0.15em 0;
+}
+
+.rmd-eo-event__badge {
+	display: none;
 }
 
 .rmd-eo-event__ics,
@@ -214,6 +418,236 @@
 
 .rmd-eo-event__facts dd {
 	margin: 0;
+}
+
+/* Designed event boxes: one panel, dates and place side by side. */
+
+.rmd-eo-event--default,
+.rmd-eo-event--banner {
+	display: grid;
+	box-sizing: border-box;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 15em), 1fr));
+	margin-bottom: 2em;
+	overflow: hidden;
+	border: 1px solid var(--rmd-eo-border);
+	border-radius: var(--rmd-eo-radius);
+	background: var(--rmd-eo-surface);
+	box-shadow: var(--rmd-eo-shadow);
+	color: var(--rmd-eo-on-surface);
+	line-height: 1.5;
+}
+
+.rmd-eo-event--default {
+	gap: 1.5em 2.5em;
+	padding: calc(var(--rmd-eo-pad) * 1.3);
+}
+
+.rmd-eo-event--default > *,
+.rmd-eo-event--banner > * {
+	min-width: 0;
+	margin: 0;
+}
+
+.rmd-eo-event--default .rmd-eo-event__title,
+.rmd-eo-event--default .rmd-eo-event__status,
+.rmd-eo-event--default .rmd-eo-event__facts,
+.rmd-eo-event--banner .rmd-eo-event__title,
+.rmd-eo-event--banner .rmd-eo-event__status,
+.rmd-eo-event--banner .rmd-eo-event__dates {
+	grid-column: 1 / -1;
+}
+
+.rmd-eo-event--default .rmd-eo-event__title,
+.rmd-eo-event--banner .rmd-eo-event__title {
+	font-size: 1.25em;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.rmd-eo-event--default .rmd-eo-event__title a,
+.rmd-eo-event--banner .rmd-eo-event__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.rmd-eo-event--default .rmd-eo-event__title a:hover,
+.rmd-eo-event--default .rmd-eo-event__title a:focus-visible,
+.rmd-eo-event--banner .rmd-eo-event__title a:hover,
+.rmd-eo-event--banner .rmd-eo-event__title a:focus-visible {
+	text-decoration: underline;
+}
+
+.rmd-eo-event--default .rmd-eo-event__heading,
+.rmd-eo-event--banner .rmd-eo-event__heading {
+	margin: 0 0 0.8em;
+	padding: 0;
+	border: 0;
+	color: var(--rmd-eo-muted);
+	font-family: inherit;
+	font-size: 0.75em;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.1em;
+	text-shadow: none;
+}
+
+.rmd-eo-event--default .rmd-eo-event__date,
+.rmd-eo-event--banner .rmd-eo-event__date {
+	display: flex;
+	gap: 1em;
+	align-items: center;
+	padding: 0;
+}
+
+.rmd-eo-event--default .rmd-eo-event__date + .rmd-eo-event__date,
+.rmd-eo-event--banner .rmd-eo-event__date + .rmd-eo-event__date {
+	margin-top: 0.8em;
+}
+
+.rmd-eo-event--default .rmd-eo-event__badge,
+.rmd-eo-event--banner .rmd-eo-event__badge {
+	display: flex;
+	font-size: 0.875em;
+}
+
+.rmd-eo-event--default .rmd-eo-event__date-text,
+.rmd-eo-event--banner .rmd-eo-event__date-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15em;
+	align-items: flex-start;
+	min-width: 0;
+}
+
+.rmd-eo-event--default .rmd-eo-event__when,
+.rmd-eo-event--banner .rmd-eo-event__when {
+	font-size: 1.0625em;
+	font-weight: 700;
+}
+
+.rmd-eo-event--default .rmd-eo-event__ics,
+.rmd-eo-event--banner .rmd-eo-event__ics {
+	margin: 0.25em 0 0;
+	padding: 0.2em 0.85em;
+	border: 1px solid var(--rmd-eo-border);
+	border-radius: 99em;
+	color: inherit;
+	font-size: 0.8125em;
+	text-decoration: none;
+}
+
+.rmd-eo-event--default .rmd-eo-event__ics:hover,
+.rmd-eo-event--default .rmd-eo-event__ics:focus-visible {
+	border-color: var(--rmd-eo-accent);
+	background: var(--rmd-eo-accent);
+	color: var(--rmd-eo-on-accent);
+}
+
+.rmd-eo-event--default .rmd-eo-event__ended,
+.rmd-eo-event--default .rmd-eo-event__more,
+.rmd-eo-event--banner .rmd-eo-event__ended,
+.rmd-eo-event--banner .rmd-eo-event__more {
+	margin: 0.8em 0 0;
+}
+
+.rmd-eo-event--default .rmd-eo-event__place,
+.rmd-eo-event--banner .rmd-eo-event__place {
+	margin: 0 0 0.4em;
+}
+
+.rmd-eo-event--default .rmd-eo-event__place strong,
+.rmd-eo-event--banner .rmd-eo-event__place strong {
+	font-size: 1.0625em;
+}
+
+.rmd-eo-event--default .rmd-eo-event__facts,
+.rmd-eo-event--banner .rmd-eo-event__facts {
+	gap: 0.35em 1.25em;
+	align-content: start;
+}
+
+.rmd-eo-event--default .rmd-eo-event__facts {
+	padding-top: 1.2em;
+	border-top: 1px solid var(--rmd-eo-border);
+}
+
+.rmd-eo-event--default .rmd-eo-event__facts dt,
+.rmd-eo-event--banner .rmd-eo-event__facts dt {
+	color: var(--rmd-eo-muted);
+	font-weight: 600;
+}
+
+/* Banner: the dates on the accent colour, the rest below. */
+
+.rmd-eo-event--banner > * {
+	padding: var(--rmd-eo-pad) calc(var(--rmd-eo-pad) * 1.3);
+}
+
+.rmd-eo-event--banner .rmd-eo-event__status {
+	padding-bottom: 0;
+}
+
+/* The title is set larger; its padding is scaled back to line up with the rest. */
+.rmd-eo-event--banner .rmd-eo-event__title {
+	padding: calc(var(--rmd-eo-pad) * 0.8) calc(var(--rmd-eo-pad) * 1.04) 0;
+}
+
+.rmd-eo-event--banner .rmd-eo-event__dates {
+	--rmd-eo-muted: var(--rmd-eo-on-accent);
+	--rmd-eo-cancelled: var(--rmd-eo-on-accent);
+	--rmd-eo-border: rgba(255, 255, 255, 0.45);
+
+	background: var(--rmd-eo-accent);
+	color: var(--rmd-eo-on-accent);
+}
+
+.rmd-eo-event--banner .rmd-eo-event__title + .rmd-eo-event__dates,
+.rmd-eo-event--banner .rmd-eo-event__status + .rmd-eo-event__dates {
+	margin-top: var(--rmd-eo-pad);
+}
+
+.rmd-eo-event--banner .rmd-eo-event__dates .rmd-eo-event__heading,
+.rmd-eo-event--banner .rmd-eo-event__dates .rmd-eo-event__ended,
+.rmd-eo-event--banner .rmd-eo-event__dates .rmd-eo-event__more,
+.rmd-eo-event--banner .rmd-eo-event__dates .rmd-eo-event__note {
+	opacity: 0.85;
+}
+
+.rmd-eo-event--banner .rmd-eo-item__badge {
+	flex: 0 0 3.75em;
+	width: 3.75em;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	border-radius: 0.6em;
+	background: rgba(255, 255, 255, 0.16);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+	line-height: 1.15;
+}
+
+.rmd-eo-event--banner .rmd-eo-item__badge-month {
+	background: rgba(0, 0, 0, 0.18);
+}
+
+.rmd-eo-event--banner .rmd-eo-item__badge-day {
+	padding: 0.15em 0 0.2em;
+	font-size: 1.625em;
+	font-variant-numeric: tabular-nums;
+}
+
+.rmd-eo-event--banner .rmd-eo-event__when {
+	font-size: 1.1875em;
+}
+
+.rmd-eo-event--banner .rmd-eo-event__ics:hover,
+.rmd-eo-event--banner .rmd-eo-event__ics:focus-visible {
+	border-color: var(--rmd-eo-on-accent);
+	background: rgba(255, 255, 255, 0.18);
+}
+
+.rmd-eo-event--banner .rmd-eo-event__cancelled {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
 }
 
 /* Calendar --------------------------------------------------------------- */
@@ -399,13 +833,274 @@
 	margin: 0;
 }
 
+/* Designed calendars: navigation */
+
+.rmd-eo-calendar--default .rmd-eo-calendar__nav,
+.rmd-eo-calendar--tiles .rmd-eo-calendar__nav {
+	gap: 0.5em;
+	margin-bottom: 0.9em;
+}
+
+.rmd-eo-calendar--default .rmd-eo-calendar__title,
+.rmd-eo-calendar--tiles .rmd-eo-calendar__title {
+	font-size: 1.25em;
+	line-height: 1.3;
+}
+
+.rmd-eo-calendar--default .rmd-eo-calendar__prev,
+.rmd-eo-calendar--default .rmd-eo-calendar__next,
+.rmd-eo-calendar--tiles .rmd-eo-calendar__prev,
+.rmd-eo-calendar--tiles .rmd-eo-calendar__next {
+	box-sizing: border-box;
+	width: 2.1em;
+	min-width: 0;
+	height: 2.1em;
+	padding: 0;
+	border: 1px solid var(--rmd-eo-border);
+	border-radius: 50%;
+	background: var(--rmd-eo-surface);
+	color: var(--rmd-eo-on-surface);
+	line-height: 1.85em;
+	transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.rmd-eo-calendar--default span.rmd-eo-calendar__prev,
+.rmd-eo-calendar--default span.rmd-eo-calendar__next,
+.rmd-eo-calendar--tiles span.rmd-eo-calendar__prev,
+.rmd-eo-calendar--tiles span.rmd-eo-calendar__next {
+	visibility: hidden;
+}
+
+.rmd-eo-calendar--default a.rmd-eo-calendar__prev:hover,
+.rmd-eo-calendar--default a.rmd-eo-calendar__prev:focus-visible,
+.rmd-eo-calendar--default a.rmd-eo-calendar__next:hover,
+.rmd-eo-calendar--default a.rmd-eo-calendar__next:focus-visible,
+.rmd-eo-calendar--tiles a.rmd-eo-calendar__prev:hover,
+.rmd-eo-calendar--tiles a.rmd-eo-calendar__prev:focus-visible,
+.rmd-eo-calendar--tiles a.rmd-eo-calendar__next:hover,
+.rmd-eo-calendar--tiles a.rmd-eo-calendar__next:focus-visible {
+	border-color: var(--rmd-eo-accent);
+	background: var(--rmd-eo-accent);
+	color: var(--rmd-eo-on-accent);
+}
+
+.rmd-eo-calendar--tiles .rmd-eo-calendar__title {
+	order: -1;
+	margin-right: auto;
+}
+
+/* Designed calendars: month with events */
+
+.rmd-eo-calendar--default .rmd-eo-calendar__grid,
+.rmd-eo-calendar--tiles .rmd-eo-calendar__grid {
+	border: 0;
+	border-collapse: separate;
+	background: none;
+}
+
+.rmd-eo-calendar--default .rmd-eo-calendar__grid th,
+.rmd-eo-calendar--tiles .rmd-eo-calendar__grid th {
+	padding: 0.7em 0.2em;
+	background: none;
+	font-size: 0.6875em;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day,
+.rmd-eo-calendar--tiles .rmd-eo-day {
+	background: none;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__number,
+.rmd-eo-calendar--tiles .rmd-eo-day__number {
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day,
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day {
+	height: 6.5em;
+	padding: 0.4em;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day__number,
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day__number {
+	width: 1.9em;
+	height: 1.9em;
+	border-radius: 50%;
+	font-size: 0.8125em;
+	line-height: 1.9em;
+	text-align: center;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day.is-today > .rmd-eo-day__number,
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day.is-today > .rmd-eo-day__number {
+	background: var(--rmd-eo-accent);
+	color: var(--rmd-eo-on-accent);
+	text-decoration: none;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day__event,
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day__event {
+	margin: 0 0 0.3em;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__event,
+.rmd-eo-calendar--tiles .rmd-eo-day__event {
+	overflow-wrap: break-word;
+	hyphens: auto;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__event a,
+.rmd-eo-calendar--tiles .rmd-eo-day__event a {
+	display: block;
+	color: inherit;
+	font-weight: 600;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__event a:hover,
+.rmd-eo-calendar--default .rmd-eo-day__event a:focus-visible,
+.rmd-eo-calendar--tiles .rmd-eo-day__event a:hover,
+.rmd-eo-calendar--tiles .rmd-eo-day__event a:focus-visible {
+	text-decoration: underline;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__time,
+.rmd-eo-calendar--tiles .rmd-eo-day__time {
+	display: block;
+	font-size: 0.9em;
+	font-weight: 400;
+}
+
+/* Sheet: one panel with fine lines, events as tinted chips. */
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-calendar__grid {
+	overflow: hidden;
+	border: 1px solid var(--rmd-eo-border);
+	border-spacing: 0;
+	border-radius: var(--rmd-eo-radius);
+	background: var(--rmd-eo-surface);
+	box-shadow: var(--rmd-eo-shadow);
+	color: var(--rmd-eo-on-surface);
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day {
+	border: 0;
+	border-top: 1px solid var(--rmd-eo-border);
+	border-left: 1px solid var(--rmd-eo-border);
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day:first-child {
+	border-left: 0;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day.is-other-month {
+	background: rgba(128, 128, 128, 0.07);
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day__event {
+	padding: 0.25em 0.4em;
+	border-radius: 0 4px 4px 0;
+	background: color-mix(in srgb, var(--rmd-eo-event-color, var(--rmd-eo-accent)) 12%, transparent);
+}
+
+/* Tiles: every day its own tile, days with dates tinted. */
+
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-calendar__grid {
+	width: calc(100% + 0.6em);
+	max-width: none;
+	margin: -0.3em;
+	border-spacing: 0.3em;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-calendar__grid th {
+	padding: 0.2em 0.2em 0.4em;
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day {
+	border: 1px solid var(--rmd-eo-border);
+	border-radius: var(--rmd-eo-radius);
+	background: var(--rmd-eo-surface);
+	color: var(--rmd-eo-on-surface);
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day.is-other-month {
+	border-color: transparent;
+	background: rgba(128, 128, 128, 0.08);
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day.has-events {
+	border-color: color-mix(in srgb, var(--rmd-eo-accent) 45%, transparent);
+	background:
+		linear-gradient(color-mix(in srgb, var(--rmd-eo-accent) 10%, transparent), color-mix(in srgb, var(--rmd-eo-accent) 10%, transparent)),
+		var(--rmd-eo-surface);
+	box-shadow: var(--rmd-eo-shadow);
+}
+
+.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day__event {
+	padding-left: 0.5em;
+}
+
+/* Designed small calendars */
+
+.rmd-eo-calendar--mini.rmd-eo-calendar--default,
+.rmd-eo-calendar--mini.rmd-eo-calendar--tiles {
+	box-sizing: border-box;
+	padding: 1em;
+	border: 1px solid var(--rmd-eo-border);
+	border-radius: var(--rmd-eo-radius);
+	background: var(--rmd-eo-surface);
+	box-shadow: var(--rmd-eo-shadow);
+	color: var(--rmd-eo-on-surface);
+}
+
+.rmd-eo-calendar--mini.rmd-eo-calendar--default .rmd-eo-calendar__title,
+.rmd-eo-calendar--mini.rmd-eo-calendar--tiles .rmd-eo-calendar__title {
+	font-size: 1.0625em;
+}
+
+.rmd-eo-calendar--mini.rmd-eo-calendar--default .rmd-eo-calendar__grid th,
+.rmd-eo-calendar--mini.rmd-eo-calendar--tiles .rmd-eo-calendar__grid th {
+	padding: 0.3em 0;
+}
+
+.rmd-eo-calendar--mini.rmd-eo-calendar--default .rmd-eo-day__link,
+.rmd-eo-calendar--mini.rmd-eo-calendar--tiles .rmd-eo-day__link {
+	background: var(--rmd-eo-accent-fill, var(--rmd-eo-accent));
+	box-shadow: none;
+	color: var(--rmd-eo-accent-text, var(--rmd-eo-on-accent));
+}
+
+.rmd-eo-calendar--mini.rmd-eo-calendar--tiles .rmd-eo-day__number {
+	border-radius: 0.5em;
+}
+
+.rmd-eo-calendar--mini.rmd-eo-calendar--default .rmd-eo-day.is-today > .rmd-eo-day__number,
+.rmd-eo-calendar--mini.rmd-eo-calendar--tiles .rmd-eo-day.is-today > .rmd-eo-day__number {
+	outline-color: var(--rmd-eo-accent);
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__popover,
+.rmd-eo-calendar--tiles .rmd-eo-day__popover {
+	padding: 0.8em 1em;
+	border-radius: 8px;
+}
+
+.rmd-eo-calendar--default .rmd-eo-day__popover .rmd-eo-day__event + .rmd-eo-day__event,
+.rmd-eo-calendar--tiles .rmd-eo-day__popover .rmd-eo-day__event + .rmd-eo-day__event {
+	margin-top: 0.5em;
+}
+
 @media (max-width: 600px) {
 
 	.rmd-eo-item__image {
 		display: none;
 	}
 
-	.rmd-eo-calendar--full .rmd-eo-day {
+	.rmd-eo-calendar--full .rmd-eo-day,
+	.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day,
+	.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day {
 		height: auto;
 		min-height: 3em;
 	}
@@ -413,11 +1108,55 @@
 	.rmd-eo-calendar--full .rmd-eo-day__time {
 		display: none;
 	}
+
+	.rmd-eo-list--default .rmd-eo-item,
+	.rmd-eo-list--cards .rmd-eo-item {
+		gap: 0.9em;
+	}
+
+	.rmd-eo-list--default .rmd-eo-item__title,
+	.rmd-eo-list--cards .rmd-eo-item__title {
+		font-size: 1.125em;
+	}
+
+	.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day,
+	.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day {
+		padding: 0.2em;
+	}
+
+	.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-calendar__grid {
+		width: calc(100% + 0.3em);
+		margin: -0.15em;
+		border-spacing: 0.15em;
+	}
+
+	.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day {
+		padding: 0.15em;
+		border-radius: 6px;
+	}
+
+	.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day__events,
+	.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day__events {
+		font-size: 0.6875em;
+	}
+
+	.rmd-eo-calendar--full.rmd-eo-calendar--default .rmd-eo-day__event,
+	.rmd-eo-calendar--full.rmd-eo-calendar--tiles .rmd-eo-day__event {
+		padding: 0.15em 0.2em 0.15em 0.3em;
+		border-left-width: 2px;
+	}
+
+	.rmd-eo-calendar--default .rmd-eo-day__event a,
+	.rmd-eo-calendar--tiles .rmd-eo-day__event a {
+		font-weight: 400;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-	.rmd-eo-calendar {
+	.rmd-eo-calendar,
+	.rmd-eo-calendar__prev,
+	.rmd-eo-calendar__next {
 		transition: none;
 	}
 }

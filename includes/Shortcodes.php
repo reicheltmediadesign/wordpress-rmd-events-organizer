@@ -2,10 +2,10 @@
 /**
  * Shortcodes mirroring the blocks.
  *
- * [rmd_events scope="upcoming|past|all|today|tomorrow|month|next-month" from="" to="" limit="10" kind="event|market" category="" exclude_category="" tag="" location="" unique="yes|no" order="asc|desc" group="month|year" show="date,time,location,stall,excerpt,image,category" pagination="yes|no" empty="" class=""]
+ * [rmd_events scope="upcoming|past|all|today|tomorrow|month|next-month" from="" to="" limit="10" kind="event|market" category="" exclude_category="" tag="" location="" unique="yes|no" order="asc|desc" group="month|year" show="date,time,location,stall,excerpt,image,category" pagination="yes|no" empty="" style="default|cards|plain" class=""]
  * [rmd_markets …]                      Same attributes; lists market dates only.
- * [rmd_events_calendar size="full|mini" month="YYYY-MM" kind="" category="" tag="" location="" class=""]
- * [rmd_event id="123" title="yes|no" class=""]
+ * [rmd_events_calendar size="full|mini" style="default|tiles|plain" month="YYYY-MM" kind="" category="" tag="" location="" class=""]
+ * [rmd_event id="123" title="yes|no" style="default|banner|plain" class=""]
  *
  * @package RMD\EventsOrganizer
  */
@@ -54,6 +54,7 @@ final class Shortcodes {
 				'show'             => '',
 				'pagination'       => 'no',
 				'empty'            => '',
+				'style'            => '',
 				'class'            => '',
 			],
 			is_array( $atts ) ? $atts : [],
@@ -85,6 +86,7 @@ final class Shortcodes {
 		$atts = shortcode_atts(
 			[
 				'size'     => 'full',
+				'style'    => '',
 				'month'    => '',
 				'kind'     => '',
 				'category' => '',
@@ -99,6 +101,7 @@ final class Shortcodes {
 		return CalendarRenderer::render(
 			[
 				'size'     => sanitize_key( $atts['size'] ),
+				'style'    => sanitize_key( $atts['style'] ),
 				'month'    => Dates::is_valid_month( $atts['month'] ) ? $atts['month'] : '',
 				'kind'     => sanitize_key( $atts['kind'] ),
 				'category' => sanitize_text_field( $atts['category'] ),
@@ -117,6 +120,7 @@ final class Shortcodes {
 			[
 				'id'    => '',
 				'title' => 'yes',
+				'style' => '',
 				'class' => '',
 			],
 			is_array( $atts ) ? $atts : [],
@@ -127,6 +131,7 @@ final class Shortcodes {
 			absint( $atts['id'] ),
 			[
 				'title' => self::to_bool( $atts['title'] ),
+				'style' => sanitize_key( $atts['style'] ),
 				'class' => self::css_class( $atts['class'] ),
 			]
 		);
@@ -156,6 +161,7 @@ final class Shortcodes {
 			'show'             => sanitize_text_field( (string) ( $atts['show'] ?? '' ) ),
 			'pagination'       => self::to_bool( (string) ( $atts['pagination'] ?? '' ) ),
 			'empty_text'       => sanitize_text_field( (string) ( $atts['empty'] ?? '' ) ),
+			'style'            => sanitize_key( $atts['style'] ?? '' ),
 			'class'            => self::css_class( (string) ( $atts['class'] ?? '' ) ),
 		];
 	}

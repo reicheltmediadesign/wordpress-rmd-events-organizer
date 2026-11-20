@@ -5,6 +5,19 @@ All notable changes to this plugin are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.4.0] – 2026-11-20
+
+### Added
+
+- **Looks for every block**, chosen under “Styles” in the block sidebar (shortcodes: attribute `style`). Lists: “Calendar sheet” (new default, with a larger calendar sheet beside each date and more room) and “Cards”. Calendar: “Sheet” (new default) and “Tiles”. Event details: “Card” (new default) and “Banner”. “Plain” is the bare layout for themes with their own stylesheet.
+- **Settings “Look of the event page”** (Card, Banner, Plain) for the dates and details on the page of an event, and **“Accent colour”** for calendar sheets, marked days and buttons.
+- Custom properties `--rmd-eo-on-accent`, `--rmd-eo-surface`, `--rmd-eo-on-surface`, `--rmd-eo-shadow` and `--rmd-eo-pad`.
+
+### Changed
+
+- Lists, calendars and event pages show the new default look after the update. Choose “Plain” to get the previous, undecorated output back.
+- The calendar sheet beside a date shows the month without a full stop. Every date on an event page carries a calendar sheet (hidden in the plain look).
+
 ## [0.3.2] – 2026-11-19
 
 ### Fixed

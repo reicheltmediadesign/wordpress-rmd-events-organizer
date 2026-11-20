@@ -77,6 +77,21 @@ final class SettingsPage {
 		);
 		self::field( 'display.show_end_time', __( 'End time', 'rmd-events-organizer' ), 'display', 'checkbox', [ 'checkbox_label' => __( 'Show the end time of events', 'rmd-events-organizer' ) ] );
 		self::field( 'display.single_details', __( 'Event page', 'rmd-events-organizer' ), 'display', 'checkbox', [ 'checkbox_label' => __( 'Show dates, location and details above the description automatically', 'rmd-events-organizer' ) ] );
+		self::field(
+			'display.single_style',
+			__( 'Look of the event page', 'rmd-events-organizer' ),
+			'display',
+			'select',
+			[
+				'options'     => [
+					'default' => __( 'Card', 'rmd-events-organizer' ),
+					'banner'  => __( 'Banner', 'rmd-events-organizer' ),
+					'plain'   => __( 'Plain', 'rmd-events-organizer' ),
+				],
+				'description' => __( 'Lists, calendars and the “Event Details” block have their own choice under “Styles” in the block sidebar. “Plain” leaves the look to the theme.', 'rmd-events-organizer' ),
+			]
+		);
+		self::field( 'display.accent', __( 'Accent colour', 'rmd-events-organizer' ), 'display', 'color', [ 'description' => __( 'Colour of calendar sheets, marked days and buttons. Without your own colour a dark grey is used. Events of a category with its own colour keep that one.', 'rmd-events-organizer' ) ] );
 		self::field( 'display.ics', __( 'Calendar file', 'rmd-events-organizer' ), 'display', 'checkbox', [ 'checkbox_label' => __( 'Offer “Add to calendar” (.ics) for upcoming dates', 'rmd-events-organizer' ) ] );
 		self::field( 'display.structured_data', __( 'Structured data', 'rmd-events-organizer' ), 'display', 'checkbox', [ 'checkbox_label' => __( 'Describe events for search engines (schema.org JSON-LD)', 'rmd-events-organizer' ) ] );
 		self::field(
@@ -142,7 +157,7 @@ final class SettingsPage {
 			[
 				'key'       => $key,
 				'type'      => $type,
-				'label_for' => in_array( $type, [ 'checkbox', 'module', 'roles' ], true ) ? '' : 'rmd-eo-' . str_replace( '.', '-', $key ),
+				'label_for' => in_array( $type, [ 'checkbox', 'module', 'roles', 'color' ], true ) ? '' : 'rmd-eo-' . str_replace( '.', '-', $key ),
 			] + $args
 		);
 	}
@@ -168,6 +183,31 @@ final class SettingsPage {
 					(int) $value,
 					(int) ( $args['min'] ?? 0 ),
 					(int) ( $args['max'] ?? 999 )
+				);
+				break;
+
+			case 'select':
+				printf( '<select id="%s" name="%s">', esc_attr( $id ), esc_attr( $name ) );
+				foreach ( (array) ( $args['options'] ?? [] ) as $option => $label ) {
+					printf( '<option value="%s" %s>%s</option>', esc_attr( (string) $option ), selected( (string) $value, (string) $option, false ), esc_html( (string) $label ) );
+				}
+				echo '</select>';
+				break;
+
+			case 'color':
+				// An unticked box posts the empty value of the hidden field, a ticked one the colour.
+				printf( '<input type="hidden" name="%s" value="">', esc_attr( $name ) );
+				printf(
+					'<label><input type="checkbox" %s onchange="this.parentNode.nextElementSibling.disabled = ! this.checked"> %s</label> ',
+					checked( '' !== (string) $value, true, false ),
+					esc_html__( 'Use my own colour', 'rmd-events-organizer' )
+				);
+				printf(
+					'<input type="color" id="%s" name="%s" value="%s" %s>',
+					esc_attr( $id ),
+					esc_attr( $name ),
+					esc_attr( '' !== (string) $value ? (string) $value : '#3a7bd5' ),
+					disabled( '' === (string) $value, true, false )
 				);
 				break;
 

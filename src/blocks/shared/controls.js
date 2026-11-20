@@ -297,6 +297,24 @@ export function ListControls( { attributes, setAttributes, isMarket } ) {
 	);
 }
 
+/**
+ * Attributes for the server-rendered preview. The preview request leaves out
+ * the class name, so the chosen block style travels in its own attribute.
+ *
+ * @param {Object} attributes Block attributes.
+ * @return {Object} Attributes for ServerSideRender.
+ */
+export function previewAttributes( attributes ) {
+	const match = /(?:^|\s)is-style-([a-z0-9-]+)/.exec(
+		attributes.className || ''
+	);
+	return {
+		...attributes,
+		isPreview: true,
+		previewStyle: match ? match[ 1 ] : '',
+	};
+}
+
 export function Loading() {
 	return <Spinner />;
 }

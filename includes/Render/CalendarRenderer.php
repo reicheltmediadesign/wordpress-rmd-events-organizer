@@ -16,6 +16,7 @@ use RMD\EventsOrganizer\Assets;
 use RMD\EventsOrganizer\Clock;
 use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Domain\MonthGrid;
+use RMD\EventsOrganizer\Domain\Settings as SettingsData;
 use RMD\EventsOrganizer\Modules;
 use RMD\EventsOrganizer\Polylang;
 use RMD\EventsOrganizer\Query\OccurrenceQuery;
@@ -34,7 +35,8 @@ final class CalendarRenderer {
 	public const FILTERS = [ 'kind', 'category', 'tag', 'location' ];
 
 	/**
-	 * @param array $args size, month ("YYYY-MM"), kind, category, tag, location, lang, class.
+	 * @param array $args size, style (one of Domain\Settings::CALENDAR_STYLES), month ("YYYY-MM"),
+	 *                    kind, category, tag, location, lang, class.
 	 */
 	public static function render( array $args ): string {
 		if ( ! Modules::is_on( Modules::CALENDAR ) ) {
@@ -43,6 +45,7 @@ final class CalendarRenderer {
 		Assets::enqueue_front();
 
 		$size    = in_array( $args['size'] ?? '', self::SIZES, true ) ? (string) $args['size'] : 'full';
+		$style   = SettingsData::style( (string) ( $args['style'] ?? '' ), SettingsData::CALENDAR_STYLES );
 		$filters = [];
 		foreach ( self::FILTERS as $filter ) {
 			if ( ! empty( $args[ $filter ] ) ) {
@@ -90,9 +93,16 @@ final class CalendarRenderer {
 
 		return sprintf(
 			'<div class="%s" data-rmd-eo-calendar data-endpoint="%s" data-query="%s" data-month="%s" data-today="%s">%s</div>',
-			esc_attr( trim( 'rmd-eo rmd-eo-calendar rmd-eo-calendar--' . $size . ' ' . ( $args['class'] ?? '' ) ) ),
+			esc_attr( trim( 'rmd-eo rmd-eo-calendar rmd-eo-calendar--' . $size . ' rmd-eo-calendar--' . $style . ' ' . ( $args['class'] ?? '' ) ) ),
 			esc_url( rest_url( CalendarController::NAMESPACE . '/calendar' ) ),
-			esc_attr( (string) wp_json_encode( [ 'size' => $size ] + $filters ) ),
+			esc_attr(
+				(string) wp_json_encode(
+					[
+						'size'  => $size,
+						'style' => $style,
+					] + $filters
+				)
+			),
 			esc_attr( $month ),
 			esc_attr( $today ),
 			$html

@@ -1784,3 +1784,61 @@ msgstr "Gilt für alle Termine dieses Marktes. Entfernen Sie den Haken und wähl
 
 msgid "The organiser has called it off as a whole. It stays visible and is marked as cancelled. For a single date choose its status under “When”."
 msgstr "Der Veranstalter hat sie insgesamt abgesagt. Sie bleibt sichtbar und wird als abgesagt gekennzeichnet. Für einen einzelnen Termin wählen Sie dessen Status unter „Wann“."
+
+msgctxt "block style label"
+msgid "Calendar sheet"
+msgstr "Kalenderblatt"
+
+msgctxt "block style label"
+msgid "Cards"
+msgstr "Karten"
+
+msgctxt "block style label"
+msgid "Plain"
+msgstr "Schlicht"
+
+msgctxt "block style label"
+msgid "Sheet"
+msgstr "Blatt"
+
+msgctxt "block style label"
+msgid "Tiles"
+msgstr "Kacheln"
+
+msgctxt "block style label"
+msgid "Card"
+msgstr "Karte"
+
+msgctxt "block style label"
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Look of the event page"
+msgstr "Darstellung der Veranstaltungsseite"
+
+msgid "Card"
+msgstr "Karte"
+
+msgid "Banner"
+msgstr "Banner"
+
+msgid "Plain"
+msgstr "Schlicht"
+
+msgid "Lists, calendars and the “Event Details” block have their own choice under “Styles” in the block sidebar. “Plain” leaves the look to the theme."
+msgstr "Listen, Kalender und der Block „Veranstaltungsdetails“ haben ihre eigene Auswahl unter „Stile“ in der Block-Seitenleiste. „Schlicht“ überlässt die Gestaltung dem Theme."
+
+msgid "Accent colour"
+msgstr "Akzentfarbe"
+
+msgid "Colour of calendar sheets, marked days and buttons. Without your own colour a dark grey is used. Events of a category with its own colour keep that one."
+msgstr "Farbe der Kalenderblätter, markierten Tage und Schaltflächen. Ohne eigene Farbe wird ein dunkles Grau verwendet. Veranstaltungen einer Kategorie mit eigener Farbe behalten diese."
+
+msgid "Use my own colour"
+msgstr "Eigene Farbe verwenden"
+
+msgid "Each block comes in several looks. Select the block and choose one under “Styles” in the sidebar. “Plain” leaves the look to the theme. The page of a single event takes its look and the accent colour from the settings."
+msgstr "Jeder Block hat mehrere Darstellungen. Wählen Sie den Block aus und entscheiden Sie sich unter „Stile“ in der Seitenleiste für eine. „Schlicht“ überlässt die Gestaltung dem Theme. Die Seite einer einzelnen Veranstaltung übernimmt Darstellung und Akzentfarbe aus den Einstellungen."
+
+msgid "Look: default, cards or plain. The calendar knows default, tiles and plain, [rmd_event] default, banner and plain."
+msgstr "Darstellung: default, cards oder plain. Der Kalender kennt default, tiles und plain, [rmd_event] default, banner und plain."
