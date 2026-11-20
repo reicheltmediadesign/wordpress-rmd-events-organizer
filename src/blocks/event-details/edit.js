@@ -3,7 +3,12 @@ import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 import ServerSideRender from '@wordpress/server-side-render';
 
-import { Loading, PostSelect, useChoices } from '../shared/controls';
+import {
+	Loading,
+	PostSelect,
+	previewAttributes,
+	useChoices,
+} from '../shared/controls';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps( { className: 'rmd-eo-block-preview' } );
@@ -45,7 +50,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
 				<ServerSideRender
 					block="rmd/event-details"
-					attributes={ { ...attributes, isPreview: true } }
+					attributes={ previewAttributes( attributes ) }
 					skipBlockSupportAttributes
 				/>
 			</div>

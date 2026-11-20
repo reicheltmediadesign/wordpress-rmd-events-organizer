@@ -34,6 +34,18 @@ The page of an event shows its dates, location and details above the description
 | Events Calendar | `[rmd_events_calendar]` | A month calendar; `size="mini"` for the small calendar |
 | Event Details | `[rmd_event id="123"]` | Dates, location and details of one event |
 
+### Looks
+
+Every block comes in three looks. Choose one under **Styles** in the block sidebar; shortcodes take the attribute `style`.
+
+| Block | Looks (`style`) |
+| --- | --- |
+| Events, Market Dates | Calendar sheet (`default`): rows with a calendar sheet beside each date. Cards (`cards`): every date in its own box. Plain (`plain`) |
+| Events Calendar | Sheet (`default`): one panel, events as tinted labels. Tiles (`tiles`): every day its own tile, days with dates tinted. Plain (`plain`) |
+| Event Details | Card (`default`): dates and location side by side in a box. Banner (`banner`): the dates on the accent colour. Plain (`plain`) |
+
+"Plain" is the bare layout without boxes, shadows and colours, meant as the base for your theme's own stylesheet. The page of a single event takes its look from **Settings → Look of the event page**. The colour of calendar sheets, marked days and buttons is the **accent colour** in the settings.
+
 ### Attributes of `[rmd_events]` and `[rmd_markets]`
 
 | Attribute | Values | Default |
@@ -51,6 +63,7 @@ The page of an event shows its dates, location and details above the description
 | `show` | `date`, `time`, `location`, `stall`, `excerpt`, `image`, `category` | `date,time,location` |
 | `pagination` | `yes`: links to earlier and later dates | `no` |
 | `empty` | Text shown when there are no dates | – |
+| `style` | `default`, `cards` or `plain` | `default` |
 | `class` | Additional CSS classes | – |
 
 ### Attributes of `[rmd_events_calendar]`
@@ -58,9 +71,12 @@ The page of an event shows its dates, location and details above the description
 | Attribute | Values | Default |
 | --- | --- | --- |
 | `size` | `full` or `mini` | `full` |
+| `style` | `default`, `tiles` or `plain` | `default` |
 | `month` | Month to start with, `YYYY-MM` | current month |
 | `kind`, `category`, `tag`, `location` | As above | – |
 | `class` | Additional CSS classes | – |
+
+`[rmd_event]` takes `id`, `title` (`yes` or `no`), `style` (`default`, `banner` or `plain`) and `class`.
 
 Days in the small calendar link to the page chosen under **Settings → Events page**, filtered to that day. With JavaScript they open a small list of that day's dates instead.
 
@@ -143,6 +159,8 @@ Events Manager leaves its tables, settings, posts, categories and capabilities i
 | Dates per list | Default number of dates in lists |
 | End time | Show the end time of events |
 | Event page | Add dates, location and details to the page of an event automatically |
+| Look of the event page | Card, Banner or Plain for those dates and details |
+| Accent colour | Colour of calendar sheets, marked days and buttons; a dark grey when not set |
 | Calendar file | Offer "Add to calendar" (.ics) |
 | Structured data | Output schema.org JSON-LD on event pages |
 | Repeat ahead (months) | How far ahead dates of rules without an end are created |
@@ -162,17 +180,24 @@ Access is controlled by the capability `rmd_eo_manage_events`.
 
 ## Styling
 
-The output uses classes prefixed with `rmd-eo-` and these custom properties, which you can set on `.rmd-eo` or any parent:
+The output uses classes prefixed with `rmd-eo-`. Each list, calendar and event box carries the class of its look: `rmd-eo-list--default|cards|plain`, `rmd-eo-calendar--default|tiles|plain` (besides `--full|mini`) and `rmd-eo-event--default|banner|plain`. For a design of your own choose "Plain" and style from there.
+
+These custom properties adjust the looks; set them on `.rmd-eo`:
 
 | Property | Purpose |
 | --- | --- |
-| `--rmd-eo-accent` | Marker colour: ring around days with dates in the small calendar, line beside events |
-| `--rmd-eo-accent-fill` | Fill of marked days in the small calendar (default: none) |
-| `--rmd-eo-accent-text` | Text of marked days (default: inherited) |
+| `--rmd-eo-accent` | Calendar sheets, marked days, buttons, line beside events (default: a dark grey, in the plain looks the text colour; the setting "Accent colour" sets it too) |
+| `--rmd-eo-on-accent` | Text on the accent colour (default: white) |
+| `--rmd-eo-accent-fill` | Fill of marked days in the small calendar (plain look: none) |
+| `--rmd-eo-accent-text` | Text of marked days in the small calendar |
+| `--rmd-eo-surface` | Background of cards, calendars and boxes (default: white) |
+| `--rmd-eo-on-surface` | Text on that background (default: inherited) |
+| `--rmd-eo-shadow` | Shadow of cards, calendars and boxes |
 | `--rmd-eo-border` | Lines between items and calendar cells |
 | `--rmd-eo-muted` | Secondary text |
 | `--rmd-eo-cancelled` | Colour of the "Cancelled" label |
 | `--rmd-eo-gap` | Space between list items |
+| `--rmd-eo-pad` | Inner space of cards and boxes |
 | `--rmd-eo-radius` | Corner radius |
 
 Events carry `--rmd-eo-event-color` when their category has a colour.

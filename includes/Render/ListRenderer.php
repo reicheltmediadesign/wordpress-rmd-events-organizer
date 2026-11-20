@@ -12,6 +12,7 @@ use RMD\EventsOrganizer\Assets;
 use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Domain\Kinds;
 use RMD\EventsOrganizer\Domain\Place;
+use RMD\EventsOrganizer\Domain\Settings as SettingsData;
 use RMD\EventsOrganizer\Query\OccurrenceQuery;
 use RMD\EventsOrganizer\Repository\EventRepository;
 use RMD\EventsOrganizer\Repository\LocationRepository;
@@ -32,7 +33,8 @@ final class ListRenderer {
 	/**
 	 * @param array $args Query arguments of OccurrenceQuery::find() plus:
 	 *                    show (list of self::PARTS), group, pagination (bool),
-	 *                    empty_text, class, heading_level (2-6).
+	 *                    empty_text, class, heading_level (2-6), style (one of
+	 *                    Domain\Settings::LIST_STYLES).
 	 */
 	public static function render( array $args ): string {
 		Assets::enqueue_front();
@@ -68,7 +70,8 @@ final class ListRenderer {
 		}
 
 		$result = OccurrenceQuery::find( $query );
-		$class  = trim( 'rmd-eo rmd-eo-list ' . ( $args['class'] ?? '' ) );
+		$style  = SettingsData::style( (string) ( $args['style'] ?? '' ), SettingsData::LIST_STYLES );
+		$class  = trim( 'rmd-eo rmd-eo-list rmd-eo-list--' . $style . ' ' . ( $args['class'] ?? '' ) );
 
 		if ( [] === $result['items'] ) {
 			$text = '' !== (string) ( $args['empty_text'] ?? '' ) ? (string) $args['empty_text'] : __( 'There are no dates at the moment.', 'rmd-events-organizer' );
@@ -137,9 +140,8 @@ final class ListRenderer {
 
 		if ( in_array( 'date', $show, true ) ) {
 			$html .= sprintf(
-				'<div class="rmd-eo-item__badge" aria-hidden="true"><span class="rmd-eo-item__badge-day">%s</span><span class="rmd-eo-item__badge-month">%s</span></div>',
-				esc_html( Formatter::date( (string) $occurrence['start_date'], 'j' ) ),
-				esc_html( Formatter::date( (string) $occurrence['start_date'], 'M' ) )
+				'<div class="rmd-eo-item__badge" aria-hidden="true">%s</div>',
+				self::badge( (string) $occurrence['start_date'] ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in badge().
 			);
 		}
 
@@ -198,6 +200,17 @@ final class ListRenderer {
 		}
 
 		return $html . '</li>';
+	}
+
+	/**
+	 * Day and month of a date for the calendar sheet beside it.
+	 */
+	public static function badge( string $date ): string {
+		return sprintf(
+			'<span class="rmd-eo-item__badge-day">%s</span><span class="rmd-eo-item__badge-month">%s</span>',
+			esc_html( Formatter::date( $date, 'j' ) ),
+			esc_html( rtrim( Formatter::date( $date, 'M' ), '.' ) )
+		);
 	}
 
 	/**

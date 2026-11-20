@@ -299,4 +299,33 @@ final class ValidatorTest extends TestCase {
 		self::assertSame( 0, $parsed['pages']['events'] );
 		self::assertSame( Settings::defaults(), Settings::parse( null ) );
 	}
+
+	public function test_settings_of_the_look(): void {
+		$parsed = Settings::parse(
+			[
+				'display' => [
+					'single_style' => 'banner',
+					'accent'       => ' #A1B ',
+				],
+			]
+		);
+		self::assertSame( 'banner', $parsed['display']['single_style'] );
+		self::assertSame( '#aa11bb', $parsed['display']['accent'] );
+
+		$broken = Settings::parse(
+			[
+				'display' => [
+					'single_style' => 'fancy',
+					'accent'       => 'red;}body{display:none',
+				],
+			]
+		);
+		self::assertSame( 'default', $broken['display']['single_style'] );
+		self::assertSame( '', $broken['display']['accent'] );
+
+		self::assertSame( 'cards', Settings::style( 'cards', Settings::LIST_STYLES ) );
+		self::assertSame( 'default', Settings::style( 'tiles', Settings::LIST_STYLES ) );
+		self::assertSame( '#ffffff', Settings::contrast_color( '#5a3a12' ) );
+		self::assertSame( '#000000', Settings::contrast_color( '#f2d16b' ) );
+	}
 }

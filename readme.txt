@@ -4,7 +4,7 @@ Tags: events, calendar, market, recurring events, block
 Requires at least: 6.8
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.3.2
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,11 @@ Yes. Lists carry the end time of each date, and a small script hides dates that 
 Under Events → Settings → Components, or fixed in `wp-config.php`: `define( 'RMD_EO_MODULES', [ 'markets' => false, 'calendar' => true ] );`.
 
 == Changelog ==
+
+= 0.4.0 =
+* Looks for every block, chosen under “Styles” in the block sidebar: lists as calendar sheet or cards, the calendar as sheet or tiles, event details as card or banner, each also plain for themes with their own stylesheet.
+* Settings “Look of the event page” and “Accent colour”.
+* Lists, calendars and event pages show the new default look after the update; choose “Plain” for the previous one.
 
 = 0.3.2 =
 * Lists no longer repeat the city after a location whose name already says it.

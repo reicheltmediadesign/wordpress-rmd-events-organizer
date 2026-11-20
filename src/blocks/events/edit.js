@@ -7,6 +7,7 @@ import {
 	FilterControls,
 	ListControls,
 	Loading,
+	previewAttributes,
 	useChoices,
 } from '../shared/controls';
 
@@ -73,7 +74,7 @@ export default function Edit( { attributes, setAttributes } ) {
 			<div { ...blockProps }>
 				<ServerSideRender
 					block="rmd/events"
-					attributes={ { ...attributes, isPreview: true } }
+					attributes={ previewAttributes( attributes ) }
 					skipBlockSupportAttributes
 				/>
 			</div>

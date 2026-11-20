@@ -10,6 +10,7 @@ namespace RMD\EventsOrganizer;
 
 use RMD\EventsOrganizer\Domain\Dates;
 use RMD\EventsOrganizer\Domain\Kinds;
+use RMD\EventsOrganizer\Domain\Settings as SettingsData;
 use RMD\EventsOrganizer\Render\CalendarRenderer;
 use RMD\EventsOrganizer\Render\EventRenderer;
 use RMD\EventsOrganizer\Render\ListRenderer;
@@ -94,6 +95,7 @@ final class Blocks {
 				'pagination'       => ! empty( $attributes['pagination'] ),
 				'empty_text'       => sanitize_text_field( (string) ( $attributes['emptyText'] ?? '' ) ),
 				'follow_day'       => empty( $attributes['isPreview'] ),
+				'style'            => self::style( $attributes ),
 			]
 		);
 		return self::wrap( $html );
@@ -114,6 +116,7 @@ final class Blocks {
 		$html  = CalendarRenderer::render(
 			[
 				'size'     => sanitize_key( (string) ( $attributes['size'] ?? 'full' ) ),
+				'style'    => self::style( $attributes ),
 				'month'    => Dates::is_valid_month( $month ) ? $month : '',
 				'kind'     => sanitize_key( (string) ( $attributes['kind'] ?? '' ) ),
 				'category' => sanitize_text_field( (string) ( $attributes['category'] ?? '' ) ),
@@ -132,12 +135,33 @@ final class Blocks {
 		if ( 0 === $event_id && is_singular( PostTypes::EVENT ) ) {
 			$event_id = (int) get_queried_object_id();
 		}
-		$html = EventRenderer::render( $event_id, [ 'title' => ! empty( $attributes['showTitle'] ) ] );
+		$style = self::style( $attributes );
+		$html  = EventRenderer::render(
+			$event_id,
+			[
+				'title' => ! empty( $attributes['showTitle'] ),
+				// A block without a chosen style shows the first one, not the setting for event pages.
+				'style' => '' !== $style ? $style : SettingsData::EVENT_STYLES[0],
+			]
+		);
 
 		if ( '' === $html && ! empty( $attributes['isPreview'] ) ) {
 			$html = '<p class="rmd-eo-editor-hint">' . esc_html__( 'Choose a published event in the block settings.', 'rmd-events-organizer' ) . '</p>';
 		}
 		return self::wrap( $html );
+	}
+
+	/**
+	 * The style picked in the block sidebar ("is-style-…" in the class name).
+	 * The editor preview drops the class name and sends the style separately.
+	 *
+	 * @param array<string, mixed> $attributes
+	 */
+	private static function style( array $attributes ): string {
+		if ( ! empty( $attributes['previewStyle'] ) ) {
+			return sanitize_key( (string) $attributes['previewStyle'] );
+		}
+		return 1 === preg_match( '/(?:^|\s)is-style-([a-z0-9-]+)/', (string) ( $attributes['className'] ?? '' ), $match ) ? $match[1] : '';
 	}
 
 	/**

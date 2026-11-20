@@ -3,7 +3,7 @@
  * Plugin Name:       RMD Events Organizer
  * Plugin URI:        https://github.com/reicheltmediadesign/wordpress-rmd-events-organizer
  * Description:       Events and market dates with repeating schedules, shown as lists and calendars via blocks and shortcodes.
- * Version:           0.3.2
+ * Version:           0.4.0
  * Requires at least: 6.8
  * Requires PHP:      8.1
  * Author:            Philipp Reichelt, reichelt media.design
@@ -21,7 +21,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'RMD_EO_VERSION', '0.3.2' );
+define( 'RMD_EO_VERSION', '0.4.0' );
 define( 'RMD_EO_FILE', __FILE__ );
 define( 'RMD_EO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'RMD_EO_URL', plugin_dir_url( __FILE__ ) );

@@ -8,6 +8,8 @@
 
 namespace RMD\EventsOrganizer;
 
+use RMD\EventsOrganizer\Domain\Settings as SettingsData;
+
 defined( 'ABSPATH' ) || exit;
 
 final class Assets {
@@ -26,6 +28,11 @@ final class Assets {
 			[],
 			self::version( 'assets/css/front.css' )
 		);
+
+		$accent = SettingsData::hex_color( (string) ( ( (array) Settings::get( 'display', [] ) )['accent'] ?? '' ) );
+		if ( '' !== $accent ) {
+			wp_add_inline_style( self::FRONT_STYLE, sprintf( '.rmd-eo{--rmd-eo-accent:%s;--rmd-eo-on-accent:%s}', $accent, SettingsData::contrast_color( $accent ) ) );
+		}
 
 		wp_register_script(
 			self::FRONT_SCRIPT,
